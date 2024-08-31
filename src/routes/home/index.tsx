@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ContainerMain } from '../../styled'
+import { ContainerMain, Titulo } from '../../styled'
 
 export default function Home() {
     return (
@@ -7,7 +7,7 @@ export default function Home() {
             <ContainerMain>
                 <div className='lado_texto'>
                     <div className='banner_texto'>
-                        <h1>Chatbot Porto Seguro</h1>
+                        <Titulo>Chatbot Porto Seguro</Titulo>
                         <h2>
                             sua solução rápida e <br />
                             inteligente para seus <br />

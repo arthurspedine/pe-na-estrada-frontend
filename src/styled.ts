@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const Titulo = styled.h1`
+    font-size: 2.7rem;
+    color: var(--cor-branco);
+`
+
 export const HeaderStyled = styled.header`
     width: 100%;
     max-width: 1200px;
@@ -169,11 +174,6 @@ export const ContainerMain = styled.div`
             justify-content: center;
             flex-direction: column;
 
-            h1 {
-                font-size: 2.7rem;
-                color: var(--cor-branco);
-            }
-
             h2 {
                 font-weight: 600;
                 font-size: 2.4rem;
@@ -215,65 +215,69 @@ export const DevMain = styled.div`
     margin-top: 50px;
     margin-bottom: 50px;
 
-    .desenvolvedores {
+    .container_desenvolvedores {
         display: flex;
         flex-direction: row;
         gap: 50px;
         justify-content: center;
         align-items: center;
+
+        margin-top: 50px;
     }
 
-    .desenvolvedor {
+    .card_dev {
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: center;
         width: 310px;
-        background: linear-gradient(180deg, #06368eb9 35%, #fff);
+        /* background: linear-gradient(180deg, #06368eb9 35%, #eee); */
+        background-color: var(--cor-azul-normal);
         padding: 20px 12px;
         border-radius: 15px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
-    }
 
-    .desenvolvedor img {
-        border-radius: 50%;
-        width: 230px;
-        box-shadow: 0px 1px 9px var(--cor-fonte-azul);
-        margin-bottom: 20px;
-    }
+        #imgperfil {
+            border-radius: 50%;
+            width: 230px;
+            box-shadow: 0px 1px 9px var(--cor-azul-claro);
+            margin-bottom: 20px;
+        }
 
-    .infodev {
-        text-align: center;
-    }
+        .infodev {
+            text-align: center;
 
-    .infodev p {
-        font-size: 1rem;
-        font-weight: 600;
-    }
+            p {
+                color: var(--cor-branco);
+                font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
 
-    .linkgithub a {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        padding: 4px;
-        gap: 5px;
-        font-size: 0.95rem;
-        text-decoration: none;
-        color: var(--cor-fonte-azul);
-        transition: color 0.3s ease, transform 0.3s ease !important;
-        transform-origin: center;
-    }
+            span {
+                color: var(--cor-fonte);
+            }
+        }
 
-    .linkgithub a:hover {
-        color: var(--cor-divmain);
-        transform: scale(1.15);
-    }
+        .linkgithub a {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            gap: 5px;
+            font-size: 1rem;
+            text-decoration: none;
+            color: var(--cor-branco);
+            transition: color 0.3s ease, transform 0.3s ease !important;
+            transform-origin: center;
 
-    .linkgithub img {
-        width: 20px;
-    }
+            img {
+                width: 20px;
+            }
+        }
 
+        .linkgithub a:hover {
+            transform: scale(1.1);
+        }
+    }
 `
-
-    
