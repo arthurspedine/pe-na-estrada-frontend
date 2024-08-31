@@ -16,23 +16,27 @@ export const GlobatStyle = createGlobalStyle`
     }
 
     body {
-        width: 100vw;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
     #root {
-        max-width: 100vw;
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
-
+        flex-grow: 1;
+        height: 100vh;
+        padding: 0px 4.5rem;
         background: linear-gradient(0deg,
                 #051F52 0.1%,
                 #174FB7 100%);
     }
 
     main {
-        width: 1200px;
         margin: 0 auto;
+        width: 100%;
+        max-width: 1200px;
         background-color: #174F51;
         flex-grow: 1;
     }
