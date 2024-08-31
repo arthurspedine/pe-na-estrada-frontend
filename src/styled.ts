@@ -47,7 +47,7 @@ export const NavBar = styled.nav`
 
             a:hover {
                 color: var(--cor-azul-claro);
-                transform: scale(0.97);
+                transform: scale(1.1);
             }
 
             .link_cliente_lista {
@@ -57,7 +57,7 @@ export const NavBar = styled.nav`
     }
 
     .botao_cliente {
-        border: 2px solid var(--cor-azul-normal);
+        border: 3px solid var(--cor-azul-claro);
         padding: 6px;
         border-radius: 5px;
         text-align: center;
@@ -174,7 +174,7 @@ export const NavBar = styled.nav`
 `
 
 export const FooterStyled = styled.footer`
-    background-color: var(--cor-azul-normal);
+    background-color: #00000055;
     padding: 1rem 0;
     margin-top: 50px;
     p {
@@ -233,6 +233,10 @@ export const ContainerMain = styled.div`
                 padding: 12px 32px;
                 color: var(--cor-fonte);
                 font-size: 1.15rem;
+            }
+
+            a:hover {
+                background-color: #042052cc;
             }
         }
     }

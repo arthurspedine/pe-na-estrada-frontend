@@ -22,6 +22,8 @@ export const GlobatStyle = createGlobalStyle`
         height: 100%;
         display: flex;
         flex-direction: column;
+
+        overflow-x: hidden;
     }
 
     #root {
@@ -30,9 +32,12 @@ export const GlobatStyle = createGlobalStyle`
         flex-grow: 1;
         min-height: 100vh;
         /* padding: 0px 3rem; */
-        background: linear-gradient(0deg,
-                #051F52 0.1%,
-                #174FB7 100%);
+        background: 
+            linear-gradient(0deg, #051F52 0.1%, #174FB7 100%),
+            url('/bg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: overlay;
     }
 
     main {
