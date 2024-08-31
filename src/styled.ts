@@ -206,3 +206,74 @@ export const ContainerMain = styled.div`
         width: 40%;
     }
 `
+
+export const DevMain = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    .desenvolvedores {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .desenvolvedor {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 310px;
+        background: linear-gradient(180deg, #06368eb9 35%, #fff);
+        padding: 20px 12px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .desenvolvedor img {
+        border-radius: 50%;
+        width: 230px;
+        box-shadow: 0px 1px 9px var(--cor-fonte-azul);
+        margin-bottom: 20px;
+    }
+
+    .infodev {
+        text-align: center;
+    }
+
+    .infodev p {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .linkgithub a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 4px;
+        gap: 5px;
+        font-size: 0.95rem;
+        text-decoration: none;
+        color: var(--cor-fonte-azul);
+        transition: color 0.3s ease, transform 0.3s ease !important;
+        transform-origin: center;
+    }
+
+    .linkgithub a:hover {
+        color: var(--cor-divmain);
+        transform: scale(1.15);
+    }
+
+    .linkgithub img {
+        width: 20px;
+    }
+
+`
+
+    
