@@ -10,13 +10,11 @@ export default function Header() {
             </div>
             <NavBar className='menu'>
                 {/* HAMBURGER */}
-                <div className='dropdown'>
-                    <input type='checkbox' className='menu-faketrigger' />
-                    <div className='menu-lines'>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+                <input type='checkbox' className='menu-faketrigger' />
+                <div className='menu-lines'>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
                 <ul>
                     <li>

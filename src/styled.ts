@@ -78,7 +78,8 @@ export const NavBar = styled.nav`
     }
 
     /* HAMBURGER */
-    .dropdown {
+    .menu-faketrigger,
+    .menu-lines {
         display: none;
     }
 
@@ -95,19 +96,14 @@ export const NavBar = styled.nav`
 
         /* HAMBURGER CONFIG */
 
-        .dropdown {
-            display: block;
-            position: relative;
-            top: -0.86rem;
-            right: 2.1rem;
-        }
-
         .menu-faketrigger {
             position: absolute;
             z-index: 1000;
             width: 35px;
             height: 35px;
             opacity: 0;
+            top: -0.86rem;
+            /* right: 2.1rem; */
             cursor: pointer;
             display: block;
         }
@@ -115,6 +111,8 @@ export const NavBar = styled.nav`
         .menu-lines {
             display: block;
             position: absolute;
+            top: -0.86rem;
+            /* right: 2.1rem; */
             z-index: 999;
             width: 35px;
             height: 35px;
@@ -129,20 +127,20 @@ export const NavBar = styled.nav`
             }
         }
 
-        .dropdown .menu-faketrigger:checked ~ ul {
-            right: -1px;
+        .menu-faketrigger:checked ~ ul {
+            right: 45px;
         }
 
-        .dropdown .menu-faketrigger:checked ~ .menu-lines span:nth-child(1) {
+        .menu-faketrigger:checked ~ .menu-lines span:nth-child(1) {
             transform-origin: 100% 0%;
             transform: rotate(-41deg) scaleX(1.05);
         }
 
-        .dropdown .menu-faketrigger:checked ~ .menu-lines span:nth-child(2) {
+        .menu-faketrigger:checked ~ .menu-lines span:nth-child(2) {
             opacity: 0;
         }
 
-        .dropdown .menu-faketrigger:checked ~ .menu-lines span:nth-child(3) {
+        .menu-faketrigger:checked ~ .menu-lines span:nth-child(3) {
             transform-origin: 100% 100%;
             transform: rotate(43deg) scaleX(1.05);
         }
@@ -153,10 +151,24 @@ export const NavBar = styled.nav`
             display: block;
             position: absolute;
             z-index: 998;
-            top: 30px;
-            /* right: -1px; */
-            right: -300px;
-            background-color: #00a0fc44;
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: #061124;
+
+            top: 25px;
+            right: -100rem;
+
+            li {
+                margin: 0;
+                a,
+                .link_cliente_lista {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.5rem;
+                    height: 60px;
+                }
+            }
         }
     }
 `

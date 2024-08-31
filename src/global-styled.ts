@@ -41,4 +41,10 @@ export const GlobatStyle = createGlobalStyle`
         max-width: 1200px;
         flex-grow: 1;
     }
+
+    @media screen and (max-width: 768px) {
+        #root {
+            padding: 0px 1rem;
+        }
+    }
 `
