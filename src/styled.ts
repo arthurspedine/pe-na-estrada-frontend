@@ -153,7 +153,7 @@ export const NavBar = styled.nav`
             z-index: 998;
             border-radius: 8px;
             padding: 1rem;
-            background-color: #061124;
+            background-color: var(--cor-bg-escuro);
 
             top: 25px;
             right: -100rem;
@@ -175,13 +175,17 @@ export const NavBar = styled.nav`
 
 export const ContainerMain = styled.div`
     display: flex;
+    flex-direction: column;
+
     padding: 0 45px;
 
-    .lado_texto {
-        width: 60%;
+    .banner_home {
+        width: 100%;
+        min-height: 50vh;
+        display: flex;
 
         .banner_texto {
-            min-height: 40vh;
+            width: 60%;
             display: flex;
             justify-content: center;
             flex-direction: column;
@@ -191,10 +195,43 @@ export const ContainerMain = styled.div`
                 font-size: 2.4rem;
                 color: var(--cor-fonte);
                 margin-left: 27px;
+                max-width: 450px;
             }
         }
 
+        .banner_assistente {
+            width: 40%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            p {
+                text-align: center;
+                font-size: 1.4rem;
+                color: var(--cor-fonte);
+                margin-bottom: 10px;
+            }
+
+            a {
+                background-color: #061124cc;
+                border: 3px solid var(--cor-azul-normal);
+                box-shadow: 1px 1px 4px 1px rgba(200, 200, 200, 0.6);
+                border-radius: 7px;
+                padding: 12px 32px;
+                color: var(--cor-fonte);
+                font-size: 1.15rem;
+            }
+        }
+    }
+
+    .container_home {
+        width: 100%;
+        display: flex;
+
         .sobrenos {
+            width: 60%;
             h2 {
                 font-size: 2rem;
                 color: var(--cor-branco);
@@ -206,16 +243,45 @@ export const ContainerMain = styled.div`
 
             p {
                 text-indent: 40px;
-                font-size: 1rem;
+                font-size: 1.05rem;
                 margin-bottom: 5px;
                 word-spacing: 2px;
                 letter-spacing: 1px;
                 color: var(--cor-fonte);
             }
+
+            strong {
+                font-weight: 600;
+            }
         }
-    }
-    .lado_bot {
-        width: 40%;
+
+        .container_orcamentos {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            h2 {
+                font-size: 2rem;
+                color: var(--cor-branco);
+                text-align: center;
+                z-index: 1;
+            }
+
+            .lista_orcamentos {
+                max-width: 320px;
+                min-height: 400px;
+                background-color: var(--cor-bg-escuro);
+                margin-top: -15px;
+                border-radius: 15px;
+                padding: 1.5rem 1rem;
+
+                p {
+                    color: var(--cor-fonte);
+                    font-size: 1.2rem;
+                }
+            }
+        }
     }
 `
 

@@ -5,16 +5,23 @@ export default function Home() {
     return (
         <main>
             <ContainerMain>
-                <div className='lado_texto'>
+                <div className='banner_home'>
                     <div className='banner_texto'>
                         <Titulo>Chatbot Porto Seguro</Titulo>
                         <h2>
-                            sua solução rápida e <br />
-                            inteligente para seus <br />
-                            problemas automotivos!
+                            sua solução rápida e inteligente para seus problemas
+                            automotivos!
                         </h2>
                     </div>
-
+                    <div className='banner_assistente'>
+                        <p>
+                            Experimente agora o <br />
+                            Assistente Pé na Estrada!
+                        </p>
+                        <Link to='area_assistente'>Saiba mais!</Link>
+                    </div>
+                </div>
+                <div className='container_home'>
                     <div className='sobrenos'>
                         <h2>Sobre Nós</h2>
                         <div className='sobrenos_texto'>
@@ -54,16 +61,11 @@ export default function Home() {
                             </p>
                         </div>
                     </div>
-                </div>
-                <div className='lado_bot'>
-                    <div className='banner_assistente'>
-                        <p>Experimente agora o Assistente Pé na Estrada!</p>
-                        <button>
-                            <Link to='area_assistente'>Saiba mais!</Link>
-                        </button>
-                    </div>
-                    <div className='orcamentos'>
+                    <div className='container_orcamentos'>
                         <h2>Orçamentos</h2>
+                        <div className='lista_orcamentos'>
+                            <p>Parece que você tem nenhum orçamento ativo</p>
+                        </div>
                     </div>
                 </div>
             </ContainerMain>
