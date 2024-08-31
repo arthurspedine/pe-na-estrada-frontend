@@ -73,14 +73,85 @@ export const NavBar = styled.nav`
     }
 
     /* HAMBURGER */
-    .menu-lines,
-    .menu-faketrigger {
+    .dropdown {
         display: none;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
+        justify-content: flex-end;
+
         ul li .link_cliente_lista {
             display: block;
+        }
+
+        .botao_cliente {
+            display: none;
+        }
+
+        /* HAMBURGER CONFIG */
+
+        .dropdown {
+            display: block;
+            position: relative;
+            top: -0.86rem;
+            right: 2.1rem;
+        }
+
+        .menu-faketrigger {
+            position: absolute;
+            z-index: 1000;
+            width: 35px;
+            height: 35px;
+            opacity: 0;
+            cursor: pointer;
+            display: block;
+        }
+
+        .menu-lines {
+            display: block;
+            position: absolute;
+            z-index: 999;
+            width: 35px;
+            height: 35px;
+
+            span {
+                display: block;
+                width: 35px;
+                height: 4px;
+                margin-bottom: 8px;
+                background-color: var(--cor-fonte);
+                border-radius: 3px;
+            }
+        }
+
+        .dropdown .menu-faketrigger:checked ~ ul {
+            right: -1px;
+        }
+
+        .dropdown .menu-faketrigger:checked ~ .menu-lines span:nth-child(1) {
+            transform-origin: 100% 0%;
+            transform: rotate(-41deg) scaleX(1.05);
+        }
+
+        .dropdown .menu-faketrigger:checked ~ .menu-lines span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .dropdown .menu-faketrigger:checked ~ .menu-lines span:nth-child(3) {
+            transform-origin: 100% 100%;
+            transform: rotate(43deg) scaleX(1.05);
+        }
+
+        /* DROPDOWN ITEMS CONFIG */
+
+        ul {
+            display: block;
+            position: absolute;
+            z-index: 998;
+            top: 30px;
+            /* right: -1px; */
+            right: -300px;
+            background-color: #00a0fc44;
         }
     }
 `

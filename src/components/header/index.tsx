@@ -9,6 +9,15 @@ export default function Header() {
                 <img src={logo} alt='Logo' />
             </div>
             <NavBar className='menu'>
+                {/* HAMBURGER */}
+                <div className='dropdown'>
+                    <input type='checkbox' className='menu-faketrigger' />
+                    <div className='menu-lines'>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
                 <ul>
                     <li>
                         <Link to='/'>Home</Link>
@@ -22,13 +31,6 @@ export default function Header() {
                         </Link>
                     </li>
                 </ul>
-                {/* HAMBURGER */}
-                <input type='checkbox' className='menu-faketrigger' />
-                <div className='menu-lines'>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
                 <div className='botao_cliente'>
                     <Link to='/login'>Área do Cliente</Link>
                 </div>
