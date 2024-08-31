@@ -155,3 +155,54 @@ export const NavBar = styled.nav`
         }
     }
 `
+
+export const ContainerMain = styled.div`
+    display: flex;
+    padding: 0 45px;
+
+    .lado_texto {
+        width: 60%;
+
+        .banner_texto {
+            min-height: 40vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            h1 {
+                font-size: 2.7rem;
+                color: var(--cor-branco);
+            }
+
+            h2 {
+                font-weight: 600;
+                font-size: 2.4rem;
+                color: var(--cor-fonte);
+                margin-left: 27px;
+            }
+        }
+
+        .sobrenos {
+            h2 {
+                font-size: 2rem;
+                color: var(--cor-branco);
+            }
+
+            .sobrenos_texto {
+                padding: 0.5rem 1.5rem;
+            }
+
+            p {
+                text-indent: 40px;
+                font-size: 1rem;
+                margin-bottom: 5px;
+                word-spacing: 2px;
+                letter-spacing: 1px;
+                color: var(--cor-fonte);
+            }
+        }
+    }
+    .lado_bot {
+        width: 40%;
+    }
+`

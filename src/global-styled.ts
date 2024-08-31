@@ -6,6 +6,8 @@ export const GlobatStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
 
+        font-weight: 400;
+
         scroll-behavior: smooth;
         transition: all 0.3s ease;
 
@@ -26,7 +28,7 @@ export const GlobatStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        height: 100vh;
+        min-height: 100vh;
         padding: 0px 4.5rem;
         background: linear-gradient(0deg,
                 #051F52 0.1%,
@@ -37,7 +39,6 @@ export const GlobatStyle = createGlobalStyle`
         margin: 0 auto;
         width: 100%;
         max-width: 1200px;
-        background-color: #174F51;
         flex-grow: 1;
     }
 `
