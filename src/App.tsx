@@ -1,7 +1,11 @@
+import { Outlet } from 'react-router-dom'
+import Header from './components/header'
+
 function App() {
     return (
         <>
-            <h1>Main screen</h1>
+            <Header />
+            <Outlet />
         </>
     )
 }
