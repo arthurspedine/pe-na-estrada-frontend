@@ -21,7 +21,7 @@ export default function Header() {
                         <Link to='/'>Home</Link>
                     </li>
                     <li>
-                        <Link to='/desenvolvedores'>Desenvolvedores</Link>
+                        <Link to='/sobrenos'>Sobre Nós</Link>
                     </li>
                     <li>
                         <Link to='/login' className='link_cliente_lista'>

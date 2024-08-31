@@ -245,31 +245,6 @@ export const ContainerMain = styled.div`
         width: 100%;
         display: flex;
 
-        .sobrenos {
-            width: 60%;
-            h2 {
-                font-size: 2rem;
-                color: var(--cor-branco);
-            }
-
-            .sobrenos_texto {
-                padding: 0.5rem 1.5rem;
-            }
-
-            p {
-                text-indent: 40px;
-                font-size: 1.05rem;
-                margin-bottom: 5px;
-                word-spacing: 2px;
-                letter-spacing: 1px;
-                color: var(--cor-fonte);
-            }
-
-            strong {
-                font-weight: 600;
-            }
-        }
-
         .container_orcamentos {
             width: 40%;
             display: flex;
@@ -303,72 +278,127 @@ export const ContainerMain = styled.div`
 export const ContainerDev = styled.div`
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+
     padding: 0 45px;
-    text-align: center;
+
+    /* h1 {
+        position: absolute;
+    } */
+
+    .container_banner {
+        max-height: 70vh;
+        margin-top: 100px;
+        display: flex;
+
+        .banner_sobrenos {
+            width: 70%;
+            h2 {
+                font-size: 2rem;
+                color: var(--cor-branco);
+            }
+
+            .sobrenos_texto {
+                padding: 0.5rem 1.5rem;
+            }
+
+            p {
+                text-indent: 40px;
+                font-size: 1.05rem;
+                margin-bottom: 5px;
+                word-spacing: 2px;
+                letter-spacing: 1px;
+                color: var(--cor-fonte);
+            }
+
+            strong {
+                font-weight: 600;
+            }
+        }
+
+        .banner_imagem {
+            width: 30%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    }
 
     .container_desenvolvedores {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 70px;
+
+        h2 {
+            font-size: 2rem;
+            color: var(--cor-branco);
+        }
+
+        .container_cards {
+            display: flex;
+            justify-content: space-around;
+
+            gap: 30px;
+        }
+    }
+`
+
+export const CardDevStyled = styled.div`
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+
+    min-width: 350px;
+    max-width: 350px;
+    /* background: linear-gradient(180deg, #06368eb9 35%, #eee); */
+    background-color: var(--cor-azul-normal);
+    padding: 20px 12px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+
+    #imgperfil {
+        border-radius: 50%;
+        width: 130px;
+        box-shadow: 0px 1px 9px var(--cor-azul-claro);
+    }
+
+    .infodev {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        gap: 50px;
+        text-align: center;
+        padding-left: 10px;
 
-        margin-top: 50px;
+        p {
+            color: var(--cor-branco);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
 
-        .card_dev {
+        span {
+            color: var(--cor-fonte);
+            text-align: center;
+        }
+
+        .linkgithub a {
             display: flex;
             align-items: center;
-            flex-direction: column;
             justify-content: center;
-            width: 310px;
-            /* background: linear-gradient(180deg, #06368eb9 35%, #eee); */
-            background-color: var(--cor-azul-normal);
-            padding: 20px 12px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+            padding: 4px;
+            gap: 5px;
 
-            #imgperfil {
-                border-radius: 50%;
-                width: 230px;
-                box-shadow: 0px 1px 9px var(--cor-azul-claro);
-                margin-bottom: 20px;
+            font-size: 1rem;
+            text-decoration: none;
+            color: var(--cor-branco);
+            transition: color 0.3s ease, transform 0.3s ease !important;
+            transform-origin: center;
+
+            img {
+                width: 20px;
             }
+        }
 
-            .infodev {
-                text-align: center;
-
-                p {
-                    color: var(--cor-branco);
-                    font-size: 1.2rem;
-                    margin-bottom: 5px;
-                }
-
-                span {
-                    color: var(--cor-fonte);
-                }
-            }
-
-            .linkgithub a {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                padding: 4px;
-                gap: 5px;
-                font-size: 1rem;
-                text-decoration: none;
-                color: var(--cor-branco);
-                transition: color 0.3s ease, transform 0.3s ease !important;
-                transform-origin: center;
-
-                img {
-                    width: 20px;
-                }
-            }
-
-            .linkgithub a:hover {
-                transform: scale(1.1);
-            }
+        .linkgithub a:hover {
+            transform: scale(1.1);
         }
     }
 `
