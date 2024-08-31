@@ -29,7 +29,7 @@ export const GlobatStyle = createGlobalStyle`
         flex-direction: column;
         flex-grow: 1;
         min-height: 100vh;
-        padding: 0px 4.5rem;
+        /* padding: 0px 3rem; */
         background: linear-gradient(0deg,
                 #051F52 0.1%,
                 #174FB7 100%);
@@ -38,7 +38,7 @@ export const GlobatStyle = createGlobalStyle`
     main {
         margin: 0 auto;
         width: 100%;
-        max-width: 1200px;
+        max-width: 1440px;
         flex-grow: 1;
     }
 
