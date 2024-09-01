@@ -307,7 +307,7 @@ export const ContainerDev = styled.div`
                 margin-bottom: 5px;
                 word-spacing: 2px;
                 letter-spacing: 1px;
-                color: var(--cor-fonte);
+                color: var(--cor-branco);
             }
 
             strong {
@@ -317,7 +317,13 @@ export const ContainerDev = styled.div`
 
         .banner_imagem {
             width: 30%;
-            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            img {
+                width: 90%;
+                border-radius: 3px;
+                box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.7);
+            }
         }
     }
 

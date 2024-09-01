@@ -5,6 +5,8 @@ import PerfilGui from '/image/desenvolvedor/guilherme.png'
 import PerfilArthur from '/image/desenvolvedor/arthur.png'
 import PerfilVinicius from '/image/desenvolvedor/vinicius.png'
 
+import ImagemPrincipal from '/image/sobre_nos.jpeg'
+
 export default function SobreNos() {
     return (
         <main>
@@ -53,7 +55,8 @@ export default function SobreNos() {
                     </div>
                     <div className='banner_imagem'>
                         <img
-                            src='http://via.placeholder.com/150x150'
+                            // src='http://via.placeholder.com/150x150'
+                            src={ImagemPrincipal}
                             alt='Imagem teste'
                         />
                     </div>
