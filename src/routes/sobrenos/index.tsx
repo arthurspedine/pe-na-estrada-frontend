@@ -1,5 +1,5 @@
 import CardDev from '../../components/card-dev'
-import { ContainerDev, Titulo } from '../../styled'
+import { ContainerDev } from '../../styled'
 
 import PerfilGui from '/image/desenvolvedor/guilherme.png'
 import PerfilArthur from '/image/desenvolvedor/arthur.png'
