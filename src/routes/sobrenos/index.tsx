@@ -24,6 +24,11 @@ export default function SobreNos() {
                             para o processo, tudo através de uma plataforma
                             inovadora impulsionada pela inteligência artificial.
                         </p>
+                        <img
+                            className='imagem_texto'
+                            src={ImagemPrincipal}
+                            alt='Imagem com mecanicos em volta de um carro'
+                        />
                         <p>
                             Nosso site é projetado para a criação de uma
                             experiência amigável para o usuário. Nosso front-end
@@ -54,7 +59,7 @@ export default function SobreNos() {
                     <img
                         // src='http://via.placeholder.com/150x150'
                         src={ImagemPrincipal}
-                        alt='Imagem teste'
+                        alt='Imagem com mecanicos em volta de um carro'
                     />
                 </div>
             </BannerDev>
@@ -63,16 +68,17 @@ export default function SobreNos() {
                 <h2>Equipe</h2>
                 <div className='container_cards'>
                     <CardDev
-                        nome='Guilherme Damasio Roselli'
-                        rm='555873'
-                        usuario_github='Guiroselli'
-                        imagem_perfil={PerfilGui}
-                    />
-                    <CardDev
                         nome='Arthur Chacon Garcia Spedine'
                         rm='554489'
                         usuario_github='arthurspedine'
                         imagem_perfil={PerfilArthur}
+                    />
+
+                    <CardDev
+                        nome='Guilherme Damasio Roselli'
+                        rm='555873'
+                        usuario_github='Guiroselli'
+                        imagem_perfil={PerfilGui}
                     />
 
                     <CardDev

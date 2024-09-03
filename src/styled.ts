@@ -386,10 +386,14 @@ export const BannerDev = styled.section`
     /* h1 {
         position: absolute;
     } */
-
     max-height: 70vh;
-    margin-top: 100px;
+    margin-top: 50px;
     display: flex;
+
+    img {
+        border-radius: 3px;
+        box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.7);
+    }
 
     .banner_sobrenos {
         width: 70%;
@@ -411,6 +415,10 @@ export const BannerDev = styled.section`
             color: var(--cor-branco);
         }
 
+        .imagem_texto {
+            display: none;
+        }
+
         strong {
             font-weight: 600;
         }
@@ -421,9 +429,66 @@ export const BannerDev = styled.section`
         display: flex;
         align-items: center;
         img {
-            width: 90%;
-            border-radius: 3px;
-            box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.7);
+            width: 365px;
+        }
+    }
+
+    @media screen and (max-width: 1300px) {
+        .banner_sobrenos {
+            width: 60%;
+        }
+
+        .banner_imagem {
+            width: 40%;
+
+            img {
+                margin: auto;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1023px) {
+        .banner_imagem {
+            display: none;
+        }
+
+        .banner_sobrenos {
+            width: 100%;
+
+            .imagem_texto {
+                display: block;
+                width: 340px;
+                float: right;
+                margin: 0 0 20px 20px;
+            }
+
+            .sobrenos_texto {
+                padding: 0.5rem 0;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .banner_sobrenos {
+            .imagem_texto {
+                width: 45%;
+                margin: 20px;
+                margin-right: 0;
+            }
+        }
+    }
+
+    @media screen and (max-width: 564px) {
+        max-height: none;
+        margin-top: 0;
+        .banner_sobrenos {
+            .imagem_texto {
+                display: none;
+            }
+
+            p {
+                font-size: 1rem;
+            }
         }
     }
 `
@@ -432,7 +497,9 @@ export const ConteudoDev = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 70px;
+    margin-top: 15px;
+
+    gap: 10px;
 
     h2 {
         font-size: 2rem;
@@ -442,8 +509,7 @@ export const ConteudoDev = styled.div`
     .container_cards {
         display: flex;
         justify-content: space-around;
-
-        gap: 30px;
+        flex-wrap: wrap;
     }
 `
 
@@ -505,6 +571,15 @@ export const CardDevStyled = styled.div`
 
         .linkgithub a:hover {
             transform: scale(1.1);
+        }
+    }
+
+    @media screen and (max-width: 564px) {
+        min-width: 300px;
+        margin-top: 15px;
+
+        #imgperfil {
+            width: 90px;
         }
     }
 `
