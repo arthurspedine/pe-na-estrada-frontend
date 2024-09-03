@@ -1,9 +1,9 @@
-import { ConteudoMain } from '../../styled'
+import { MainContainer, Titulo } from '../../styled'
 
 export default function AreaAssistente() {
     return (
-        <ConteudoMain>
-            <h1>Area Assistente</h1>
-        </ConteudoMain>
+        <MainContainer>
+            <Titulo>Area Assistente</Titulo>
+        </MainContainer>
     )
 }
