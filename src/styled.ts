@@ -267,13 +267,14 @@ export const BannerHome = styled.section`
         }
 
         a {
+            margin-top: 10px;
             background-color: #061124cc;
             border: 3px solid var(--cor-azul-normal);
             box-shadow: 1px 1px 4px 1px rgba(200, 200, 200, 0.6);
             border-radius: 7px;
-            padding: 12px 32px;
+            padding: 18px 40px;
             color: var(--cor-fonte);
-            font-size: 1.15rem;
+            font-size: 1.3rem;
         }
 
         a:hover {
