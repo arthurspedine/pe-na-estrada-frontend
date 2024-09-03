@@ -1,7 +1,9 @@
+import { ConteudoMain } from '../../styled'
+
 export default function AreaAssistente() {
     return (
-        <main>
+        <ConteudoMain>
             <h1>Area Assistente</h1>
-        </main>
+        </ConteudoMain>
     )
 }

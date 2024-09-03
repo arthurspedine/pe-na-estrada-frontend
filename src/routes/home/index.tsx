@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { ContainerMain, Titulo } from '../../styled'
+import { ConteudoMain, MainContainer, Titulo } from '../../styled'
 
 export default function Home() {
     return (
-        <main>
-            <ContainerMain>
+        <MainContainer>
+            <ConteudoMain>
                 <div className='banner_home'>
                     <div className='banner_texto'>
                         <Titulo>Chatbot Porto Seguro</Titulo>
@@ -29,7 +29,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </ContainerMain>
-        </main>
+            </ConteudoMain>
+        </MainContainer>
     )
 }

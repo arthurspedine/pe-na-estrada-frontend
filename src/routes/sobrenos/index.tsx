@@ -1,5 +1,5 @@
 import CardDev from '../../components/card-dev'
-import { ContainerDev } from '../../styled'
+import { ContainerDev, MainContainer } from '../../styled'
 
 import PerfilGui from '/image/desenvolvedor/guilherme.png'
 import PerfilArthur from '/image/desenvolvedor/arthur.png'
@@ -9,7 +9,7 @@ import ImagemPrincipal from '/image/sobre_nos.jpeg'
 
 export default function SobreNos() {
     return (
-        <main>
+        <MainContainer>
             <ContainerDev>
                 {/* <Titulo>Quem somos?</Titulo> */}
 
@@ -87,6 +87,6 @@ export default function SobreNos() {
                     </div>
                 </div>
             </ContainerDev>
-        </main>
+        </MainContainer>
     )
 }

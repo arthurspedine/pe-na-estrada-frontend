@@ -1,5 +1,12 @@
 import styled from 'styled-components'
 
+export const MainContainer = styled.main`
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1440px;
+    flex-grow: 1;
+`
+
 export const Titulo = styled.h1`
     font-size: 2.7rem;
     color: var(--cor-branco);
@@ -184,7 +191,35 @@ export const FooterStyled = styled.footer`
     }
 `
 
-export const ContainerMain = styled.div`
+export const ErrorContainer = styled.main`
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    span {
+        color: var(--cor-fonte);
+        font-size: 1.4rem;
+    }
+
+    button {
+        margin-top: 10px;
+        border: 2px solid var(--cor-azul-claro);
+        background-color: var(--cor-azul-principal);
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: var(--cor-branco);
+        font-size: 1.05rem;
+        cursor: pointer;
+    }
+
+    button:hover {
+        border-radius: 10px;
+    }
+`
+
+export const ConteudoMain = styled.div`
     display: flex;
     flex-direction: column;
 

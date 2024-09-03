@@ -39,11 +39,4 @@ export const GlobatStyle = createGlobalStyle`
         background-position: center;
         background-blend-mode: overlay;
     }
-
-    main {
-        margin: 0 auto;
-        width: 100%;
-        max-width: 1440px;
-        flex-grow: 1;
-    }
 `
