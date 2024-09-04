@@ -4,6 +4,7 @@ import Home from './routes/home'
 import Error from './routes/error'
 import AreaAssistente from './routes/area-assistente'
 import SobreNos from './routes/sobrenos'
+import AreaCliente from './routes/area-cliente'
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: '/area_assistente',
                 element: <AreaAssistente />,
+            },
+            {
+                path: '/Cliente',
+                element: <AreaCliente />,
             },
         ],
     },

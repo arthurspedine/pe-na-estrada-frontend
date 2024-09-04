@@ -27,13 +27,13 @@ export default function Header() {
                         <Link to='/area_assistente'>Assistente</Link>
                     </li>
                     <li>
-                        <Link to='/login' className='link_cliente_lista'>
+                        <Link to='/cliente' className='link_cliente_lista'>
                             Área do Cliente
                         </Link>
                     </li>
                 </ul>
                 <div className='botao_cliente'>
-                    <Link to='/login'>Área do Cliente</Link>
+                    <Link to='/cliente'>Área do Cliente</Link>
                 </div>
             </NavBar>
         </HeaderStyled>

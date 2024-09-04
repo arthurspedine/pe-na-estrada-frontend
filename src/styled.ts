@@ -584,3 +584,55 @@ export const CardDevStyled = styled.div`
         }
     }
 `
+
+export const ConteudoCliente = styled.section`
+    
+        
+        display:flex;
+        align-items: center;
+     justify-content: center;
+        flex-direction: column;
+        form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form label {
+        margin-top: 1rem;
+    }
+
+    form input{
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        max-width: 300px;
+    }
+
+    form textarea {
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    form button {
+        margin-top: 1rem;
+        padding: 0.5rem;
+        border: none;
+        background-color: #0077b6;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    form button:hover {
+        background-color: #0077b6;
+    }
+    form label{
+        color: white
+    }
+    form input{
+        background-color: #061124;
+    }
+`
