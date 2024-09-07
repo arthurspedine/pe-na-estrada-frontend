@@ -10,6 +10,10 @@ export const MainContainer = styled.main`
     flex-direction: column;
 
     padding: 0 45px;
+
+    @media screen and (max-width: 400px) {
+        padding: 0 25px;
+    }
 `
 
 export const Titulo = styled.h1`
@@ -43,6 +47,7 @@ export const NavBar = styled.nav`
 
     /* LISTA COM LINKS */
     ul {
+        position: relative;
         display: flex;
         align-items: center;
 
@@ -586,53 +591,146 @@ export const CardDevStyled = styled.div`
 `
 
 export const ConteudoCliente = styled.section`
-    
-        
-        display:flex;
-        align-items: center;
-     justify-content: center;
-        flex-direction: column;
-        form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+
+    max-width: 720px;
+    max-height: 70vh;
+    width: 100%;
+    margin: 0 auto;
+
+    legend {
+        color: var(--cor-fonte);
+        font-size: 1.2rem;
+        margin: 15px 15px 0;
+    }
+
+    form {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 15px;
+
+        max-width: 520px;
+        width: 100%;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            margin: 10px 0;
+        }
+
+        label {
+            color: var(--cor-branco);
+            font-size: 1.1rem;
+        }
+
+        .input_form {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-width: 300px;
+            border: none;
+
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border: 1px solid var(--cor-bg-escuro);
+        }
+
+        .botoes_suporte {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 30px;
+
+            label {
+                display: flex;
+                align-items: center;
+                font-size: 0.9rem;
+
+                a {
+                    text-decoration: none;
+                    color: var(--cor-branco);
+                }
+            }
+
+            input {
+                width: 15px;
+                height: 15px;
+                margin-right: 8px;
+            }
+        }
+
+        .botoes {
+            display: flex;
+            flex-direction: row;
+
+            justify-content: space-between;
+            gap: 80px;
+
+            button {
+                font-size: 1.05rem;
+                color: var(--cor-fonte);
+                padding: 5px 10px;
+                min-width: 130px;
+
+                cursor: pointer;
+            }
+
+            .modo_formulario {
+                background-color: transparent;
+                border: none;
+            }
+
+            .botao_submit {
+                background-color: var(--cor-azul-claro);
+                border: none;
+                border-radius: 15px;
+                color: var(--cor-bg-escuro);
+            }
+        }
     }
 
-    form label {
-        margin-top: 1rem;
+    @media screen and (max-width: 564px) {
+        padding: 30px 0;
+
+        legend {
+            margin: 15px 0 0;
+            font-size: 1.1rem;
+        }
+
+        form {
+            padding: 4px 0;
+
+            .botoes {
+                gap: 60px;
+            }
+        }
     }
 
-    form input{
-        padding: 0.5rem;
-        margin-top: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        max-width: 300px;
-    }
+    @media screen and (max-width: 370px) {
+        legend {
+            font-size: 1.05rem;
+        }
 
-    form textarea {
-        padding: 0.5rem;
-        margin-top: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+        form {
+            .botoes_suporte {
+                gap: 10px;
+            }
 
-    form button {
-        margin-top: 1rem;
-        padding: 0.5rem;
-        border: none;
-        background-color: #0077b6;
-        color: white;
-        cursor: pointer;
-        border-radius: 4px;
-    }
-
-    form button:hover {
-        background-color: #0077b6;
-    }
-    form label{
-        color: white
-    }
-    form input{
-        background-color: #061124;
+            .botoes {
+                gap: 50px;
+                button {
+                    font-size: 1rem;
+                }
+            }
+        }
     }
 `

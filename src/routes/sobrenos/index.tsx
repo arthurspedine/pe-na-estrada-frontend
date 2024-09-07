@@ -8,6 +8,8 @@ import PerfilVinicius from '/image/desenvolvedor/vinicius.png'
 import ImagemPrincipal from '/image/sobre_nos.jpeg'
 
 export default function SobreNos() {
+    document.title = 'Sobre nós - Pé na Estrada'
+
     return (
         <MainContainer>
             {/* <Titulo>Quem somos?</Titulo> */}

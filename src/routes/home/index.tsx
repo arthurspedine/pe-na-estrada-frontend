@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { BannerHome, ConteudoHome, MainContainer, Titulo } from '../../styled'
 
 export default function Home() {
+    document.title = 'Home - Pé na Estrada'
+
     return (
         <MainContainer>
             <BannerHome>
