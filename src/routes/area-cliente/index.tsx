@@ -1,14 +1,42 @@
 import { FormEvent, useState } from 'react'
 import { ConteudoCliente, MainContainer, Titulo } from '../../styled'
+import { useNavigate } from 'react-router-dom'
 
 export default function AreaCliente() {
+    const nav = useNavigate()
+
     document.title = 'Área Cliente - Pé na Estrada'
 
     const [jaCadastrado, setJaCadastrado] = useState(false)
 
-    function handleCadastrar(e: FormEvent) {
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
+
+    function opcaoLogin(e: FormEvent) {
         e.preventDefault()
         setJaCadastrado(!jaCadastrado)
+    }
+
+    function acaoSubmitForm(e: FormEvent) {
+        e.preventDefault()
+        let email = (document.getElementById('email') as HTMLInputElement).value
+        let senha = (document.getElementById('senha') as HTMLInputElement).value
+
+        if (email !== '' && senha !== '') {
+            if (jaCadastrado) {
+                alert('Logado com sucesso!')
+                nav('/')
+            } else {
+                alert('Cadastrado com sucesso!')
+
+                setJaCadastrado(true)
+            }
+
+            setEmail('')
+            setSenha('')
+        } else {
+            alert('Preencha todos os campos!')
+        }
     }
 
     return (
@@ -30,6 +58,8 @@ export default function AreaCliente() {
                             type='text'
                             id='email'
                             name='email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                     </div>
@@ -40,6 +70,8 @@ export default function AreaCliente() {
                             type='password'
                             id='senha'
                             name='senha'
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
                             required
                         />
                     </div>
@@ -56,7 +88,7 @@ export default function AreaCliente() {
 
                     <div className='botoes'>
                         <button
-                            onClick={handleCadastrar}
+                            onClick={opcaoLogin}
                             className='modo_formulario'
                         >
                             {jaCadastrado
@@ -64,7 +96,7 @@ export default function AreaCliente() {
                                 : 'Já tenho conta'}
                         </button>
                         <button
-                            onClick={handleCadastrar}
+                            onClick={acaoSubmitForm}
                             className='botao_submit'
                         >
                             {jaCadastrado ? 'Login' : 'Cadastrar-se'}
