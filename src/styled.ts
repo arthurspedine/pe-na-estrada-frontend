@@ -739,6 +739,7 @@ export const ConteudoCliente = styled.section`
 export const ConteudoAssistente = styled.section`
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     padding-top: 20px;
     margin: auto;
 
@@ -836,6 +837,45 @@ export const ConteudoAssistente = styled.section`
                 border: none;
                 color: var(--cor-fonte);
                 top: 9px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1023px) {
+        .container_orcamentos,
+        .container_chat {
+            width: 100%;
+        }
+
+        .container_orcamentos {
+            margin-bottom: 40px;
+
+            .lista_orcamentos {
+                max-width: 100%;
+            }
+        }
+
+        .container_chat {
+            max-width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 630px) {
+        .container_chat {
+            .input_mensagem {
+                button {
+                    right: 50px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 630px) {
+        .container_chat {
+            .input_mensagem {
+                button {
+                    right: 40px;
+                }
             }
         }
     }
