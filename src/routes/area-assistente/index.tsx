@@ -5,7 +5,7 @@ import { OrcamentoDetail } from '../../types'
 export default function AreaAssistente() {
     document.title = 'Assistente - Pé na Estrada'
 
-    const logado = localStorage.getItem('logado')
+    const logado = localStorage.getItem('logado') === 'true' ? true : false
 
     const orcamentos: OrcamentoDetail[] = [
         {
@@ -49,7 +49,9 @@ export default function AreaAssistente() {
                                 />
                             ))
                         ) : (
-                            <p>Parece que você tem nenhum orçamento ativo</p>
+                            <p>
+                                Parece que você tem nenhum orçamento cadastrado
+                            </p>
                         )}
                     </div>
                 </div>
