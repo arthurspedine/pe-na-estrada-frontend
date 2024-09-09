@@ -237,8 +237,8 @@ export const ErrorContainer = styled.main`
 
 export const BannerHome = styled.section`
     width: 100%;
-    height: 50vh;
-    max-height: 50vh;
+    height: 70vh;
+    max-height: 70vh;
     display: flex;
 
     .banner_texto {
@@ -359,30 +359,29 @@ export const ConteudoHome = styled.div`
     width: 100%;
     display: flex;
 
-    .container_orcamentos {
-        width: 40%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        h2 {
-            font-size: 2rem;
+    .descricao_projeto {
+        p {
             color: var(--cor-branco);
-            text-align: center;
-            z-index: 1;
+            font-size: 1.1rem;
+            text-indent: 40px;
+            font-weight: 400;
+            line-height: 1.8rem;
         }
 
-        .lista_orcamentos {
-            max-width: 320px;
-            min-height: 400px;
-            background-color: var(--cor-bg-escuro);
-            margin-top: -15px;
-            border-radius: 15px;
-            padding: 1.5rem 1rem;
+        img {
+            width: 200px;
+            border-radius: 8px;
+            box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.7);
+            margin-left: 25px;
+            max-height: 300px;
+            float: right;
+        }
+    }
 
-            p {
-                color: var(--cor-fonte);
-                font-size: 1.2rem;
+    @media screen and (max-width: 600px) {
+        .descricao_projeto {
+            img {
+                display: none;
             }
         }
     }
@@ -637,11 +636,13 @@ export const ConteudoCliente = styled.section`
             border: none;
 
             font-size: 1rem;
+
+            border: 2px solid var(--cor-branco);
         }
 
         input:focus {
             outline: none;
-            border: 1px solid var(--cor-bg-escuro);
+            border: 2px solid var(--cor-bg-escuro);
         }
 
         .botoes_suporte {
@@ -730,6 +731,167 @@ export const ConteudoCliente = styled.section`
                 button {
                     font-size: 1rem;
                 }
+            }
+        }
+    }
+`
+
+export const ConteudoAssistente = styled.section`
+    width: 100%;
+    display: flex;
+    padding-top: 20px;
+    margin: auto;
+
+    .container_orcamentos {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        h2 {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--cor-branco);
+            z-index: 1;
+            top: -20px;
+        }
+
+        .lista_orcamentos {
+            width: 100%;
+            flex-grow: 1;
+            margin: 0 auto;
+            max-width: 340px;
+            max-height: 600px;
+            background-color: var(--cor-bg-escuro);
+            border-radius: 15px;
+            padding: 1.5rem 1rem;
+
+            p {
+                color: var(--cor-fonte);
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .container_chat {
+        position: relative;
+        background-color: #131313;
+        border-radius: 15px;
+        padding: 8px;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        h1 {
+            font-size: 2rem;
+            position: absolute;
+            top: -20px;
+        }
+
+        .container_mensagens {
+            min-height: 450px;
+            max-height: 450px;
+            min-width: 100%;
+            background-color: #191919;
+            border-radius: 15px;
+        }
+
+        .input_mensagem {
+            position: relative;
+            width: 100%;
+
+            input {
+                display: block;
+                border: none;
+                background-color: #04245e;
+                border-radius: 5px;
+
+                width: 90%;
+                padding: 8px 12px;
+                margin: 8px auto 0;
+
+                color: var(--cor-branco);
+                font-size: 1.1rem;
+
+                border: 2px solid #04245e;
+            }
+
+            input::placeholder {
+                color: var(--cor-branco);
+            }
+
+            input:focus {
+                outline: none;
+                border: 2px solid var(--cor-azul-claro);
+            }
+
+            button {
+                position: absolute;
+                right: 60px;
+                font-size: 2rem;
+                background-color: transparent;
+                border: none;
+                color: var(--cor-fonte);
+                top: 9px;
+            }
+        }
+    }
+`
+
+export const CardOrcamentoStyled = styled.div`
+    position: relative;
+    width: 100%;
+    background-color: #0e419f;
+    border-radius: 8px;
+    padding: 16px 12px;
+
+    margin: 16px 0 32px;
+
+    h3 {
+        background-color: #002775;
+        position: absolute;
+        top: -15px;
+        left: 10px;
+        color: var(--cor-fonte);
+        padding: 3px 8px;
+
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+
+    p {
+        margin-top: 5px;
+        font-size: 1.1rem !important;
+        color: var(--cor-fonte) !important;
+    }
+
+    .card_orcamento_status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .tipo_status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            .status {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+            }
+
+            .status_finalizado {
+                background-color: #0f0;
+            }
+
+            .status_andamento {
+                background-color: #ff0;
             }
         }
     }

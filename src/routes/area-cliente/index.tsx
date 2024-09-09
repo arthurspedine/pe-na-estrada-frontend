@@ -24,6 +24,7 @@ export default function AreaCliente() {
 
         if (email !== '' && senha !== '') {
             if (jaCadastrado) {
+                localStorage.setItem('logado', 'true')
                 alert('Logado com sucesso!')
                 nav('/')
             } else {
