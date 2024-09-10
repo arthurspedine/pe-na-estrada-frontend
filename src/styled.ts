@@ -175,7 +175,7 @@ export const NavBar = styled.nav`
             background-color: var(--cor-bg-escuro);
 
             top: -40px;
-            margin-left: -500px;
+            margin-left: -150vw;
             padding-top: 70px;
 
             li {
