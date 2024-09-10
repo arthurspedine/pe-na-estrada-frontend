@@ -391,7 +391,7 @@ export const ConteudoHome = styled.div`
     }
 `
 
-export const BannerDev = styled.section`
+export const BannerSobreNos = styled.section`
     /* h1 {
         position: absolute;
     } */
@@ -478,6 +478,7 @@ export const BannerDev = styled.section`
     }
 
     @media screen and (max-width: 768px) {
+        max-height: 100vh;
         .banner_sobrenos {
             .imagem_texto {
                 width: 45%;

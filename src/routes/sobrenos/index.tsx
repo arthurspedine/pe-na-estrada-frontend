@@ -1,5 +1,5 @@
 import CardDev from '../../components/card-dev'
-import { BannerDev, ConteudoDev, MainContainer } from '../../styled'
+import { BannerSobreNos, ConteudoDev, MainContainer } from '../../styled'
 
 import PerfilGui from '/image/desenvolvedor/guilherme.png'
 import PerfilArthur from '/image/desenvolvedor/arthur.png'
@@ -14,7 +14,7 @@ export default function SobreNos() {
         <MainContainer>
             {/* <Titulo>Quem somos?</Titulo> */}
 
-            <BannerDev>
+            <BannerSobreNos>
                 <div className='banner_sobrenos'>
                     <h2>Sobre Nós</h2>
                     <div className='sobrenos_texto'>
@@ -64,7 +64,7 @@ export default function SobreNos() {
                         alt='Imagem com mecanicos em volta de um carro'
                     />
                 </div>
-            </BannerDev>
+            </BannerSobreNos>
 
             <ConteudoDev>
                 <h2>Equipe</h2>
