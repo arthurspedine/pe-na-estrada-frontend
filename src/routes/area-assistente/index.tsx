@@ -27,6 +27,16 @@ export default function AreaAssistente() {
             status: false,
             valor: 400.0,
         },
+        {
+            id: 3,
+            veiculo: 'Audi A4 2024',
+            data_inicio: '16/08/2024',
+            data_termino: '20/08/2024',
+            descricao:
+                'Correção do desalinhamento de direção e de falhas no motor.',
+            status: false,
+            valor: 400.0,
+        },
     ]
 
     return (

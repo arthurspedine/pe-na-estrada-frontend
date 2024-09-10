@@ -759,11 +759,12 @@ export const ConteudoAssistente = styled.section`
         }
 
         .lista_orcamentos {
+            overflow: auto;
             width: 100%;
             flex-grow: 1;
             margin: 0 auto;
             max-width: 340px;
-            max-height: 600px;
+            max-height: 515px;
             background-color: var(--cor-bg-escuro);
             border-radius: 15px;
             padding: 1.5rem 1rem;
@@ -772,6 +773,17 @@ export const ConteudoAssistente = styled.section`
                 color: var(--cor-fonte);
                 font-size: 1.2rem;
             }
+        }
+
+        .lista_orcamentos::-webkit-scrollbar {
+            background-color: var(--cor-bg-escuro);
+            border-radius: 0 10px 10px 0;
+            width: 10px;
+        }
+
+        .lista_orcamentos::-webkit-scrollbar-thumb {
+            background-color: var(--cor-fonte);
+            border-radius: 0 10px 10px 0;
         }
     }
 
@@ -783,6 +795,7 @@ export const ConteudoAssistente = styled.section`
         width: 60%;
         display: flex;
         flex-direction: column;
+        max-height: 515px;
 
         align-items: center;
 
