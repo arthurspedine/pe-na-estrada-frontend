@@ -3,10 +3,10 @@ import { HeaderStyled, NavBar } from '../../styled'
 import { Link } from 'react-router-dom'
 
 export default function Header() {
-    const menu_checkbox = document.querySelector(
-        '.menu-faketrigger'
-    ) as HTMLInputElement | null
     function sumirMenu() {
+        const menu_checkbox = document.querySelector(
+            '.menu-faketrigger'
+        ) as HTMLInputElement | null
         if (menu_checkbox && menu_checkbox.checked === true) {
             menu_checkbox.checked = false
         } else {
