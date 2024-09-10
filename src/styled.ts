@@ -35,6 +35,11 @@ export const HeaderStyled = styled.header`
             width: 9rem;
             filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.3));
         }
+        z-index: 999;
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-direction: row-reverse;
     }
 `
 
@@ -101,8 +106,6 @@ export const NavBar = styled.nav`
     }
 
     @media screen and (max-width: 768px) {
-        justify-content: flex-end;
-
         ul li .link_cliente_lista {
             display: block;
         }
@@ -120,7 +123,6 @@ export const NavBar = styled.nav`
             height: 35px;
             opacity: 0;
             top: -0.86rem;
-            /* right: 2.1rem; */
             cursor: pointer;
             display: block;
         }
@@ -129,7 +131,6 @@ export const NavBar = styled.nav`
             display: block;
             position: absolute;
             top: -0.86rem;
-            /* right: 2.1rem; */
             z-index: 999;
             width: 35px;
             height: 35px;
@@ -145,12 +146,12 @@ export const NavBar = styled.nav`
         }
 
         .menu-faketrigger:checked ~ ul {
-            right: 13px;
+            margin-left: -20px;
         }
 
         .menu-faketrigger:checked ~ .menu-lines span:nth-child(1) {
-            transform-origin: 100% 0%;
-            transform: rotate(-41deg) scaleX(1.05);
+            transform-origin: 0% 0%;
+            transform: rotate(44deg) scaleX(1.05);
         }
 
         .menu-faketrigger:checked ~ .menu-lines span:nth-child(2) {
@@ -158,8 +159,8 @@ export const NavBar = styled.nav`
         }
 
         .menu-faketrigger:checked ~ .menu-lines span:nth-child(3) {
-            transform-origin: 100% 100%;
-            transform: rotate(43deg) scaleX(1.05);
+            transform-origin: 0% 100%;
+            transform: rotate(-42deg) scaleX(1.05);
         }
 
         /* DROPDOWN ITEMS CONFIG */
@@ -168,17 +169,20 @@ export const NavBar = styled.nav`
             display: block;
             position: absolute;
             z-index: 998;
-            border-radius: 8px;
+            border-radius: 0 0 8px 8px;
+            width: 100vw;
             padding: 1rem;
             background-color: var(--cor-bg-escuro);
 
-            top: 25px;
-            right: -100rem;
+            top: -40px;
+            margin-left: -500px;
+            padding-top: 70px;
 
             li {
                 margin: 0;
                 a,
                 .link_cliente_lista {
+                    width: 100% !important;
                     display: flex;
                     align-items: center;
                     justify-content: center;
