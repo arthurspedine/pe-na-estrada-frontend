@@ -3,6 +3,15 @@ import { HeaderStyled, NavBar } from '../../styled'
 import { Link } from 'react-router-dom'
 
 export default function Header() {
+    const menu_checkbox = document.querySelector(
+        '.menu-faketrigger'
+    ) as HTMLInputElement | null
+    function sumirMenu() {
+        if (menu_checkbox && menu_checkbox.checked === true) {
+            menu_checkbox.checked = false
+        }
+    }
+
     return (
         <HeaderStyled>
             <div className='logo'>
@@ -18,16 +27,26 @@ export default function Header() {
                 </div>
                 <ul>
                     <li>
-                        <Link to='/'>Home</Link>
+                        <Link to='/' onClick={sumirMenu}>
+                            Home
+                        </Link>
                     </li>
                     <li>
-                        <Link to='/sobrenos'>Sobre Nós</Link>
+                        <Link to='/sobrenos' onClick={sumirMenu}>
+                            Sobre Nós
+                        </Link>
                     </li>
                     <li>
-                        <Link to='/area_assistente'>Assistente</Link>
+                        <Link to='/area_assistente' onClick={sumirMenu}>
+                            Assistente
+                        </Link>
                     </li>
                     <li>
-                        <Link to='/cliente' className='link_cliente_lista'>
+                        <Link
+                            to='/cliente'
+                            className='link_cliente_lista'
+                            onClick={sumirMenu}
+                        >
                             Área do Cliente
                         </Link>
                     </li>
