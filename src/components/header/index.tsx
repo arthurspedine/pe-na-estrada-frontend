@@ -9,6 +9,8 @@ export default function Header() {
     function sumirMenu() {
         if (menu_checkbox && menu_checkbox.checked === true) {
             menu_checkbox.checked = false
+        } else {
+            console.error('Menu não encontrado!')
         }
     }
 

@@ -44,66 +44,80 @@ export default function AreaCliente() {
         <MainContainer>
             <ConteudoCliente>
                 <Titulo>Área Cliente</Titulo>
-                <legend>
-                    {jaCadastrado
-                        ? 'Entre com seu email e senha para continuar'
-                        : 'Cadastre agora sua conta para continuar'}
-                </legend>
-                <form>
-                    <div className='input_email'>
-                        <label htmlFor='email' className='label_form'>
-                            Email:
-                        </label>
-                        <input
-                            className='input_form'
-                            type='text'
-                            id='email'
-                            name='email'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className='input_password'>
-                        <label htmlFor='senha'>Senha:</label>
-                        <input
-                            className='input_form'
-                            type='password'
-                            id='senha'
-                            name='senha'
-                            value={senha}
-                            onChange={(e) => setSenha(e.target.value)}
-                            required
-                        />
-                    </div>
-
-                    <div className='botoes_suporte'>
-                        <label>
-                            <input type='checkbox' />
-                            Mantenha-me conectado
-                        </label>
-                        <label htmlFor='#'>
-                            <a href='#'>Esqueceu a senha?</a>
-                        </label>
-                    </div>
-
-                    <div className='botoes'>
-                        <button
-                            onClick={opcaoLogin}
-                            className='modo_formulario'
-                        >
+                {localStorage.getItem('logado') === 'true' ? (
+                    <button
+                        className='botao_sair'
+                        onClick={() => {
+                            localStorage.setItem('logado', 'false')
+                            nav('/')
+                        }}
+                    >
+                        Clique aqui para sair da conta
+                    </button>
+                ) : (
+                    <div>
+                        <legend>
                             {jaCadastrado
-                                ? 'Criar uma conta'
-                                : 'Já tenho conta'}
-                        </button>
-                        <button
-                            onClick={acaoSubmitForm}
-                            className='botao_submit'
-                        >
-                            {jaCadastrado ? 'Login' : 'Cadastrar-se'}
-                        </button>
+                                ? 'Entre com seu email e senha para continuar'
+                                : 'Cadastre agora sua conta para continuar'}
+                        </legend>
+                        <form>
+                            <div className='input_email'>
+                                <label htmlFor='email' className='label_form'>
+                                    Email:
+                                </label>
+                                <input
+                                    className='input_form'
+                                    type='text'
+                                    id='email'
+                                    name='email'
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className='input_password'>
+                                <label htmlFor='senha'>Senha:</label>
+                                <input
+                                    className='input_form'
+                                    type='password'
+                                    id='senha'
+                                    name='senha'
+                                    value={senha}
+                                    onChange={(e) => setSenha(e.target.value)}
+                                    required
+                                />
+                            </div>
+
+                            <div className='botoes_suporte'>
+                                <label>
+                                    <input type='checkbox' />
+                                    Mantenha-me conectado
+                                </label>
+                                <label htmlFor='#'>
+                                    <a href='#'>Esqueceu a senha?</a>
+                                </label>
+                            </div>
+
+                            <div className='botoes'>
+                                <button
+                                    onClick={opcaoLogin}
+                                    className='modo_formulario'
+                                >
+                                    {jaCadastrado
+                                        ? 'Criar uma conta'
+                                        : 'Já tenho conta'}
+                                </button>
+                                <button
+                                    onClick={acaoSubmitForm}
+                                    className='botao_submit'
+                                >
+                                    {jaCadastrado ? 'Login' : 'Cadastrar-se'}
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                )}
             </ConteudoCliente>
         </MainContainer>
     )

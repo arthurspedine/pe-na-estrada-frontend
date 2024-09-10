@@ -606,6 +606,16 @@ export const ConteudoCliente = styled.section`
     width: 100%;
     margin: 0 auto;
 
+    .botao_sair {
+        padding: 16px;
+        border-radius: 15px;
+        margin-top: 30px;
+        font-size: 1rem;
+        color: var(--cor-fonte);
+        font-weight: 600;
+        background-color: var(--cor-bg-escuro);
+        border: 1px solid var(--cor-azul-claro);
+    }
     legend {
         color: var(--cor-fonte);
         font-size: 1.2rem;
