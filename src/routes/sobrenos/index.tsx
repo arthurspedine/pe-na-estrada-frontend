@@ -12,19 +12,18 @@ export default function SobreNos() {
 
     return (
         <MainContainer>
-            {/* <Titulo>Quem somos?</Titulo> */}
-
             <BannerSobreNos>
                 <div className='banner_sobrenos'>
                     <h2>Sobre Nós</h2>
                     <div className='sobrenos_texto'>
                         <p>
-                            O <strong>Pé na Estrada</strong> é uma ferramenta
-                            desenvolvida para revolucionar a maneira como as
-                            pessoas lidam com orçamentos de veículos. Nossa
-                            missão como grupo é trazer comodidade e eficiência
-                            para o processo, tudo através de uma plataforma
-                            inovadora impulsionada pela inteligência artificial.
+                            O <strong>Pé Na Estrada</strong> surgiu de uma
+                            parceria entre a Porto Seguro e a FIAP. Nossa missão
+                            é transformar a manutenção automotiva, tornando-a
+                            mais eficiente e acessível. Valorizamos a inovação,
+                            qualidade, transparência e sustentabilidade, atuando
+                            no setor automotivo com soluções de inteligência
+                            artificial.
                         </p>
                         <img
                             className='imagem_texto'
@@ -32,21 +31,19 @@ export default function SobreNos() {
                             alt='Imagem com mecanicos em volta de um carro'
                         />
                         <p>
-                            Nosso site é projetado para a criação de uma
-                            experiência amigável para o usuário. Nosso front-end
-                            foi cuidadosamente projetado para proporcionar um
-                            ambiente intuitivo e acolhedor, facilitando cada
-                            interação com nosso serviço.
-                        </p>
-                        <p>
-                            Após a análise minuciosa de seu caso, encaminhamos o
-                            problema para nossas oficinas parceiras, que recebem
-                            não apenas a descrição do problema, mas também a
-                            solução proposta. Dessa forma, as oficinas podem se
-                            concentrar apenas na execução do serviço, garantindo
-                            uma resposta rápida e eficiente. A oficina mais
-                            próxima ao usuário tem prioridade, assegurando que o
-                            cliente seja atendido no menor tempo possível.
+                            Compreendemos que muitos clientes não têm total
+                            confiança ao levar seu veículo a uma oficina
+                            mecânica para diagnóstico, especialmente quando não
+                            possuem conhecimentos técnicos e podem acabar sendo
+                            enganados. É para resolver essa questão que o Pé na
+                            Estrada foi desenvolvido. Nossa plataforma permite
+                            que o cliente obtenha um orçamento de forma rápida e
+                            prática. Basta conversar com o Chat Pé na Estrada,
+                            que vai entender o problema e fornecer um
+                            diagnóstico preliminar. Com esse diagnóstico em
+                            mãos, o cliente pode então levar seu veículo a uma
+                            oficina mecânica parceira com maior segurança e
+                            transparência.
                         </p>
                         <p>
                             Estamos comprometidos em oferecer uma solução
