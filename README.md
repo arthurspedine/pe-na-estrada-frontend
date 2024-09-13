@@ -19,6 +19,7 @@ Ao clicar no botão superior direito da tela, ele será encaminhado para está p
 
 ## Página Sobre Nós
 Esta página conta um pouco sobre o propósito do projeto, e os integrantes da equipe.
-![image](https://github.com/user-attachments/assets/dabc59b6-1bd3-48cf-ab6e-f0bd7f47a433)
+![image](https://github.com/user-attachments/assets/cd0d871c-71b0-4235-8982-ba32a7f1d3cd)
+
 
 
