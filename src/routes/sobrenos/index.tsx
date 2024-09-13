@@ -87,6 +87,16 @@ export default function SobreNos() {
                         imagem_perfil={PerfilVinicius}
                     />
                 </div>
+                <div className='link_repositorio'>
+                    <a
+                        href='https://github.com/arthurspedine/pe-na-estrada-frontend'
+                        target='_blank'
+                        className=''
+                    >
+                        <img src='/image/github_logo.png' alt='Logo GitHub' />
+                        Link repositório
+                    </a>
+                </div>
             </ConteudoDev>
         </MainContainer>
     )

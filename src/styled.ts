@@ -521,6 +521,33 @@ export const ConteudoDev = styled.div`
         justify-content: space-around;
         flex-wrap: wrap;
     }
+
+    .link_repositorio {
+        text-align: center;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            gap: 5px;
+            margin-top: 15px;
+
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--cor-branco);
+            transition: color 0.3s ease, transform 0.3s ease !important;
+            transform-origin: center;
+
+            img {
+                width: 20px;
+            }
+        }
+
+        a:hover {
+            transform: scale(1.1);
+        }
+    }
 `
 
 export const CardDevStyled = styled.div`
