@@ -13,6 +13,9 @@ No momento, não há conexão com o banco de dados, então, a lógica atual é q
 Se já estiver logado (instrução para login logo abaixo) irá aparecer uma lista de orçamentos já criadas no sistema.
 ![image](https://github.com/user-attachments/assets/d785e6e6-6f79-4d31-afd6-6b529a7d61b9)
 
+Para acessar o ChatBot Watson, que ainda não esta linkado com o front-end
+![image](https://github.com/user-attachments/assets/7b616fc7-191b-4d82-b2bc-a097baea0de0)
+
 ## Página do Cliente
 Ao clicar no botão superior direito da tela, ele será encaminhado para está pagina, que aqui, poderar fazer seu cadastro e login. No momento esses dados não são utilizados.
 ![image](https://github.com/user-attachments/assets/d1b21f8c-5a05-4ad9-8c01-15f415d7e974)
@@ -20,6 +23,3 @@ Ao clicar no botão superior direito da tela, ele será encaminhado para está p
 ## Página Sobre Nós
 Esta página conta um pouco sobre o propósito do projeto, e os integrantes da equipe.
 ![image](https://github.com/user-attachments/assets/cd0d871c-71b0-4235-8982-ba32a7f1d3cd)
-
-
-
