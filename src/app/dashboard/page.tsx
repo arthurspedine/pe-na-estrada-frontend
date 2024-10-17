@@ -196,18 +196,18 @@ export default function dashboardPage() {
         <div className='shadow-md min-h-[90px] flex items-center'>
           <nav className='w-full max-w-[1440px] mb-auto'>
             <ul className='flex gap-8 px-6 overflow-auto'>
-              <li>
+              <li className='flex items-center justify-center gap-1 bg-transparent border-none text-xl font-normal cursor-pointer '>
                 <button
                   type='button'
                   onClick={() => setPagina(0)}
                   className={
                     pagina === 0
                       ? 'ativo'
-                      : 'flex items-center justify-center gap-1 bg-transparent border-none text-xl font-normal cursor-pointer '
+                      : '-mt-0.5 w-5 '
                   }
                 >
                   <img
-                    className='-mt-0.5 w-5'
+                    className='-mt-0.5 w-5 '
                     src={
                       pagina === 0
                         ? 'image/assistente/icon/home_ativo.png'
@@ -218,7 +218,7 @@ export default function dashboardPage() {
                   Perfil
                 </button>
               </li>
-              <li>
+              <li className='flex items-center justify-center gap-1 bg-transparent border-none text-xl font-normal cursor-pointer '>
                 <button
                   type='button'
                   onClick={() => setPagina(1)}
@@ -236,7 +236,7 @@ export default function dashboardPage() {
                   Orçamentos
                 </button>
               </li>
-              <li>
+              <li className='flex items-center justify-center gap-1 bg-transparent border-none text-xl font-normal cursor-pointer '>
                 <button
                   type='button'
                   onClick={() => setPagina(2)}

@@ -9,6 +9,10 @@ export default function clientePage() {
   const [cpf, setCpf] = useState('')
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+  const [marca, setMarca] = useState('')
+  const [modelo, setModelo] = useState('')
+  const [ano, setAno] = useState('')
+  const [placa, setPlaca] = useState('')
 
   function opcaoLogin(e: FormEvent) {
     e.preventDefault()
@@ -20,7 +24,7 @@ export default function clientePage() {
 
     // Validação dos campos
     if (!jaCadastrado) {
-      if (!nome.trim() || !cpf.trim() || !email.trim() || !senha.trim()) {
+      if (!nome.trim() || !cpf.trim() || !email.trim() || !senha.trim() || !marca.trim() || modelo.trim() || ano.trim() || placa.trim()) {
         alert('Preencha todos os campos!')
       }
     } else if (!email.trim() || !senha.trim()) {
@@ -51,13 +55,18 @@ export default function clientePage() {
     setCpf('')
     setEmail('')
     setSenha('')
+    setMarca('')
+    setModelo('')
+    setAno('')
+    setPlaca('')
+
   }
 
   return (
     <main className='w-full flex-grow flex flex-col'>
       {/* conteudo cliente */}
       <div className='flex justify-around w-full min-h-[80vh] max-w-[1440px] mx-auto'>
-        <div className='py-6 px-5 my-auto text-center max-w-[431px] w-full'>
+        <div className='py-6 px-5 my-auto text-center max-w-[431px] w-full '>
           {localStorage.getItem('logado') ? (
             <>
               <h1 className='text-blue-600 font-bold text-4xl'>
@@ -94,8 +103,7 @@ export default function clientePage() {
                 </legend>
                 <form
                   className='flex flex-col items-center max-w-lg w-full gap-5'
-                  onSubmit={acaoSubmitForm}
-                >
+                  onSubmit={acaoSubmitForm}>
                   {jaCadastrado ? (
                     ''
                   ) : (
@@ -182,6 +190,60 @@ export default function clientePage() {
               </div>
             </>
           )}
+          <div className='flex flex-col'>
+            <form className='flex flex-col items-center max-w-lg w-full gap-5' onSubmit={acaoSubmitForm}>
+              {jaCadastrado?(
+                ''
+              ):(
+                <>
+                <Input
+                className='py-6 px-4'
+                placeholder='Marca Carro'
+                type='text'
+                id='marca'
+                name='marca'
+                value = {marca}
+                onChange={e => setMarca (e.target.value)}
+                required
+                />
+                <Input
+                className='py-6 px-4'
+                placeholder='Modelo Carro'
+                type='text'
+                id='modelo'
+                name='modelo'
+                value = {modelo} 
+                onChange={e => setModelo (e.target.value)}
+                required
+                />
+                <Input
+                className='py-6 px-4'
+                placeholder='Ano Carro'
+                type='number'
+                min={1950}
+                max={2025}
+                id='ano'
+                name='ano'
+                value = {ano}
+                onChange={e => setAno (e.target.value)}
+                required
+                />
+                <Input
+                className='py-6 px-4'
+                placeholder='Placa Carro'
+                type='text'
+                id='placa'
+                name='placa'
+                value = {placa}
+                onChange={e => setPlaca (e.target.value)}
+                required
+                />
+                
+                </>
+              )
+              }
+            </form>
+          </div>
         </div>
         <div className='imagem_celular_home'>
           <img src='image/imagem_celular_login.png' alt='Imagem com celular' />
