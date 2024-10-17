@@ -50,7 +50,7 @@ export default function HomePage() {
         {/* CONTENT */}
         <div className='max-w-[1440px] mx-auto w-full flex flex-col justify-center'>
           <h1
-            className='text-[96px] text-background font-extrabold leading-[76px] drop-shadow-2xl'
+            className='text-7xl text-background font-extrabold leading-[60px] drop-shadow-2xl md:text-[96px] md:leading-[76px]'
             style={{
               filter: 'drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2))',
             }}
@@ -66,7 +66,7 @@ export default function HomePage() {
               Estrada
             </span>
           </h1>
-          <h2 className='text-background mt-3 drop-shadow-xl text-2xl'>
+          <h2 className='w-4/5 mx-auto text-xl text-background mt-3 drop-shadow-xl md:w-full md:text-2xl'>
             Conectando você à solução ideal para o seu veículo
           </h2>
           <div className='flex flex-col items-center justify-center mt-6'>
@@ -84,7 +84,9 @@ export default function HomePage() {
         </div>
       </section>
       <div className='flex flex-col mt-32 items-center  '>
-        <h2 className='text-4xl font-semibold uppercase'>Nosso Diferencial</h2>
+        <h2 className='text-3xl font-semibold uppercase md:text-4xl'>
+          Nosso Diferencial
+        </h2>
         {/* div cartoes */}
         <div className='max-w[1440] w-full my-14 mx-auto flex flex-wrap items-center justify-center gap-14'>
           {/* cartao */}
