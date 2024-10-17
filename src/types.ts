@@ -1,3 +1,13 @@
+import type { StaticImageData } from 'next/image'
+
+export type HomeCardDetail = {
+  id: number
+  image: StaticImageData
+  alt: string
+  title: string
+  description: string
+}
+
 export type OrcamentoDetail = {
   id: number
   veiculo: string
