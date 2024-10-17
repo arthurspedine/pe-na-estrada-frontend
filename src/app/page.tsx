@@ -84,7 +84,7 @@ export default function HomePage() {
         </div>
       </section>
       <div className='flex flex-col mt-32 items-center  '>
-        <h2 className='text-4xl font-semibold '>Nosso Diferencial</h2>
+        <h2 className='text-4xl font-semibold uppercase'>Nosso Diferencial</h2>
         {/* div cartoes */}
         <div className='max-w[1440] w-full my-14 mx-auto flex flex-wrap items-center justify-center gap-14'>
           {/* cartao */}
