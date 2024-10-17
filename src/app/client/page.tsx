@@ -1,4 +1,5 @@
 'use client'
+import { Input } from '@/components/ui/input'
 import { useState, type FormEvent } from 'react'
 
 export default function clientePage() {
@@ -56,7 +57,7 @@ export default function clientePage() {
     <main className='w-full flex-grow flex flex-col'>
       {/* conteudo cliente */}
       <div className='flex justify-around w-full min-h-[80vh] max-w-[1440px] mx-auto'>
-        <div className='py-6 px-5 my-auto text-center max-w[431px] w-full'>
+        <div className='py-6 px-5 my-auto text-center max-w-[431px] w-full'>
           {localStorage.getItem('logado') ? (
             <>
               <h1 className='text-blue-600 font-bold text-4xl'>
@@ -86,22 +87,22 @@ export default function clientePage() {
             <>
               <h1>{jaCadastrado ? 'Login' : 'Cadastro'}</h1>
               <div className='mt-4 w-full flex flex-col gap-5'>
-                <legend className='w-4/5 mx-auto text-background text-base mt-5'>
+                <legend className='w-4/5 mx-auto text-muted-foreground text-base mt-5'>
                   {jaCadastrado
                     ? 'Entre com seu email e senha para continuar'
                     : 'Cadastre agora sua conta para continuar'}
                 </legend>
                 <form
-                  className='flex flex-col items-center max-w-lg w-full'
+                  className='flex flex-col items-center max-w-lg w-full gap-5'
                   onSubmit={acaoSubmitForm}
                 >
                   {jaCadastrado ? (
                     ''
                   ) : (
                     <>
-                      <input
+                      <Input
+                        className='py-6 px-4'
                         placeholder='Seu nome'
-                        className='input_form'
                         type='text'
                         id='nome'
                         name='nome'
@@ -109,9 +110,9 @@ export default function clientePage() {
                         onChange={e => setNome(e.target.value)} // TODO
                         required
                       />
-                      <input
+                      <Input
+                        className='py-6 px-4'
                         placeholder='Seu cpf'
-                        className='input_form'
                         type='text'
                         id='cpf'
                         name='cpf'
@@ -121,9 +122,9 @@ export default function clientePage() {
                       />
                     </>
                   )}
-                  <input
+                  <Input
+                    className='py-6 px-4'
                     placeholder='Seu email'
-                    className='input_form'
                     type='text'
                     id='email'
                     name='email'
@@ -131,9 +132,9 @@ export default function clientePage() {
                     onChange={e => setEmail(e.target.value)}
                     required
                   />
-                  <input
+                  <Input
+                    className='py-6 px-4'
                     placeholder='Sua senha'
-                    className='input_form'
                     type='password'
                     id='senha'
                     name='senha'
@@ -143,7 +144,7 @@ export default function clientePage() {
                   />
                   <a
                     className='w-full mt-[2px] text-right text-sm no-underline text-blue-400 hover:text-blue-600'
-                    href='/cliente#'
+                    href='/client#'
                   >
                     Esqueceu a senha?
                   </a>
