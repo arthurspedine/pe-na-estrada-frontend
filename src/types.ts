@@ -8,6 +8,14 @@ export type HomeCardDetail = {
   description: string
 }
 
+export type DevCardDetail = {
+  id: number
+  github_user: string
+  alt: string
+  developer: string
+  rm: string
+}
+
 export type OrcamentoDetail = {
   id: number
   veiculo: string

@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang='pt-BR'>
       <body
-        className={`${inter.className} antialiased flex flex-col min-h-screen w-screen`}
+        className={`${inter.className} antialiased flex flex-col min-h-screen w-full`}
       >
         <DesktopHeader />
         {children}

@@ -42,7 +42,6 @@ export function LoginForm() {
           id='email'
           type='email'
           placeholder='exemplo@exemplo.com'
-          className='md:text-lg md:h-12'
           {...register('email')}
         />
         {formState.errors.email && (
@@ -57,7 +56,6 @@ export function LoginForm() {
           id='email'
           type='password'
           placeholder='********'
-          className='md:text-lg md:h-12'
           {...register('password')}
         />
         {formState.errors.password && (
@@ -70,7 +68,7 @@ export function LoginForm() {
       <Button
         size={'lg'}
         type='submit'
-        className='bg-primary hover:bg-primary/95 md:text-lg'
+        className='bg-primary hover:bg-primary/95'
       >
         Entrar
       </Button>
