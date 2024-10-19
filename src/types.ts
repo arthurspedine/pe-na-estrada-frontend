@@ -34,3 +34,13 @@ export type OficinaDetail = {
   avaliacao: number
   maps: string
 }
+
+export type FormErrors = {
+  [key: string]: string | undefined
+}
+
+export enum RegisterRoutes {
+  INFORMATION = '/client/register/information',
+  VEHICLE = '/client/register/vehicle',
+  CONFIRM = '/client/register/confirm',
+}

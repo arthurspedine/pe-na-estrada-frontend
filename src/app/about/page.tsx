@@ -56,10 +56,10 @@ export default function AboutPage() {
           />
         </div>
       </section>
-      <div className='flex flex-col flex-grow mt-[140px] mb-[60px] text-center gap-3'>
+      <div className='flex flex-col flex-grow mt-32 mb-14 items-center gap-3'>
         <h2 className='text-4xl font-bold uppercase'>Nosso Time!</h2>
         {/* container dev */}
-        <div className='py-14 px-8 gap-8 flex justify-around items-stretch flex-wrap flex-col lg:flex-row'>
+        <div className='py-14 px-8 gap-8 flex justify-around items-stretch flex-wrap flex-col w-full lg:max-w-[1440px] lg:flex-row'>
           {devs.map(dev => (
             <DevCard key={dev.id} {...dev} />
           ))}
