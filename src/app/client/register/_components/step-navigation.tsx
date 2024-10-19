@@ -14,14 +14,14 @@ const steps = [
   },
   {
     id: 2,
-    width: '1/2',
+    width: '50%',
     route: 'vehicle',
     path: '/client/register/vehicle',
     icon: <Car />,
   },
   {
     id: 3,
-    width: 'full',
+    width: '99%',
     route: 'confirm',
     path: '/client/register/confirm',
     icon: <Vote />,
@@ -35,10 +35,9 @@ export function StepNavigation() {
   const [currentStep, setCurrentStep] = useState(0)
 
   useEffect(() => {
-    const step = steps.findIndex(s => s.route === currentPath)
-    console.log(step)
-    console.log(steps[step].width)
+    if (currentPath === 'register') return
 
+    const step = steps.findIndex(s => s.route === currentPath)
     setCurrentStep(step)
   }, [currentPath])
 
@@ -47,7 +46,8 @@ export function StepNavigation() {
       <div className='relative flex items-center justify-between w-full'>
         <div className='absolute left-0 top-2/4 h-0.5 w-[99%] -translate-y-2/4 bg-gray-300' />
         <div
-          className={`absolute left-0 top-2/4 h-0.5 w-${steps[currentStep].width} -translate-y-2/4 bg-primary transition-all duration-400`}
+          className='absolute left-0 top-2/4 h-0.5 -translate-y-2/4 bg-primary transition-all duration-400'
+          style={{ width: steps[currentStep].width }}
         />
         {steps.map(s => (
           <Link

@@ -3,7 +3,7 @@ import { RegisterRoutes } from '@/types'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-export default function ClienteRedirectPage() {
+export default function ClientRedirectPage() {
   const router = useRouter()
 
   useEffect(() => {
