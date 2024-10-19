@@ -1,7 +1,6 @@
 'use client'
 import type { OficinaDetail, OrcamentoDetail } from '@/types'
-import Image from 'next/image'
-import { type FormEvent, useEffect, useState } from 'react'
+import { useState } from 'react'
 
 type Usuario = {
   nome: string
@@ -9,23 +8,14 @@ type Usuario = {
 }
 
 export default function dashboardPage() {
-  document.title = 'Assistente - Pé na Estrada'
-
-  const data: Usuario = JSON.parse(localStorage.getItem('logado') || '{}')
-
-  const [pagina, setPagina] = useState<number>(0)
+  // const data: Usuario = JSON.parse(localStorage.getItem('logado') || '{}')
+  const usuario = {
+    nome: 'mock',
+    email: 'mock',
+  }
 
   const [chatAberto, setChatAberto] = useState(0)
-
-  const botoesFecharChat = document.querySelectorAll<HTMLButtonElement>(
-    '.WACHeader__CloseButton'
-  )
-
-  // botoesFecharChat.forEach(b => {
-  //     b.addEventListener('click', () => {
-  //         setChatAberto(0)
-  //     })
-  // })
+  const [pagina, setPagina] = useState(0)
 
   const veiculos = [
     {
@@ -143,39 +133,7 @@ export default function dashboardPage() {
     },
   ]
 
-  const usuario = {
-    nome: data.nome,
-    email: data.email,
-  }
-
-  useEffect(() => {
-    const botaoUnico = document.querySelector<HTMLButtonElement>(
-      '.WACLauncher__Button'
-    )
-    if (botaoUnico) {
-      botaoUnico.style.display = 'none'
-    }
-    return () => {
-      chatAberto
-    }
-  }, [chatAberto])
-
-  function eventoClickBotaoBanner() {
-    if (chatAberto === 0) {
-      setChatAberto(1)
-      const botao = document.querySelector<HTMLButtonElement>(
-        '#WACLauncher__Button'
-      )
-      if (botao) {
-        botao.click()
-      } else {
-        alert('O Assistente não está disponível no momento.')
-      }
-    } else {
-      setChatAberto(0)
-      botoesFecharChat[0].click()
-    }
-  }
+  function openChat() {}
 
   return (
     <main className='w-full flex-grow flex flex-col'>
@@ -187,7 +145,7 @@ export default function dashboardPage() {
           </p>
           <button
             type='button'
-            onClick={eventoClickBotaoBanner}
+            onClick={openChat}
             className='border-none rounded-[5px] bg-blue-600 text-white text-[1.2rem] px-5 py-3 border border-blue-600 cursor-pointer min-w-[190px] hover:rounded-[15px] '
           >
             {chatAberto === 0 ? 'Iniciar orçamento' : 'Fechar chat'}
@@ -200,11 +158,7 @@ export default function dashboardPage() {
                 <button
                   type='button'
                   onClick={() => setPagina(0)}
-                  className={
-                    pagina === 0
-                      ? 'ativo'
-                      : '-mt-0.5 w-5 '
-                  }
+                  className={pagina === 0 ? 'ativo' : '-mt-0.5 w-5 '}
                 >
                   <img
                     className='-mt-0.5 w-5 '
@@ -284,7 +238,7 @@ export default function dashboardPage() {
                   </h3>
                   <div className='flex'>
                     <ul className='w-full flex items-center justify-start gap-4 pt-[15px] pr-[15px] pb-0 pl-[15px] overflow-auto'>
-                      {veiculos.map(v => (
+                      {/* {veiculos.map(v => (
                         <li className='w-60' key={v.marca}>
                           <Image
                             imagem={v.imagem}
@@ -293,7 +247,7 @@ export default function dashboardPage() {
                             ano={v.ano}
                           />
                         </li>
-                      ))}
+                      ))} */}
                     </ul>
                   </div>
                 </div>
@@ -301,7 +255,7 @@ export default function dashboardPage() {
             </div>
           )}
 
-          {pagina === 1 && (
+          {/* {pagina === 1 && (
             <div className='w-full p-6 flex flex-col minh-[400px] flex-grow'>
               {orcamentos.map(o => (
                 <div
@@ -333,7 +287,7 @@ export default function dashboardPage() {
                 />
               ))}
             </div>
-          )}
+          )} */}
         </section>
       </div>
     </main>
