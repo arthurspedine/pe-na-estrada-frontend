@@ -1,7 +1,12 @@
 'use client'
+import { RegisterRoutes } from '@/types'
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function ClienteRedirectPage() {
   const router = useRouter()
-  router.replace('/client/register')
+
+  useEffect(() => {
+    router.replace(RegisterRoutes.INFORMATION)
+  }, [router])
 }

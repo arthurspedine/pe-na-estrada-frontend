@@ -1,6 +1,6 @@
 import { LoginForm } from './login/_components/login-form'
 
-export default function ClientPage({
+export default function ClientLayout({
   children,
 }: Readonly<{
   children: React.ReactNode

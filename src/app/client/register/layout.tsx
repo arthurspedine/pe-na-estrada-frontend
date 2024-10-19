@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { StepNavigation } from './_components/step-navigation'
 
-export default function RegisterPage({
+export default function RegisterLayout({
   children,
 }: Readonly<{
   children: React.ReactNode

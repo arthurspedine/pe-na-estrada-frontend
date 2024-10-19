@@ -7,21 +7,21 @@ import Link from 'next/link'
 const steps = [
   {
     id: 1,
-    position: '0%',
+    width: '0',
     route: 'information',
     path: '/client/register/information',
     icon: <UserPen />,
   },
   {
     id: 2,
-    position: '50%',
+    width: '1/2',
     route: 'vehicle',
     path: '/client/register/vehicle',
     icon: <Car />,
   },
   {
     id: 3,
-    position: '99%',
+    width: 'full',
     route: 'confirm',
     path: '/client/register/confirm',
     icon: <Vote />,
@@ -36,6 +36,9 @@ export function StepNavigation() {
 
   useEffect(() => {
     const step = steps.findIndex(s => s.route === currentPath)
+    console.log(step)
+    console.log(steps[step].width)
+
     setCurrentStep(step)
   }, [currentPath])
 
@@ -44,7 +47,7 @@ export function StepNavigation() {
       <div className='relative flex items-center justify-between w-full'>
         <div className='absolute left-0 top-2/4 h-0.5 w-[99%] -translate-y-2/4 bg-gray-300' />
         <div
-          className={`absolute left-0 top-2/4 h-0.5 w-[${steps[currentStep].position}] -translate-y-2/4 bg-primary transition-all duration-400`}
+          className={`absolute left-0 top-2/4 h-0.5 w-${steps[currentStep].width} -translate-y-2/4 bg-primary transition-all duration-400`}
         />
         {steps.map(s => (
           <Link
