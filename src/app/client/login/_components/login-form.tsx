@@ -66,7 +66,7 @@ export function LoginForm() {
       </div>
 
       <Button
-        size={'lg'}
+        size={'sm'}
         type='submit'
         className='bg-primary hover:bg-primary/95'
       >

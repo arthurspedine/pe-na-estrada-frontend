@@ -15,7 +15,6 @@ export const vehicleFormAction = (
       acc[issue.path[0]] = issue.message
       return acc
     }, {})
-    console.log(errors)
     return errors
   }
 

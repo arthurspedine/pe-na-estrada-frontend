@@ -6,6 +6,7 @@ import { useFormState } from 'react-dom'
 import { vehicleFormAction } from './actions'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useRegisterContext } from '@/context/register-context'
 
 const initialState: FormErrors = {}
 export default function VehicleFormPage() {
@@ -15,6 +16,12 @@ export default function VehicleFormPage() {
     vehicleFormAction,
     initialState
   )
+
+  const { updateRegisterDetails, registerData } = useRegisterContext()
+
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    updateRegisterDetails({ [e.target.name]: e.target.value })
+  }
 
   return (
     <form action={formAction} className='flex flex-col gap-3 text-left pb-4'>
@@ -27,6 +34,8 @@ export default function VehicleFormPage() {
           id='brand'
           name='brand'
           type='text'
+          onChange={handleInputChange}
+          defaultValue={registerData.brand}
           placeholder='Marca'
         />
         {serverErrors?.brand ? (
@@ -41,7 +50,14 @@ export default function VehicleFormPage() {
         <Label htmlFor='model' className='font-bold md:text-lg'>
           Modelo
         </Label>
-        <Input id='model' name='model' type='text' placeholder='Modelo' />
+        <Input
+          id='model'
+          name='model'
+          type='text'
+          onChange={handleInputChange}
+          defaultValue={registerData.model}
+          placeholder='Modelo'
+        />
         {serverErrors?.model ? (
           <p className='text-destructive text-sm pt-0.5'>
             {serverErrors.model}
@@ -54,7 +70,14 @@ export default function VehicleFormPage() {
         <Label htmlFor='year' className='font-bold md:text-lg'>
           Ano
         </Label>
-        <Input id='year' name='year' type='text' placeholder='0000' />
+        <Input
+          id='year'
+          name='year'
+          type='text'
+          onChange={handleInputChange}
+          defaultValue={registerData.year}
+          placeholder='0000'
+        />
         {serverErrors?.year ? (
           <p className='text-destructive text-sm pt-0.5'>{serverErrors.year}</p>
         ) : (
@@ -69,6 +92,8 @@ export default function VehicleFormPage() {
           id='licensePlate'
           name='licensePlate'
           type='text'
+          onChange={handleInputChange}
+          defaultValue={registerData.licensePlate}
           placeholder='ABC-1234'
         />
         {serverErrors?.licensePlate ? (
@@ -81,7 +106,7 @@ export default function VehicleFormPage() {
       </div>
       <div className='flex gap-4'>
         <Button
-          size={'lg'}
+          size={'sm'}
           type='button'
           className='bg-primary hover:bg-primary/95 flex-grow'
           onClick={() => router.replace('/client/register/information')}
@@ -89,7 +114,7 @@ export default function VehicleFormPage() {
           Voltar
         </Button>
         <Button
-          size={'lg'}
+          size={'sm'}
           type='submit'
           className='bg-primary hover:bg-primary/95 flex-grow'
         >

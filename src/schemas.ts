@@ -58,11 +58,23 @@ export const vehicleFormSchema = z.object({
     ),
   licensePlate: z
     .string()
-    .min(7, 'A placa deve ter ao menos 7 caracteres.')
-    .max(7, 'A placa deve ter no máximo 7 caracteres.')
+    .min(8, 'A placa deve ter ao menos 8 caracteres.')
+    .max(8, 'A placa deve ter no máximo 8 caracteres.')
     .refine(plate => /^[A-Z]{3}-\d{4}$/.test(plate), {
       message: 'A placa deve estar no formato ABC-1234.',
     }),
+})
+
+export const registerInitialValueSchema = z.object({
+  name: z.string().optional(),
+  cpf: z.string().optional(),
+  birthDate: z.string().optional(),
+  email: z.string().optional(),
+  password: z.string().optional(),
+  brand: z.string().optional(),
+  model: z.string().optional(),
+  year: z.string().optional(),
+  licensePlate: z.string().optional(),
 })
 
 export const confirmSchema = z.object({
@@ -70,4 +82,7 @@ export const confirmSchema = z.object({
   ...vehicleFormSchema.shape,
 })
 
-export type ConfirmSchema = z.infer<typeof confirmSchema>
+export type ConfirmType = z.infer<typeof confirmSchema>
+export type RegisterInitialValueType = z.infer<
+  typeof registerInitialValueSchema
+>

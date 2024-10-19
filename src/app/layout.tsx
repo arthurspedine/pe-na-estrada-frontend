@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { DesktopHeader } from '@/components/desktop-header'
 import { Footer } from '@/components/footer'
+import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
   title: 'Pé na Estrada',
@@ -23,6 +24,7 @@ export default function RootLayout({
       >
         <DesktopHeader />
         {children}
+        <Toaster theme='light' richColors />
         <Footer />
       </body>
     </html>
