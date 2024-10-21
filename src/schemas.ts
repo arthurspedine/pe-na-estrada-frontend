@@ -86,3 +86,23 @@ export type ConfirmType = z.infer<typeof confirmSchema>
 export type RegisterInitialValueType = z.infer<
   typeof registerInitialValueSchema
 >
+
+export const loginSchema = z.object({
+  email: z
+    .string()
+    .email('Formato de email inválido.')
+    .max(100, 'O email deve ter no máximo 100 caracteres.'),
+  password: z
+    .string()
+    .min(8, 'A senha deve ter pelo menos 8 caracteres.')
+    .max(128, 'A senha deve ter no máximo 128 caracteres.')
+    .regex(/[A-Z]/, 'A senha deve conter pelo menos uma letra maiúscula.')
+    .regex(/[a-z]/, 'A senha deve conter pelo menos uma letra minúscula.')
+    .regex(/[0-9]/, 'A senha deve conter pelo menos um número.')
+    .regex(
+      /[^A-Za-z0-9]/,
+      'A senha deve conter pelo menos um caractere especial.'
+    ),
+})
+
+export type LoginDataInput = z.infer<typeof loginSchema>

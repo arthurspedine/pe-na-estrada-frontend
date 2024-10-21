@@ -1,4 +1,17 @@
 import type { StaticImageData } from 'next/image'
+import { z } from 'zod'
+
+export type jwtToken = {
+  iss: string
+  sub: string
+  exp: number
+}
+
+export type PathProps = {
+  id: number
+  path: string
+  label: string
+}
 
 export type HomeCardDetail = {
   id: number
