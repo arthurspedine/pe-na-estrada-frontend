@@ -8,6 +8,7 @@ import { X } from 'lucide-react'
 import { getSession, logout } from '@/app/client/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { handleLogout } from '@/http/handle-logout'
 
 export default function MenuNavBar({
   links,
@@ -28,8 +29,8 @@ export default function MenuNavBar({
     if (open) fetchSession()
   }, [open])
 
-  async function handleLogout() {
-    await logout()
+  async function handleLogoutClick() {
+    await handleLogout()
     disableMenu()
     router.refresh()
   }
@@ -94,7 +95,7 @@ export default function MenuNavBar({
                 <Button
                   variant={'secondary'}
                   className='px-4 py-5 mb-2 text-sm text-center font-semibold rounded-xl hover:bg-gray-200 w-full border border-border'
-                  onClick={handleLogout}
+                  onClick={handleLogoutClick}
                 >
                   Sair
                 </Button>
