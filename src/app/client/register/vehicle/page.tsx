@@ -26,7 +26,7 @@ export default function VehicleFormPage() {
   return (
     <form action={formAction} className='flex flex-col gap-3 text-left pb-4'>
       <div>
-        <Label htmlFor='brand' className='font-bold md:text-lg'>
+        <Label htmlFor='brand' className='font-bold'>
           Marca
         </Label>
         <Input
@@ -47,7 +47,7 @@ export default function VehicleFormPage() {
         )}
       </div>
       <div>
-        <Label htmlFor='model' className='font-bold md:text-lg'>
+        <Label htmlFor='model' className='font-bold'>
           Modelo
         </Label>
         <Input
@@ -67,7 +67,7 @@ export default function VehicleFormPage() {
         )}
       </div>
       <div>
-        <Label htmlFor='year' className='font-bold md:text-lg'>
+        <Label htmlFor='year' className='font-bold'>
           Ano
         </Label>
         <Input
@@ -85,7 +85,7 @@ export default function VehicleFormPage() {
         )}
       </div>
       <div>
-        <Label htmlFor='licensePlate' className='font-bold md:text-lg'>
+        <Label htmlFor='licensePlate' className='font-bold'>
           Placa
         </Label>
         <Input

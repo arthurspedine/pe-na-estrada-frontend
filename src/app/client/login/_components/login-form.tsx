@@ -34,7 +34,7 @@ export function LoginForm() {
       className='flex flex-col gap-3 text-left my-2'
     >
       <div>
-        <Label htmlFor='email' className='font-bold md:text-lg'>
+        <Label htmlFor='email' className='font-bold'>
           Email
         </Label>
         <Input
@@ -49,7 +49,7 @@ export function LoginForm() {
         )}
       </div>
       <div>
-        <Label htmlFor='senha' className='font-bold md:text-lg'>
+        <Label htmlFor='senha' className='font-bold'>
           Senha
         </Label>
         <Input
