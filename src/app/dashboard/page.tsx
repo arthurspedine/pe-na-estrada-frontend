@@ -1,5 +1,6 @@
 'use client'
 import type { OficinaDetail, OrcamentoDetail } from '@/types'
+import Link from 'next/link'
 import { useState } from 'react'
 
 type Usuario = {
@@ -13,9 +14,6 @@ export default function dashboardPage() {
     nome: 'mock',
     email: 'mock',
   }
-
-  const [chatAberto, setChatAberto] = useState(0)
-  const [pagina, setPagina] = useState(0)
 
   const veiculos = [
     {
@@ -143,102 +141,40 @@ export default function dashboardPage() {
           <p className='text-2xl my-[15px] mb-[40px]'>
             Comece seu orçamento em instantes!
           </p>
-          <button
-            type='button'
-            onClick={openChat}
-            className='border-none rounded-[5px] bg-blue-600 text-white text-[1.2rem] px-5 py-3 border border-blue-600 cursor-pointer min-w-[190px] hover:rounded-[15px] '
+          <Link
+            href={'/dashboard/assistant'}
+            className='border-none rounded-[5px] bg-blue-600 text-white text-[1.2rem] px-5 py-3 border border-blue-600 cursor-pointer min-w-[190px] hover:rounded-[15px] transition-all duration-300 ease-in-out'
           >
-            {chatAberto === 0 ? 'Iniciar orçamento' : 'Fechar chat'}
-          </button>
-        </div>
-        <div className='shadow-md min-h-[90px] flex items-center'>
-          <nav className='w-full max-w-[1440px] mb-auto'>
-            <ul className='flex gap-8 px-6 overflow-auto'>
-              <li className='flex items-center justify-center gap-1 bg-transparent border-none text-xl font-normal cursor-pointer '>
-                <button
-                  type='button'
-                  onClick={() => setPagina(0)}
-                  className={pagina === 0 ? 'ativo' : '-mt-0.5 w-5 '}
-                >
-                  <img
-                    className='-mt-0.5 w-5 '
-                    src={
-                      pagina === 0
-                        ? 'image/assistente/icon/home_ativo.png'
-                        : 'image/assistente/icon/home.png'
-                    }
-                    alt='Icone home'
-                  />
-                  Perfil
-                </button>
-              </li>
-              <li className='flex items-center justify-center gap-1 bg-transparent border-none text-xl font-normal cursor-pointer '>
-                <button
-                  type='button'
-                  onClick={() => setPagina(1)}
-                  className={pagina === 1 ? 'text-blue-400' : ''}
-                >
-                  <img
-                    className='-mt-0.5 w-5'
-                    src={
-                      pagina === 1
-                        ? 'image/assistente/icon/orcamentos_ativo.png'
-                        : 'image/assistente/icon/orcamentos.png'
-                    }
-                    alt='Icone home'
-                  />
-                  Orçamentos
-                </button>
-              </li>
-              <li className='flex items-center justify-center gap-1 bg-transparent border-none text-xl font-normal cursor-pointer '>
-                <button
-                  type='button'
-                  onClick={() => setPagina(2)}
-                  className={pagina === 2 ? 'text-blue-400' : ''}
-                >
-                  <img
-                    className='-mt-0.5 w-5'
-                    src={
-                      pagina === 2
-                        ? 'image/assistente/icon/oficina_ativo.png'
-                        : 'image/assistente/icon/oficina.png'
-                    }
-                    alt='Icone home'
-                  />
-                  Oficinas
-                </button>
-              </li>
-            </ul>
-          </nav>
+            Iniciar orçamento
+          </Link>
         </div>
         <section className='flex items-center max-w-[1440px] w-full mx-auto shadow-[--10px_0_10px_-5px_rgba(0,_0,_0,_0.1),_10px_0_10px_-5px_rgba(0,_0,_0,_0.1)]'>
-          {pagina === 0 && (
-            <div className='w-full p-6 flex flex-col minh-[400px] flex-grow'>
-              <h2 className='text-left text-4xl mb-4'>
-                Bem vindo {usuario.nome}!
-              </h2>
-              <div className='flex flex-wrap'>
-                <div className='w-4/12 flex items-center flex-col'>
-                  <img
-                    className='w-52 mx-auto'
-                    src='/image/assistente/foto_user.png'
-                    alt='Foto do usuário'
-                  />
-                  <div>
-                    <p className='my-4 mx-5'>Email: {usuario.email}</p>
-                    <p className='my-4 mx-5'>Telefone: (xx) xxxxx-xxxx</p>
-                  </div>
+          <div className='w-full p-6 flex flex-col minh-[400px] flex-grow'>
+            <h2 className='text-left text-4xl mb-4'>
+              Bem vindo {usuario.nome}!
+            </h2>
+            <div className='flex flex-wrap'>
+              <div className='w-4/12 flex items-center flex-col'>
+                <img
+                  className='w-52 mx-auto'
+                  src='/image/assistente/foto_user.png'
+                  alt='Foto do usuário'
+                />
+                <div>
+                  <p className='my-4 mx-5'>Email: {usuario.email}</p>
+                  <p className='my-4 mx-5'>Telefone: (xx) xxxxx-xxxx</p>
                 </div>
-                <div
-                  className='w-9/12 bg-#F5F5F5 flex-grow border-radius: 8px;
+              </div>
+              <div
+                className='w-9/12 bg-#F5F5F5 flex-grow border-radius: 8px;
                     padding: 0 0 15px;'
-                >
-                  <h3 className=' py-4 text-center text-xl border-b border-blue-400'>
-                    Veículos cadastrados
-                  </h3>
-                  <div className='flex'>
-                    <ul className='w-full flex items-center justify-start gap-4 pt-[15px] pr-[15px] pb-0 pl-[15px] overflow-auto'>
-                      {/* {veiculos.map(v => (
+              >
+                <h3 className=' py-4 text-center text-xl border-b border-blue-400'>
+                  Veículos cadastrados
+                </h3>
+                <div className='flex'>
+                  <ul className='w-full flex items-center justify-start gap-4 pt-[15px] pr-[15px] pb-0 pl-[15px] overflow-auto'>
+                    {/* {veiculos.map(v => (
                         <li className='w-60' key={v.marca}>
                           <Image
                             imagem={v.imagem}
@@ -248,12 +184,11 @@ export default function dashboardPage() {
                           />
                         </li>
                       ))} */}
-                    </ul>
-                  </div>
+                  </ul>
                 </div>
               </div>
             </div>
-          )}
+          </div>
 
           {/* {pagina === 1 && (
             <div className='w-full p-6 flex flex-col minh-[400px] flex-grow'>

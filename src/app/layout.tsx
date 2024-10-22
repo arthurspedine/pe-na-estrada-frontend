@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { DesktopHeader } from '@/components/desktop-header'
-import { Footer } from '@/components/footer'
 import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
@@ -20,12 +19,11 @@ export default function RootLayout({
   return (
     <html lang='pt-BR'>
       <body
-        className={`${inter.className} antialiased flex flex-col min-h-screen w-full`}
+        className={`${inter.className} antialiased flex flex-col h-[calc(100dvh)] w-full`}
       >
         <DesktopHeader />
         {children}
         <Toaster theme='light' richColors />
-        <Footer />
       </body>
     </html>
   )

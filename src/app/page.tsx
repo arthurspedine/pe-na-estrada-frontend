@@ -6,6 +6,7 @@ import bg from '@/image/bg.png'
 import type { HomeCardDetail } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Footer } from '@/components/footer'
 
 export default function HomePage() {
   const cards: HomeCardDetail[] = [
@@ -95,6 +96,7 @@ export default function HomePage() {
           ))}
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

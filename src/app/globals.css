@@ -61,7 +61,7 @@
 
 @layer base {
   * {
-    @apply border-border transition-all duration-300 ease-in-out;
+    @apply border-border;
   }
 
   body {
@@ -71,7 +71,7 @@
 
 @layer components {
   .desktop-link-style {
-    @apply w-full text-foreground text-lg inline-block origin-center transition-transform;
+    @apply w-full text-foreground text-lg inline-block origin-center transition-all duration-300 ease-in-out;
   }
 
   .desktop-link-style:hover {
@@ -79,7 +79,7 @@
   }
 
   .desktop-user-link-style {
-    @apply border-primary border-2 p-1.5 rounded-sm text-center inline-block text-foreground text-lg;
+    @apply border-primary border-2 p-1.5 rounded-sm text-center inline-block text-foreground text-lg transition-all duration-300 ease-in-out;
   }
 
   .desktop-user-link-style:hover {

@@ -1,5 +1,5 @@
 import type { StaticImageData } from 'next/image'
-import { z } from 'zod'
+import type { ReactElement } from 'react'
 
 export type jwtToken = {
   iss: string
@@ -11,6 +11,7 @@ export type PathProps = {
   id: number
   path: string
   label: string
+  icon?: ReactElement
 }
 
 export type HomeCardDetail = {
