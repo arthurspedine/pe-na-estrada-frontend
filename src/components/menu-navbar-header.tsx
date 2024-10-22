@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import logo from '@/image/logo_porto.png'
+import logo from '/public/image/logo_porto.png'
 import { Button } from './ui/button'
 import type { PathProps } from '@/types'
 import Link from 'next/link'

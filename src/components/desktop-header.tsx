@@ -1,5 +1,5 @@
 'use client'
-import logo from '@/image/logo_porto.png'
+import logo from '/public/image/logo_porto.png'
 import { Menu } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'

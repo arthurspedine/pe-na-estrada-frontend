@@ -3,7 +3,7 @@ import Image from 'next/image'
 import type { DevCardDetail } from '@/types'
 import { DevCard } from './_components/dev-card'
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
-import phone_img from '@/image/about/phone.png'
+import phone_img from '/public/image/about/phone.png'
 import { Footer } from '@/components/footer'
 
 export default function AboutPage() {
