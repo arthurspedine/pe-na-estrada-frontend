@@ -34,8 +34,6 @@ export async function login(formData: LoginDataInput) {
     loginData
   )
 
-  console.log(authResponse.data.token)
-
   const { token } = await authResponse.data
   const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 
