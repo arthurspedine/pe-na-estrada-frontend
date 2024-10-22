@@ -35,16 +35,16 @@ export default function AboutPage() {
     <main className='flex flex-grow flex-col overflow-x-hidden'>
       <section className='h-[550px] flex w-full bg-[#eaeaea]'>
         {/* container */}
-        <div className='max-w-[1440px] mx-auto w-full flex flex-col items-center lg:flex-row'>
+        <div className='max-w-[1440px] py-4 mx-auto w-full flex flex-col items-center lg:flex-row'>
           {/* banner sobre nos */}
-          <div className='flex flex-col items-center gap-4 py-8 px-5 w-full lg:w-3/5 lg:items-start lg:py-12'>
+          <div className='flex flex-col items-center gap-4 py-4 px-5 w-full lg:w-3/5 lg:items-start lg:py-12'>
             <h2 className='text-4xl font-extrabold md:text-5xl'>Sobre Nós</h2>
             <h3 className='font-semibold text-muted-foreground text-center text-lg pb-6 md:text-left md:text-2xl lg:pb-12'>
               Conheça mais por trás sobre essa solução inovadora{' '}
             </h3>
             <Link
               href={'/dashboard'}
-              className='bg-blue-500 h-12 w-full max-w-72 rounded-2xl pt-2 text-xl font-semibold text-center no-underline text-background hover:scale-105 md:text-2xl'
+              className='bg-blue-500 w-full max-w-72 rounded-2xl py-2 text-lg sm:text-xl font-semibold text-center no-underline text-background transition-all duration-300 ease-in-out hover:scale-105'
             >
               Experimente agora
             </Link>
@@ -53,7 +53,7 @@ export default function AboutPage() {
           <Image
             src={phone_img}
             alt='Imagem de um celular no Pé na Estrada'
-            className='max-w-[260px] md:max-w-[280px] lg:max-w-[550px] lg:p-8 lg:mx-auto '
+            className='max-w-[250px] md:max-w-[280px] lg:max-w-[550px] lg:p-8 lg:mx-auto '
           />
         </div>
       </section>
@@ -69,7 +69,7 @@ export default function AboutPage() {
         <div className='text-center'>
           <div className='flex items-center justify-center p-1 gap-1 text-lg no-underline transition-transform transition-color duration-300 ease-in-out transform-origin-center'>
             <a
-              className='flex items-center space-x-1.5 mt-4 text-foreground transform-origin-center hover:scale-105'
+              className='flex items-center space-x-1.5 mt-4 text-foreground transform-origin-center transition-all duration-300 ease-in-out hover:scale-105'
               href='https://github.com/arthurspedine/pe-na-estrada-frontend'
               target='blank'
             >
