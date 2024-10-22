@@ -44,6 +44,7 @@ export default function HomePage() {
           alt='Background'
           layout='fill'
           objectFit='cover'
+          quality={100}
           className='absolute inset-0'
         />
         <div className='absolute inset-0 bg-black opacity-40' />
