@@ -94,7 +94,6 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
         }),
       })
     }
-    console.log(resp)
 
     if (
       'content' in resp[0] &&

@@ -3,6 +3,20 @@ import Link from 'next/link'
 import { handleGetDashboard } from '@/http/handle-get-dashboard'
 import { Separator } from '@/components/ui/separator'
 import type { User } from './interfaces'
+import { Button } from '@/components/ui/button'
+import { LogOut, Plus } from 'lucide-react'
+import { logout } from '../client/auth'
+import { LogoutButton } from './_components/logout-button'
+import { AddNewCar } from './_components/add-new-car'
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 
 export default async function dashboardPage() {
   const data: User = await handleGetDashboard()
@@ -22,8 +36,9 @@ export default async function dashboardPage() {
         </Link>
       </div>
       <section className='flex flex-col flex-grow items-center max-w-[1440px] w-full mx-auto shadow-md'>
-        <div className='w-full flex flex-col py-6 px-4'>
+        <div className='w-full flex flex-col py-6 px-4 relative'>
           <h2 className='text-2xl mb-4 text-center'>Olá, {data.name}!</h2>
+          <LogoutButton />
           <div className='flex flex-wrap'>
             <div className='w-full flex flex-col gap-2'>
               <h3>Seus dados:</h3>
@@ -36,10 +51,16 @@ export default async function dashboardPage() {
           </div>
         </div>
         <Separator />
-        <div className='w-full flex flex-col flex-grow bg-popover shadow-sm pb-20'>
+        <div className='w-full flex flex-col flex-grow bg-popover shadow-sm pb-20 relative'>
           <h3 className='py-4 text-center text-xl shadow-sm'>
             Veículos cadastrados
           </h3>
+          <Link
+            href={'/dashboard/vehicle'}
+            className='absolute right-4 top-4 bg-green-500 rounded-full p-1'
+          >
+            <Plus style={{ width: '22px', height: '22px' }} />
+          </Link>
           <ul className='w-full flex flex-wrap justify-evenly gap-2 items-center p-4'>
             {data.vehicles.map((v, i) => {
               const completedName = `${v.brand} ${v.model} ${v.year}`
