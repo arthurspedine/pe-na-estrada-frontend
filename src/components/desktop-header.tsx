@@ -5,8 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import MenuNavBar from './menu-navbar-header'
 import type { PathProps } from '@/types'
-import { Dialog, DialogTrigger } from './ui/dialog'
-import { Button } from './ui/button'
 import { useState } from 'react'
 
 export function DesktopHeader() {

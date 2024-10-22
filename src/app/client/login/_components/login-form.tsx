@@ -48,7 +48,9 @@ export function LoginForm() {
           {...register('email')}
         />
         {formState.errors.email && (
-          <p className='text-destructive'>{formState.errors.email.message}</p>
+          <p className='text-destructive text-sm'>
+            {formState.errors.email.message}
+          </p>
         )}
       </div>
       <div>
@@ -62,7 +64,7 @@ export function LoginForm() {
           {...register('password')}
         />
         {formState.errors.password && (
-          <p className='text-destructive'>
+          <p className='text-destructive text-sm'>
             {formState.errors.password.message}
           </p>
         )}

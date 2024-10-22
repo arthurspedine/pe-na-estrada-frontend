@@ -6,10 +6,8 @@ export default function DashboardLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className='flex flex-col relative'>
-      <div className='flex-grow flex flex-col items-center justify-start gap-8 overflow-y-scroll'>
-        {children}
-      </div>
+    <div className='flex flex-col h-[calc(100dvh)] w-full'>
+      {children}
       <DashboardNavBar />
     </div>
   )
