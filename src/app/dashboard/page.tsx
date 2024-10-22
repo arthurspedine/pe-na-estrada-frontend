@@ -1,31 +1,8 @@
 'use server'
-import type { OficinaDetail } from '@/types'
 import Link from 'next/link'
-import { handleGetDashboard } from './handle-get-dashboard'
+import { handleGetDashboard } from '@/http/handle-get-dashboard'
 import { Separator } from '@/components/ui/separator'
-
-interface Vehicle {
-  id: number
-  brand: string
-  model: string
-  year: string
-  licensePlate: string
-}
-
-interface Contact {
-  id: number
-  number: string
-}
-
-interface User {
-  id: number
-  email: string
-  name: string
-  cpf: string
-  birthDate: string
-  vehicles: Vehicle[]
-  contacts: Contact[]
-}
+import type { User } from './interfaces'
 
 export default async function dashboardPage() {
   const data: User = await handleGetDashboard()
@@ -72,11 +49,9 @@ export default async function dashboardPage() {
                   key={v.id}
                   aria-label={`Veículo ${i + 1}: ${completedName}, Placa: ${v.licensePlate}`}
                 >
-                  <h4 className='text-xl font-semibold mb-2'>
-                    Veículo {i + 1}
-                  </h4>
-                  <p className=''>{completedName}</p>
-                  <p className='text-muted-foreground'>
+                  <h4 className='font-semibold mb-2'>Veículo {i + 1}</h4>
+                  <p className='text'>{completedName}</p>
+                  <p className='text-muted-foreground text-sm'>
                     Placa:{' '}
                     <span className='font-semibold'>{v.licensePlate}</span>
                   </p>
