@@ -78,7 +78,7 @@ export default function MenuNavBar({
                 className='block px-4 py-3 mb-2 text-xs text-center text-background font-semibold bg-primary hover:bg-blue-700 rounded-xl w-full'
                 onClick={disableMenu}
               >
-                <Link href='/client/register'>Cadastrar</Link>
+                <Link href='/client/signup'>Cadastrar</Link>
               </Button>
             </div>
             <p className='my-4 text-xs text-center text-muted-foreground'>

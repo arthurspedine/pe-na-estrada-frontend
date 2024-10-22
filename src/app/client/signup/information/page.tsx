@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label'
 import type { FormErrors } from '@/types'
 import { useFormState } from 'react-dom'
 import { informationFormAction } from './actions'
-import { useRegisterContext } from '@/context/register-context'
+import { useSignUpContext } from '@/context/signup-context'
 
 const initialState: FormErrors = {}
 export default function InformationFormPage() {
@@ -14,10 +14,10 @@ export default function InformationFormPage() {
     initialState
   )
 
-  const { updateRegisterDetails, registerData } = useRegisterContext()
+  const { updateSignUpDetails, signUpData } = useSignUpContext()
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    updateRegisterDetails({ [e.target.name]: e.target.value })
+    updateSignUpDetails({ [e.target.name]: e.target.value })
   }
 
   return (
@@ -32,7 +32,7 @@ export default function InformationFormPage() {
           name='name'
           type='text'
           onChange={handleInputChange}
-          defaultValue={registerData.name}
+          defaultValue={signUpData.name}
           placeholder='Nome Exemplo'
         />
         {serverErrors?.name ? (
@@ -52,7 +52,7 @@ export default function InformationFormPage() {
           name='cpf'
           type='text'
           onChange={handleInputChange}
-          defaultValue={registerData.cpf}
+          defaultValue={signUpData.cpf}
           placeholder='123.456.789-09'
         />
         {serverErrors?.cpf ? (
@@ -72,7 +72,7 @@ export default function InformationFormPage() {
           name='birthDate'
           type='date'
           onChange={handleInputChange}
-          defaultValue={registerData.birthDate}
+          defaultValue={signUpData.birthDate}
           placeholder='exemplo@exemplo.com'
         />
         {serverErrors?.birthDate ? (
@@ -92,7 +92,7 @@ export default function InformationFormPage() {
           name='email'
           type='email'
           onChange={handleInputChange}
-          defaultValue={registerData.email}
+          defaultValue={signUpData.email}
           placeholder='exemplo@exemplo.com'
         />
         {serverErrors?.email ? (
@@ -112,7 +112,7 @@ export default function InformationFormPage() {
           name='password'
           type='password'
           onChange={handleInputChange}
-          defaultValue={registerData.password}
+          defaultValue={signUpData.password}
           placeholder='*********'
         />
         {serverErrors?.password ? (

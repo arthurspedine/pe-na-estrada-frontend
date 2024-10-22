@@ -2,16 +2,18 @@
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { useRegisterContext } from '@/context/register-context'
+import { useSignUpContext } from '@/context/signup-context'
 import { useRouter } from 'next/navigation'
-import { submitRegisterAction } from './actions'
-import type { ConfirmType } from '@/schemas'
+import { submitSignUpDataAction } from './actions'
+import type { ConfirmSignUpType, SignUpDataInput } from '@/schemas'
 import { toast } from 'sonner'
+import { SignUpRoutes } from '@/types'
+import { handleSignUp } from '../handle-signup'
 
 export default function ConfirmPage() {
   const router = useRouter()
 
-  const { registerData, resetData } = useRegisterContext()
+  const { signUpData, resetData } = useSignUpContext()
   const {
     name,
     cpf,
@@ -22,26 +24,50 @@ export default function ConfirmPage() {
     model,
     year,
     licensePlate,
-  } = registerData
+  } = signUpData
 
   async function handleFormSubmit(formData: FormData) {
     // submit to action
-    const { success, errorMsg, redirect } = await submitRegisterAction(
-      registerData as ConfirmType
+    const { success, errorMsg, redirect } = await submitSignUpDataAction(
+      signUpData as ConfirmSignUpType
     )
 
     if (success) {
-      toast.success('Cadastro realizado com sucesso!', {
+      const data: SignUpDataInput = {
+        name: name as string,
+        cpf: cpf as string,
+        birthDate: birthDate as string,
+        login: {
+          email: email as string,
+          password: password as string,
+        },
+        vehicle: {
+          brand: brand as string,
+          model: model as string,
+          year: year as string,
+          licensePlate: licensePlate as string,
+        },
+      }
+
+      const signUpRequest = handleSignUp(data)
+
+      toast.promise(signUpRequest, {
+        loading: 'Cadastrando usuário...',
+        success: () => {
+          router.replace(redirect)
+          return 'Cadastrado realizado com sucesso.'
+        },
+        error: 'Algo deu errado ao cadastrar o usuário.',
         position: 'top-center',
+        style: { filter: 'none', zIndex: 10 },
       })
-      resetData()
-    } else if (errorMsg) {
+
+      // resetData()
+    }
+    if (errorMsg) {
       toast.error(errorMsg, {
         position: 'top-center',
       })
-    }
-
-    if (redirect) {
       router.replace(redirect)
     }
   }
@@ -76,7 +102,7 @@ export default function ConfirmPage() {
           size={'sm'}
           type='button'
           className='bg-primary hover:bg-primary/95 flex-grow'
-          onClick={() => router.replace('/client/register/vehicle')}
+          onClick={() => router.replace(SignUpRoutes.VEHICLE)}
         >
           Voltar
         </Button>

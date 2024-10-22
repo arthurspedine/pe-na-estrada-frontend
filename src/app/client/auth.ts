@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios'
-import { loginSchema, type LoginDataInput } from '@/schemas'
+import { loginDataSchema, type LoginDataInput } from '@/schemas'
 import type { jwtToken } from '@/types'
 import { jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
@@ -15,7 +15,7 @@ export async function decrypt(input: string): Promise<jwtToken> {
 }
 
 export async function login(formData: LoginDataInput) {
-  const loginDataParse = loginSchema.safeParse(formData)
+  const loginDataParse = loginDataSchema.safeParse(formData)
 
   const loginData = loginDataParse.success
     ? {
@@ -32,18 +32,18 @@ export async function login(formData: LoginDataInput) {
   const { accessToken } = await authResponse.data
   const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 
-  cookies().set('access_token', accessToken, {
+  cookies().set('pe_access_token', accessToken, {
     expires,
     httpOnly: true,
   })
 }
 
 export async function logout() {
-  cookies().set('access_token', '', { expires: new Date() })
+  cookies().set('pe_access_token', '', { expires: new Date() })
 }
 
 export async function getSession() {
-  const session = cookies().get('access_token')?.value
+  const session = cookies().get('pe_access_token')?.value
   if (!session) return null
   return await decrypt(session)
 }

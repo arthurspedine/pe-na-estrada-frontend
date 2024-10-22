@@ -3,27 +3,28 @@ import { useEffect, useState } from 'react'
 import { Car, ChevronLeft, ChevronRight, UserPen, Vote } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { SignUpRoutes } from '@/types'
 
 const steps = [
   {
     id: 1,
     width: '0',
     route: 'information',
-    path: '/client/register/information',
+    path: SignUpRoutes.INFORMATION,
     icon: <UserPen />,
   },
   {
     id: 2,
     width: '50%',
     route: 'vehicle',
-    path: '/client/register/vehicle',
+    path: SignUpRoutes.VEHICLE,
     icon: <Car />,
   },
   {
     id: 3,
     width: '99%',
     route: 'confirm',
-    path: '/client/register/confirm',
+    path: SignUpRoutes.CONFIRM,
     icon: <Vote />,
   },
 ]
@@ -35,7 +36,7 @@ export function StepNavigation() {
   const [currentStep, setCurrentStep] = useState(0)
 
   useEffect(() => {
-    if (currentPath === 'register') return
+    if (currentPath === 'signup') return
 
     const step = steps.findIndex(s => s.route === currentPath)
     setCurrentStep(step)

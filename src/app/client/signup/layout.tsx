@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { StepNavigation } from './_components/step-navigation'
-import { RegisterContextProvider } from '@/context/register-context'
+import { SignUpContextProvider } from '@/context/signup-context'
 
-export default function RegisterLayout({
+export default function SignUpLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
@@ -14,7 +14,7 @@ export default function RegisterLayout({
         Cadastre agora sua conta para continuar
       </p>
       <StepNavigation />
-      <RegisterContextProvider>{children}</RegisterContextProvider>
+      <SignUpContextProvider>{children}</SignUpContextProvider>
       <p className='text-xs md:text-sm lg:text-base mx-auto flex justify-center text-left text-muted-foreground pb-4'>
         Já tem uma conta?{' '}
         <Link

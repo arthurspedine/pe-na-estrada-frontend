@@ -1,14 +1,14 @@
 'use server'
-import { informationFormSchema } from '@/schemas'
-import { RegisterRoutes, type FormErrors } from '@/types'
+import { vehicleFormSchema } from '@/schemas'
+import { type FormErrors, SignUpRoutes } from '@/types'
 import { redirect } from 'next/navigation'
 
-export const informationFormAction = (
+export const vehicleFormAction = (
   prevState: FormErrors | undefined,
   formData: FormData
 ) => {
   const data = Object.fromEntries(formData.entries())
-  const validated = informationFormSchema.safeParse(data)
+  const validated = vehicleFormSchema.safeParse(data)
 
   if (!validated.success) {
     const errors = validated.error.issues.reduce((acc: FormErrors, issue) => {
@@ -18,5 +18,5 @@ export const informationFormAction = (
     return errors
   }
 
-  redirect(RegisterRoutes.VEHICLE)
+  redirect(SignUpRoutes.CONFIRM)
 }

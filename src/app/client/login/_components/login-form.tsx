@@ -6,25 +6,16 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-
-const loginSchema = z.object({
-  email: z
-    .string()
-    .email('Formato de email inválido.')
-    .max(100, 'O email deve ter no máximo 100 caractéres.'),
-  password: z.string().min(8, 'A senha deve conter ao menos 8 caractéres.'),
-})
-
-type LoginSchema = z.infer<typeof loginSchema>
+import { type LoginDataInput, loginDataSchema } from '@/schemas'
 
 export function LoginForm() {
   //   const router = useRouter()
 
-  const { register, handleSubmit, formState } = useForm<LoginSchema>({
-    resolver: zodResolver(loginSchema),
+  const { register, handleSubmit, formState } = useForm<LoginDataInput>({
+    resolver: zodResolver(loginDataSchema),
   })
 
-  function handleUserLogin(data: LoginSchema) {
+  function handleUserLogin(data: LoginDataInput) {
     console.log(data)
   }
 

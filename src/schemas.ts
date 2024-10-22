@@ -65,7 +65,7 @@ export const vehicleFormSchema = z.object({
     }),
 })
 
-export const registerInitialValueSchema = z.object({
+export const signUpInitialValueSchema = z.object({
   name: z.string().optional(),
   cpf: z.string().optional(),
   birthDate: z.string().optional(),
@@ -77,17 +77,15 @@ export const registerInitialValueSchema = z.object({
   licensePlate: z.string().optional(),
 })
 
-export const confirmSchema = z.object({
+export const confirmSignUpSchema = z.object({
   ...informationFormSchema.shape,
   ...vehicleFormSchema.shape,
 })
 
-export type ConfirmType = z.infer<typeof confirmSchema>
-export type RegisterInitialValueType = z.infer<
-  typeof registerInitialValueSchema
->
+export type ConfirmSignUpType = z.infer<typeof confirmSignUpSchema>
+export type SignUpInitialValueType = z.infer<typeof signUpInitialValueSchema>
 
-export const loginSchema = z.object({
+export const loginDataSchema = z.object({
   email: z
     .string()
     .email('Formato de email inválido.')
@@ -105,4 +103,14 @@ export const loginSchema = z.object({
     ),
 })
 
-export type LoginDataInput = z.infer<typeof loginSchema>
+export type LoginDataInput = z.infer<typeof loginDataSchema>
+
+const signUpDataSchema = z.object({
+  name: informationFormSchema.shape.name,
+  cpf: informationFormSchema.shape.cpf,
+  birthDate: informationFormSchema.shape.birthDate,
+  login: loginDataSchema, // Incorporando o esquema de login
+  vehicle: vehicleFormSchema, // Incorporando o esquema de veículo
+})
+
+export type SignUpDataInput = z.infer<typeof signUpDataSchema>

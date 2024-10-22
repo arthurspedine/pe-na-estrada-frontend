@@ -24,7 +24,7 @@ export default async function middleware(req: NextRequest) {
   const isAuthRoute = authRoute.some(route => path.startsWith(route))
 
   if (isProtectedRoute) {
-    const token = req.cookies.get('access_token')?.value
+    const token = req.cookies.get('pe_access_token')?.value
 
     if (token) {
       const tokenData = await verifyJWT(token)
@@ -37,7 +37,7 @@ export default async function middleware(req: NextRequest) {
   }
 
   if (isAuthRoute) {
-    const token = req.cookies.get('access_token')?.value
+    const token = req.cookies.get('pe_access_token')?.value
 
     if (token) {
       const tokenData = await verifyJWT(token)

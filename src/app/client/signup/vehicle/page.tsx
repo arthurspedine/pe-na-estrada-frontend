@@ -6,7 +6,7 @@ import { useFormState } from 'react-dom'
 import { vehicleFormAction } from './actions'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useRegisterContext } from '@/context/register-context'
+import { useSignUpContext } from '@/context/signup-context'
 
 const initialState: FormErrors = {}
 export default function VehicleFormPage() {
@@ -17,10 +17,10 @@ export default function VehicleFormPage() {
     initialState
   )
 
-  const { updateRegisterDetails, registerData } = useRegisterContext()
+  const { updateSignUpDetails, signUpData } = useSignUpContext()
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    updateRegisterDetails({ [e.target.name]: e.target.value })
+    updateSignUpDetails({ [e.target.name]: e.target.value })
   }
 
   return (
@@ -35,7 +35,7 @@ export default function VehicleFormPage() {
           name='brand'
           type='text'
           onChange={handleInputChange}
-          defaultValue={registerData.brand}
+          defaultValue={signUpData.brand}
           placeholder='Marca'
         />
         {serverErrors?.brand ? (
@@ -55,7 +55,7 @@ export default function VehicleFormPage() {
           name='model'
           type='text'
           onChange={handleInputChange}
-          defaultValue={registerData.model}
+          defaultValue={signUpData.model}
           placeholder='Modelo'
         />
         {serverErrors?.model ? (
@@ -75,7 +75,7 @@ export default function VehicleFormPage() {
           name='year'
           type='text'
           onChange={handleInputChange}
-          defaultValue={registerData.year}
+          defaultValue={signUpData.year}
           placeholder='0000'
         />
         {serverErrors?.year ? (
@@ -93,7 +93,7 @@ export default function VehicleFormPage() {
           name='licensePlate'
           type='text'
           onChange={handleInputChange}
-          defaultValue={registerData.licensePlate}
+          defaultValue={signUpData.licensePlate}
           placeholder='ABC-1234'
         />
         {serverErrors?.licensePlate ? (
@@ -109,7 +109,7 @@ export default function VehicleFormPage() {
           size={'sm'}
           type='button'
           className='bg-primary hover:bg-primary/95 flex-grow'
-          onClick={() => router.replace('/client/register/information')}
+          onClick={() => router.replace('/client/signup/information')}
         >
           Voltar
         </Button>
