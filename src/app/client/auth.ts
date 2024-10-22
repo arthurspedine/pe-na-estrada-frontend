@@ -1,5 +1,10 @@
+'use server'
 import { api } from '@/lib/axios'
-import { loginDataSchema, type LoginDataInput } from '@/schemas'
+import {
+  loginDataSchema,
+  type SignUpDataInput,
+  type LoginDataInput,
+} from '@/schemas'
 import type { jwtToken } from '@/types'
 import { jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
@@ -25,17 +30,23 @@ export async function login(formData: LoginDataInput) {
     : {}
 
   const authResponse = await api.post(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`,
+    `${process.env.BACKEND_URL}/login`,
     loginData
   )
 
-  const { accessToken } = await authResponse.data
+  console.log(authResponse.data.token)
+
+  const { token } = await authResponse.data
   const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 
-  cookies().set('pe_access_token', accessToken, {
+  cookies().set('pe_access_token', token, {
     expires,
     httpOnly: true,
   })
+}
+
+export async function signup(formData: SignUpDataInput) {
+  api.post(`${process.env.BACKEND_URL}/client/signup`, formData)
 }
 
 export async function logout() {

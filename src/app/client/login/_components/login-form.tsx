@@ -1,22 +1,34 @@
 'use client'
 import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/router'
-import { z } from 'zod'
+import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { type LoginDataInput, loginDataSchema } from '@/schemas'
+import { handleLogin } from '../handle-login'
+import { toast } from 'sonner'
 
 export function LoginForm() {
-  //   const router = useRouter()
+  const router = useRouter()
 
   const { register, handleSubmit, formState } = useForm<LoginDataInput>({
     resolver: zodResolver(loginDataSchema),
   })
 
   function handleUserLogin(data: LoginDataInput) {
-    console.log(data)
+    const loginRequest = handleLogin(data)
+
+    toast.promise(loginRequest, {
+      loading: 'Verificando credenciais...',
+      success: () => {
+        router.refresh()
+        return 'Logado com sucesso.'
+      },
+      error: 'Algo deu errado. Por favor, verifique suas credenciais.',
+      position: 'top-center',
+      style: { filter: 'none', zIndex: 10 },
+    })
   }
 
   return (
