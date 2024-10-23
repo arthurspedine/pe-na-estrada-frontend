@@ -54,11 +54,11 @@ export function LoginForm() {
         )}
       </div>
       <div>
-        <Label htmlFor='senha' className='font-bold'>
+        <Label htmlFor='password' className='font-bold'>
           Senha
         </Label>
         <Input
-          id='email'
+          id='password'
           type='password'
           placeholder='********'
           {...register('password')}

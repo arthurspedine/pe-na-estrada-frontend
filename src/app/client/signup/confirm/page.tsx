@@ -53,6 +53,7 @@ export default function ConfirmPage() {
       toast.promise(signUpRequest, {
         loading: 'Cadastrando usuário...',
         success: () => {
+          resetData()
           router.replace(redirect)
           return 'Cadastrado realizado com sucesso.'
         },
@@ -61,7 +62,6 @@ export default function ConfirmPage() {
         style: { filter: 'none', zIndex: 10 },
       })
 
-      // resetData()
     }
     if (errorMsg) {
       toast.error(errorMsg, {
