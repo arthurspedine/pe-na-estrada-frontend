@@ -1,5 +1,5 @@
 'use server'
-import { logout } from '@/app/client/auth'
+import { logout } from '@/app/(home)/client/auth'
 
 export async function handleLogout() {
   try {

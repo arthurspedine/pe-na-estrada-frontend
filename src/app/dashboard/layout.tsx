@@ -1,4 +1,5 @@
 import { DashboardNavBar } from '@/components/dashboard-navbar'
+import { DesktopHeader } from '@/components/desktop-header'
 
 export default function DashboardLayout({
   children,
@@ -6,9 +7,12 @@ export default function DashboardLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className='flex flex-col h-[calc(100dvh)] w-full'>
-      {children}
+    <main className='flex flex-col h-[calc(100dvh)]'>
+      <DesktopHeader />
+      <div className='flex flex-col w-full flex-grow overflow-y-auto'>
+        {children}
+      </div>
       <DashboardNavBar />
-    </div>
+    </main>
   )
 }

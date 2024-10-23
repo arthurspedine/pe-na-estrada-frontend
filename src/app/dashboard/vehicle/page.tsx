@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@radix-ui/react-label'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import router from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -26,7 +26,9 @@ export default function VehiclePage() {
     toast.promise(createVehicleRequest, {
       loading: 'Cadastrando veículo...',
       success: () => {
-        router.push('/dashboard') // GOT TO REVISE TODO
+        setTimeout(() => {
+          router.replace('/dashboard')
+        }, 500)
         return 'Cadastrado realizado com sucesso.'
       },
       error: err => {
@@ -38,7 +40,7 @@ export default function VehiclePage() {
   }
 
   return (
-    <main className='flex flex-col flex-grow px-8'>
+    <section className='flex flex-col flex-grow px-8'>
       <h1 className='text-2xl font-semibold text-center'>
         Adicionar um novo veículo
       </h1>
@@ -137,6 +139,6 @@ export default function VehiclePage() {
           </Button>
         </div>
       </form>
-    </main>
+    </section>
   )
 }

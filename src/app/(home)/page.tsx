@@ -6,7 +6,6 @@ import bg from '/public/image/bg.png'
 import type { HomeCardDetail } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Footer } from '@/components/footer'
 
 export default function HomePage() {
   const cards: HomeCardDetail[] = [
@@ -37,8 +36,8 @@ export default function HomePage() {
   ]
 
   return (
-    <main className='flex-grow'>
-      <section className='relative w-full h-[80vh] max-h-[80vh] flex items-center justify-center text-center'>
+    <section>
+      <section className='relative h-[580px] flex items-center justify-center text-center'>
         <Image
           src={bg}
           alt='Background'
@@ -97,7 +96,6 @@ export default function HomePage() {
           ))}
         </div>
       </div>
-      <Footer />
-    </main>
+    </section>
   )
 }

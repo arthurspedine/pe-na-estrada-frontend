@@ -6,7 +6,7 @@ import { Star } from 'lucide-react'
 export default async function WorkshopsPage() {
   const data: Workshop[] = await handleGetWorkshops()
   return (
-    <main className='w-full flex-grow flex flex-col pb-20'>
+    <section className='flex-grow flex flex-col'>
       <h1 className='text-2xl font-semibold text-center'>Oficinas Parceiras</h1>
       <div>
         {data.map(workshop => {
@@ -34,6 +34,6 @@ export default async function WorkshopsPage() {
           )
         })}
       </div>
-    </main>
+    </section>
   )
 }

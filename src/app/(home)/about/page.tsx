@@ -32,7 +32,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <main className='flex flex-grow flex-col overflow-x-hidden'>
+    <>
       <section className='h-[550px] flex w-full bg-[#eaeaea]'>
         {/* container */}
         <div className='max-w-[1440px] py-4 mx-auto w-full flex flex-col items-center lg:flex-row'>
@@ -79,7 +79,6 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-      <Footer />
-    </main>
+    </>
   )
 }

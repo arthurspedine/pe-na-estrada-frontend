@@ -45,7 +45,7 @@ export function DashboardNavBar() {
   }, [currentPath])
 
   return (
-    <nav className='flex max-h-fit justify-around bg-popover border-t py-2.5 fixed bottom-0 w-full'>
+    <nav className='flex max-h-fit justify-around bg-popover border-t py-2.5 w-full'>
       {links.map(link => (
         <Link
           key={link.id}

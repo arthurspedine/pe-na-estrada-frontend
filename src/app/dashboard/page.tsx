@@ -11,7 +11,7 @@ export default async function dashboardPage() {
   const data: User = await handleGetDashboard()
 
   return (
-    <main className='w-full flex-grow flex flex-col'>
+    <section className='w-full flex flex-col'>
       <div className='py-8 px-6 bg-popover border text-center '>
         <h1 className='text-3xl font-semibold'>
           Experimente agora a nossa IA!
@@ -40,7 +40,7 @@ export default async function dashboardPage() {
           </div>
         </div>
         <Separator />
-        <div className='w-full flex flex-col flex-grow bg-popover shadow-sm pb-20 relative'>
+        <div className='w-full flex flex-col flex-grow bg-popover shadow-sm relative'>
           <h3 className='py-4 text-center text-xl shadow-sm'>
             Veículos cadastrados
           </h3>
@@ -59,10 +59,10 @@ export default async function dashboardPage() {
                   key={v.id}
                   aria-label={`Veículo ${i + 1}: ${completedName}, Placa: ${v.licensePlate}`}
                 >
-                <div className='flex justify-between items-center'>
-                  <h4 className='font-semibold mb-2'>Veículo {i + 1}</h4>
-                  <DeleteVehicle id={v.id} />
-                </div>
+                  <div className='flex justify-between items-center'>
+                    <h4 className='font-semibold mb-2'>Veículo {i + 1}</h4>
+                    <DeleteVehicle id={v.id} />
+                  </div>
                   <p className='text'>{completedName}</p>
                   <p className='text-muted-foreground text-sm'>
                     Placa:{' '}
@@ -74,6 +74,6 @@ export default async function dashboardPage() {
           </ul>
         </div>
       </section>
-    </main>
+    </section>
   )
 }

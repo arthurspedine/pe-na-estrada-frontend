@@ -129,8 +129,8 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
   }
 
   return (
-    <div className='flex flex-col h-full w-full m-auto bg-primary/30 p-2 rounded-sm mb-20'>
-      <div className='flex flex-1 flex-col p-4 space-y-6 bg-popover w-full overflow-y-auto'>
+    <div className='flex flex-col flex-grow w-full bg-primary/30 p-1 rounded-sm mb-2'>
+      <div className='flex flex-col flex-grow p-4 space-y-6 bg-popover w-full'>
         {messages.map((msg, index) => (
           <Message
             key={`${msg.timestamp}-${index}`}
