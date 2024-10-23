@@ -25,7 +25,12 @@ export default async function WorkshopsPage() {
                   <p className='flex gap-1 text-sm items-center'>
                     {workshop.rating}/5 <Star className='size-5' />
                   </p>
-                  <a href={workshop.mapsUrl} className='text-primary text-sm'>
+                  <a
+                    href={workshop.mapsUrl}
+                    className='text-primary text-sm'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                     Google Maps
                   </a>
                 </div>
