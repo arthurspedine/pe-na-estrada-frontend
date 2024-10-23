@@ -1,10 +1,19 @@
-'use server'
-import { handleGetWorkshops } from '@/http/handle-get-workshops'
 import type { Workshop } from '../interfaces'
 import { Star } from 'lucide-react'
+import { cookies } from 'next/headers'
 
 export default async function WorkshopsPage() {
-  const data: Workshop[] = await handleGetWorkshops()
+  const res = await fetch(`${process.env.BACKEND_URL}/workshop`, {
+    method: 'GET',
+    cache: 'no-cache',
+    credentials: 'include',
+    headers: {
+      Cookie: cookies().toString(),
+      'Content-Type': 'application/json',
+    },
+  })
+  const data: Workshop[] = await res.json()
+
   return (
     <section className='flex-grow flex flex-col'>
       <h1 className='text-2xl font-semibold text-center'>Oficinas Parceiras</h1>

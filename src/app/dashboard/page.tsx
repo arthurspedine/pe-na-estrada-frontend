@@ -1,14 +1,23 @@
-'use server'
 import Link from 'next/link'
-import { handleGetDashboard } from '@/http/handle-get-dashboard'
 import { Separator } from '@/components/ui/separator'
 import type { User } from './interfaces'
 import { Plus } from 'lucide-react'
 import { LogoutButton } from './_components/logout-button'
 import { DeleteVehicle } from './_components/delete-vehicle'
+import { cookies } from 'next/headers'
 
 export default async function dashboardPage() {
-  const data: User = await handleGetDashboard()
+  const req = await fetch(`${process.env.BACKEND_URL}/client/dashboard`, {
+    method: 'GET',
+    cache: 'no-cache',
+    credentials: 'include',
+    headers: {
+      Cookie: cookies().toString(),
+      'Content-Type': 'application/json',
+    },
+  })
+
+  const data: User = await req.json()
 
   return (
     <section className='w-full flex flex-col'>
