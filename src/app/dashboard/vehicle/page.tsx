@@ -26,7 +26,7 @@ export default function VehiclePage() {
     toast.promise(createVehicleRequest, {
       loading: 'Cadastrando veículo...',
       success: () => {
-        router.replace('/dashboard')
+        router.push('/dashboard') // GOT TO REVISE TODO
         return 'Cadastrado realizado com sucesso.'
       },
       error: err => {

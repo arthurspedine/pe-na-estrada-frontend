@@ -16,7 +16,6 @@ export async function createNewVehicle(data: CreateVehicleSchema) {
       body: JSON.stringify(data),
     })
 
-    // Verifica se a resposta foi bem-sucedida
     if (!req.ok) {
       const errorResponse = await req.text()
       return Promise.reject(new Error(JSON.parse(errorResponse).error))

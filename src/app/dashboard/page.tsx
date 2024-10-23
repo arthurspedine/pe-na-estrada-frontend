@@ -3,20 +3,9 @@ import Link from 'next/link'
 import { handleGetDashboard } from '@/http/handle-get-dashboard'
 import { Separator } from '@/components/ui/separator'
 import type { User } from './interfaces'
-import { Button } from '@/components/ui/button'
-import { LogOut, Plus } from 'lucide-react'
-import { logout } from '../client/auth'
+import { Plus } from 'lucide-react'
 import { LogoutButton } from './_components/logout-button'
-import { AddNewCar } from './_components/add-new-car'
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+import { DeleteVehicle } from './_components/delete-vehicle'
 
 export default async function dashboardPage() {
   const data: User = await handleGetDashboard()
@@ -66,11 +55,14 @@ export default async function dashboardPage() {
               const completedName = `${v.brand} ${v.model} ${v.year}`
               return (
                 <li
-                  className='w-60 bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow duration-300'
+                  className='w-60 bg-white rounded-lg shadow-md pb-4 pt-2 px-4 hover:shadow-xl transition-shadow duration-300'
                   key={v.id}
                   aria-label={`Veículo ${i + 1}: ${completedName}, Placa: ${v.licensePlate}`}
                 >
+                <div className='flex justify-between items-center'>
                   <h4 className='font-semibold mb-2'>Veículo {i + 1}</h4>
+                  <DeleteVehicle id={v.id} />
+                </div>
                   <p className='text'>{completedName}</p>
                   <p className='text-muted-foreground text-sm'>
                     Placa:{' '}
