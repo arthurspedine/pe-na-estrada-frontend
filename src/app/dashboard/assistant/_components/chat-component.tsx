@@ -9,6 +9,8 @@ import { Message } from './message'
 import { SendHorizonal } from 'lucide-react'
 import { getInitials } from '@/helper/get-initials'
 import { toast } from 'sonner'
+import { handleCreateEstimate } from '../handle-create-estimate'
+import { useRouter } from 'next/navigation'
 
 type ChatProps = {
   username: string
@@ -16,7 +18,7 @@ type ChatProps = {
   workshops: { id: number; name: string }[]
 }
 
-type CreateEstimate = {
+export type CreateEstimate = {
   vehicleId: number
   workshopId: number
   description: string
@@ -24,6 +26,8 @@ type CreateEstimate = {
 }
 
 export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
+  const router = useRouter()
+
   const usernameInitials = getInitials(username)
 
   const submitButtonRef = useRef<HTMLButtonElement>(null)
@@ -94,24 +98,43 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
     }, 100)
   }
 
-  const handleScheduleSubmit = () => {
-    const scheduleDate = new Date(input)
-    const today = new Date()
-    if (scheduleDate < today) {
-      toast.error(
-        'Você não pode agendar um orçamento em uma data anterior à hoje.'
-      )
-    }
-    toast.success('Orçamento cadastrado!')
+  const handleScheduleEstimate = async (scheduledAt: string) => {
+    const data: CreateEstimate = { ...newEstimate, scheduledAt }
+    const createEstimateRequest = handleCreateEstimate(data)
+
+    toast.promise(createEstimateRequest, {
+      loading: 'Agendando orçamento...',
+      success: () => {
+        router.replace('/dashboard/estimate')
+        return 'Orçamento agendado com sucesso!'
+      },
+      error: 'Algo deu ao agendar seu orçamento.',
+      position: 'top-center',
+      style: { filter: 'none', zIndex: 10 },
+    })
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!input.trim()) return
+    let inputValue = null
+
     if (scheduleEstimateActive) {
-      handleScheduleSubmit()
-      return
+      const scheduleDate = new Date(input)
+      const today = new Date()
+      if (scheduleDate < today) {
+        toast.error(
+          'Você não pode agendar um orçamento em uma data anterior à hoje.',
+          {
+            position: 'top-center',
+            style: { filter: 'none', zIndex: 10 },
+          }
+        )
+        return
+      }
+      inputValue = input.replace('T', ' às ')
+      setScheduleEstimateActive(false)
     }
     setInput('')
 
@@ -119,14 +142,17 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
     setMessages([
       ...messages,
       {
-        text: input,
+        text: inputValue ? inputValue : input,
         fromUser: true,
         timestamp: userInputTimeStamp,
       },
     ])
 
     // msg to watson
-    const responseAPI = await sendMessage(sessionId, input)
+    const responseAPI = await sendMessage(
+      sessionId,
+      inputValue ? inputValue : input
+    )
     const respTimeStamp = getFormattedTime()
 
     const resp: ProcessedApiResponse[] = processApiResponse(responseAPI)
@@ -181,10 +207,14 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
       }
     }
 
+    if (scheduleEstimateActive) {
+      handleScheduleEstimate(input)
+    }
+
     setMessages([
       ...messages,
       {
-        text: input,
+        text: inputValue ? inputValue : input,
         fromUser: true,
         timestamp: userInputTimeStamp,
       },
