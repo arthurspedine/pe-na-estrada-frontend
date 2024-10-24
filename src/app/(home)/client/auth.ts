@@ -44,7 +44,7 @@ export async function login(formData: LoginDataInput) {
 }
 
 export async function signup(formData: SignUpDataInput) {
-  api.post(`${process.env.BACKEND_URL}/client/signup`, formData)
+  await api.post(`${process.env.BACKEND_URL}/client/signup`, formData)
 }
 
 export async function logout() {
