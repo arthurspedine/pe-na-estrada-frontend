@@ -20,7 +20,7 @@ export default async function dashboardPage() {
   const data: User = await req.json()
 
   return (
-    <section className='w-full flex flex-col'>
+    <section className='w-full flex flex-col flex-grow'>
       <div className='py-8 px-6 bg-popover border text-center '>
         <h1 className='text-3xl font-semibold'>
           Experimente agora a nossa IA!
@@ -59,7 +59,7 @@ export default async function dashboardPage() {
           >
             <Plus style={{ width: '22px', height: '22px' }} />
           </Link>
-          <ul className='w-full flex flex-wrap justify-evenly gap-2 items-center p-4'>
+          <ul className='w-full flex flex-wrap flex-grow justify-evenly gap-2 items-start p-4'>
             {data.vehicles.map((v, i) => {
               const completedName = `${v.brand} ${v.model} ${v.year}`
               return (

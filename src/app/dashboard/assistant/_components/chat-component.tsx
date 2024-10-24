@@ -129,7 +129,7 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
   }
 
   return (
-    <div className='flex flex-col flex-grow w-full bg-primary/30 p-1 rounded-sm mb-2'>
+    <div className='flex flex-col flex-grow bg-primary/30 p-1 rounded-sm mb-2 max-w-[1440px] w-full'>
       <div className='flex flex-col flex-grow p-4 space-y-6 bg-popover w-full'>
         {messages.map((msg, index) => (
           <Message

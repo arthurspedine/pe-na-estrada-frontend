@@ -22,8 +22,8 @@ export function Message({
       className={`flex items-start space-x-2 ${fromUser ? 'justify-end' : ''}`}
     >
       {!fromUser && (
-        <Avatar>
-          <AvatarFallback>PE</AvatarFallback>
+        <Avatar className='size-8 sm:size-10'>
+          <AvatarFallback className='size-8 sm:size-10'>PE</AvatarFallback>
         </Avatar>
       )}
 

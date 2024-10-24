@@ -15,9 +15,9 @@ export default async function WorkshopsPage() {
   const data: Workshop[] = await res.json()
 
   return (
-    <section className='flex-grow flex flex-col'>
+    <section className='flex-grow flex flex-col items-center'>
       <h1 className='text-2xl font-semibold text-center'>Oficinas Parceiras</h1>
-      <div>
+      <div className='max-w-[1440px] w-full'>
         {data.map(workshop => {
           const address = workshop.address
           const fullAddress = `${address.address}, ${address.number} - ${address.neighborhood}, ${address.city} - ${address.state}, ${address.zipCode}`
