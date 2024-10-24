@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createSession, sendMessage } from '../watsonApi'
-import type { ProcessedApiResponse, ProcessedOptionResponse } from '../../types'
+import type { ProcessedApiResponse } from '../../types'
 import { getFormattedTime } from '@/helper/format-message-timestamp'
 import { processApiResponse } from '../process-api-response'
 import { Message } from './message'
 import { SendHorizonal } from 'lucide-react'
 import { getInitials } from '@/helper/get-initials'
+import { toast } from 'sonner'
 
 type ChatProps = {
   username: string
@@ -15,14 +16,36 @@ type ChatProps = {
   workshops: { id: number; name: string }[]
 }
 
+type CreateEstimate = {
+  vehicleId: number
+  workshopId: number
+  description: string
+  scheduledAt: string
+}
+
 export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
   const usernameInitials = getInitials(username)
 
   const submitButtonRef = useRef<HTMLButtonElement>(null)
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
+
   const [sessionId, setSessionId] = useState<string>('')
+
   const [input, setInput] = useState<string>('')
   const [inputEnable, setInputEnable] = useState<boolean>(true)
+
+  const [newEstimate, setNewEstimate] = useState<CreateEstimate>({
+    vehicleId: 0,
+    workshopId: 0,
+    description: '',
+    scheduledAt: '',
+  })
+
+  const [toSelectVehicle, setToSelectVehicle] = useState<boolean>(false)
+  const [toSelectWorkShop, setToSelectWorkShop] = useState<boolean>(false)
+  const [scheduleEstimateActive, setScheduleEstimateActive] =
+    useState<boolean>(false)
+
   const [messages, setMessages] = useState<
     {
       text: string | ProcessedApiResponse[]
@@ -49,12 +72,21 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
   }, [])
 
   useEffect(() => {
-    if (messagesEndRef.current) {
+    if (messagesEndRef.current && messages) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
     }
   }, [messages])
 
-  function handleOptionComponent(value: string) {
+  function handleOptionComponent(value: string, id: number | null) {
+    if (toSelectVehicle && id) {
+      setNewEstimate(prev => ({ ...prev, vehicleId: id }))
+      setToSelectVehicle(false)
+    }
+    if (toSelectWorkShop && id) {
+      setNewEstimate(prev => ({ ...prev, workshopId: id }))
+      setToSelectWorkShop(false)
+    }
+
     setInput(value)
     setInputEnable(true)
     setTimeout(() => {
@@ -62,10 +94,25 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
     }, 100)
   }
 
+  const handleScheduleSubmit = () => {
+    const scheduleDate = new Date(input)
+    const today = new Date()
+    if (scheduleDate < today) {
+      toast.error(
+        'Você não pode agendar um orçamento em uma data anterior à hoje.'
+      )
+    }
+    toast.success('Orçamento cadastrado!')
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!input.trim()) return
+    if (scheduleEstimateActive) {
+      handleScheduleSubmit()
+      return
+    }
     setInput('')
 
     const userInputTimeStamp = getFormattedTime()
@@ -90,22 +137,48 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
     ) {
       resp.push({
         options: vehicles.map(v => {
-          return { label: v.name, value: v.name }
+          return { label: v.name, value: v.name, id: v.id }
         }),
       })
+      setToSelectVehicle(true)
     }
 
     if (
       'content' in resp[0] &&
-      resp[0].content.includes(
-        'Vamos lhe informar o custo do orçamento em alguns instantes, aguarde por favor.'
-      )
+      resp[0].content ===
+        'Perfeito! Diga-me a data/dia de sua preferência para marcarmos o serviço.'
     ) {
-      resp.push({
-        options: workshops.map(w => {
-          return { label: w.name, value: w.name }
-        }),
-      })
+      setScheduleEstimateActive(true)
+    }
+
+    if (resp.length > 1 && resp.length < 3) {
+      if (
+        'content' in resp[1] &&
+        resp[1].content.includes(
+          'Para finalizar seu orçamento, escolha uma das oficinas listadas por sua preferencia:'
+        )
+      ) {
+        resp.push({
+          options: workshops.map(w => {
+            return { label: w.name, value: w.name, id: w.id }
+          }),
+        })
+        setToSelectWorkShop(true)
+      }
+    } else if (resp.length === 3) {
+      const description = resp.pop()
+      if (!description) return
+      if ('content' in description) {
+        const parsed = JSON.parse(description.content.replaceAll('\n', '\\n'))
+        const formattedDesc = `${parsed.problems} Valor inicial: ${parsed.value.toLocaleString(
+          'pt-BR',
+          {
+            style: 'currency',
+            currency: 'BRL',
+          }
+        )}`
+        setNewEstimate(prev => ({ ...prev, description: formattedDesc }))
+      }
     }
 
     setMessages([
@@ -148,7 +221,7 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
       <form onSubmit={handleSubmit} className='bg-background border p-4'>
         <div className='flex w-full'>
           <input
-            type='text'
+            type={scheduleEstimateActive ? 'datetime-local' : 'text'}
             disabled={!inputEnable}
             placeholder='Escreva aqui o que está acontecendo...'
             value={input}

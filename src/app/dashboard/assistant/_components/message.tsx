@@ -7,7 +7,7 @@ interface MessageProps {
   fromUser: boolean
   timestamp: string
   usernameInitials: string
-  setValue: (value: string) => void
+  setValue: (value: string, id: number | null) => void
 }
 
 export function Message({

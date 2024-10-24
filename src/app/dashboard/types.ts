@@ -6,6 +6,7 @@ export type ProcessedOptionResponse = {
   options: {
     label: string
     value: string
+    id?: number
   }[]
 }
 
