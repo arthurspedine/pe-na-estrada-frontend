@@ -14,6 +14,7 @@ async function verifyJWT(token: string) {
 export default async function middleware(req: NextRequest) {
   const protectedRoutes = {
     dashboard: '/dashboard',
+    workshop_dashboard: '/workshop',
   }
   const authRoute = ['/client']
 
@@ -29,12 +30,20 @@ export default async function middleware(req: NextRequest) {
     if (token) {
       const tokenData = await verifyJWT(token)
       if (tokenData) {
+        if (
+          tokenData.sub?.includes('oficina.') &&
+          path.startsWith('/dashboard')
+        ) {
+          const workshopUrl = new URL('/workshop', req.nextUrl)
+          return NextResponse.redirect(workshopUrl)
+        }
         return NextResponse.next()
       }
     }
     const loginUrl = new URL('/client/login', req.nextUrl)
     return NextResponse.redirect(loginUrl)
   }
+  console.log('default')
 
   if (isAuthRoute) {
     const token = req.cookies.get('pe_access_token')?.value
@@ -42,6 +51,10 @@ export default async function middleware(req: NextRequest) {
     if (token) {
       const tokenData = await verifyJWT(token)
       if (tokenData) {
+        if (tokenData.sub?.includes('oficina.')) {
+          const workshopUrl = new URL('/workshop', req.nextUrl)
+          return NextResponse.redirect(workshopUrl)
+        }
         const dashboardUrl = new URL('/dashboard', req.nextUrl)
         return NextResponse.redirect(dashboardUrl)
       }
@@ -52,5 +65,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/client/:path*'],
+  matcher: ['/dashboard/:path*', '/client/:path*', '/workshop/:path*'],
 }

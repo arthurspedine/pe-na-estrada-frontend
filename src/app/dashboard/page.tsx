@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
 import type { User } from './interfaces'
 import { Plus } from 'lucide-react'
-import { LogoutButton } from './_components/logout-button'
+import { LogoutButton } from '@/components/logout-button'
 import { DeleteVehicle } from './_components/delete-vehicle'
 import { cookies } from 'next/headers'
 
@@ -55,7 +55,7 @@ export default async function DashboardPage() {
           </h3>
           <Link
             href={'/dashboard/vehicle'}
-            className='absolute right-4 top-4 bg-green-500 rounded-full p-1'
+            className='absolute right-4 top-4 bg-green-300 rounded-full p-1'
           >
             <Plus style={{ width: '22px', height: '22px' }} />
           </Link>

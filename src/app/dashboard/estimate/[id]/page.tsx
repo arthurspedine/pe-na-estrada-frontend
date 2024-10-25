@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Separator } from '@radix-ui/react-separator'
+import { Separator } from '@/components/ui/separator'
 import type { Estimate } from '../../interfaces'
 import { clientEnv } from '@/env'
 import { cookies } from 'next/headers'
@@ -101,6 +101,7 @@ export default async function EstimateIdPage({
           {estimate.value ? <p>Valor total: R${estimate.value}</p> : ''}
         </div>
 
+        <Separator />
         <div className='flex flex-col flex-grow'>
           <h3 className='font-semibold text-center'>Serviços</h3>
           <p className='text-sm text-muted-foreground text-center'>

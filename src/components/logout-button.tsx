@@ -9,7 +9,7 @@ export function LogoutButton() {
   return (
     <Button
       variant={'ghost'}
-      className='absolute right-0 top-5 hover:bg-white'
+      className='absolute right-0 hover:bg-white'
       onClick={async () => {
         await logout()
         router.refresh()
