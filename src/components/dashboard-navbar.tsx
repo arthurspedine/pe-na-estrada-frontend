@@ -50,7 +50,7 @@ export function DashboardNavBar() {
         <Link
           key={link.id}
           href={`/dashboard/${link.path}`}
-          className={`flex flex-col items-center justify-center ${link.id - 1 === currentPage ? 'text-primary' : 'text-foreground'}`}
+          className={`text-sm sm:text-base text-center flex flex-col items-center justify-center ${link.id - 1 === currentPage ? 'text-primary' : 'text-foreground'}`}
         >
           {link.icon} {link.label}
         </Link>

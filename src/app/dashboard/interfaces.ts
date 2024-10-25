@@ -36,3 +36,28 @@ export interface Workshop {
   mapsUrl: string
   contacts: Contact[]
 }
+
+export interface Estimate {
+  id: number
+  client: {
+    id: number
+    name: string
+    email: string
+    contacts: Contact[]
+  }
+  vehicle: Vehicle
+  workshop: Workshop
+  initialDescription: string
+  scheduledAt: string
+  createdAt: string
+  value: number | null
+  finishedAt: string | null
+  services: Service[]
+}
+
+export interface Service {
+  id: number
+  description: string
+  price: number
+  createdAt: string
+}

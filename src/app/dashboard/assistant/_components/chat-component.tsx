@@ -196,7 +196,7 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
       if (!description) return
       if ('content' in description) {
         const parsed = JSON.parse(description.content.replaceAll('\n', '\\n'))
-        const formattedDesc = `${parsed.problems} Valor inicial: ${parsed.value.toLocaleString(
+        const formattedDesc = `${parsed.problems} Valor aproximado: ${parsed.value.toLocaleString(
           'pt-BR',
           {
             style: 'currency',
@@ -248,7 +248,7 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
       </div>
 
       {/* input */}
-      <form onSubmit={handleSubmit} className='bg-background border p-4'>
+      <form onSubmit={handleSubmit} className='bg-background border py-4 px-2'>
         <div className='flex w-full'>
           <input
             type={scheduleEstimateActive ? 'datetime-local' : 'text'}
