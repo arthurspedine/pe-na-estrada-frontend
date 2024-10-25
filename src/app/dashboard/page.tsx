@@ -6,7 +6,7 @@ import { LogoutButton } from './_components/logout-button'
 import { DeleteVehicle } from './_components/delete-vehicle'
 import { cookies } from 'next/headers'
 
-export default async function dashboardPage() {
+export default async function DashboardPage() {
   const req = await fetch(`${process.env.BACKEND_URL}/client/dashboard`, {
     method: 'GET',
     cache: 'no-cache',
