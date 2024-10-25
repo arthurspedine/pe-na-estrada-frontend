@@ -89,16 +89,21 @@ export default async function EstimatePage() {
                 </div>
                 <Separator />
                 <div>
-                  <div className='flex justify-between items-center'>
+                  <div className='flex flex-col md:justify-between md:items-center text-sm'>
                     {estimate.finishedAt ? (
                       <p className='font-semibold'>
-                        Finalizado em: {estimate.finishedAt}
+                        Finalizado na data{' '}
+                        {estimate.finishedAt.replace('T', ' às ')}
                       </p>
                     ) : (
                       <p className='font-semibold'>Status: ATIVO</p>
                     )}
 
-                    {estimate.value ? <p>Valor: R${estimate.value}</p> : ''}
+                    {estimate.value ? (
+                      <p>Valor total: R${estimate.value}</p>
+                    ) : (
+                      ''
+                    )}
                   </div>
                 </div>
                 <Button asChild>

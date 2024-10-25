@@ -32,11 +32,11 @@ export default async function EstimateIdPage({
   const fullAddress = `${address.address}, ${address.number} - ${address.neighborhood}, ${address.city} - ${address.state}, ${address.zipCode}`
 
   return (
-    <div className='flex-grow flex flex-col items-center'>
+    <div className='flex-grow flex flex-col items-center '>
       <h1 className='text-2xl font-semibold text-center'>Orçamento</h1>
       <div
         key={estimate.id}
-        className='border bg-popover py-2 px-4 flex flex-col flex-grow space-y-1 w-full overflow-y-scroll'
+        className='border bg-popover py-2 px-4 flex flex-col flex-grow space-y-1 w-full max-w-[1440px]'
       >
         <div className='flex justify-end items-center'>
           <p className='text-xs text-muted-foreground'>
@@ -89,29 +89,43 @@ export default async function EstimateIdPage({
         </div>
 
         <Separator />
-        <div className='flex justify-between items-center'>
+        <div className='flex flex-col md:justify-between md:items-center text-sm'>
           {estimate.finishedAt ? (
             <p className='font-semibold'>
-              Finalizado em: {estimate.finishedAt}
+              Finalizado na data {estimate.finishedAt.replace('T', ' às ')}
             </p>
           ) : (
             <p className='font-semibold'>Status: ATIVO</p>
           )}
 
-          {estimate.value ? <p>Valor: R${estimate.value}</p> : ''}
+          {estimate.value ? <p>Valor total: R${estimate.value}</p> : ''}
         </div>
 
-        <div>
+        <div className='flex flex-col flex-grow'>
           <h3 className='font-semibold text-center'>Serviços</h3>
           <p className='text-sm text-muted-foreground text-center'>
             {estimate.services.length === 0
               ? 'A oficina responsável ainda não cadastrou nenhum serviço.'
               : ''}
           </p>
+          <div className='flex flex-col gap-2'>
+            {estimate.services.map(service => (
+              <div key={service.id} className='border text-sm py-2 px-4'>
+                <p className='text-muted-foreground text-right text-xs'>
+                  {service.createdAt.replace('T', ' às ')}
+                </p>
+                <p>Descrição: {service.description}</p>
+                <p className='text-right'>R${service.price}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <Button asChild>
-        <Link href={'/dashboard/estimate'} className='w-4/5 mx-auto my-1'>
+        <Link
+          href={'/dashboard/estimate'}
+          className='w-4/5 max-w-[1440px] mx-auto my-1'
+        >
           Voltar
         </Link>
       </Button>
