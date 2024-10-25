@@ -3,7 +3,7 @@ import { Star } from 'lucide-react'
 import { cookies } from 'next/headers'
 
 export default async function WorkshopsPage() {
-  const res = await fetch(`${process.env.BACKEND_URL}/workshop`, {
+  const res = await fetch(`${process.env.BACKEND_URL}/workshop/all`, {
     method: 'GET',
     cache: 'no-cache',
     credentials: 'include',
