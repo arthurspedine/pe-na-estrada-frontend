@@ -3,8 +3,7 @@ import Image from 'next/image'
 import type { DevCardDetail } from '@/types'
 import { DevCard } from './_components/dev-card'
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
-import phone_img from '/public/image/about/phone.png'
-import { Footer } from '@/components/footer'
+import phone_img from '/public/image/about/about_phone.png'
 
 export default function AboutPage() {
   const devs: DevCardDetail[] = [
@@ -53,7 +52,7 @@ export default function AboutPage() {
           <Image
             src={phone_img}
             alt='Imagem de um celular no Pé na Estrada'
-            className='max-w-[250px] md:max-w-[280px] lg:max-w-[550px] lg:p-8 lg:mx-auto '
+            className='max-w-[210px] md:max-w-[250px] lg:max-w-[470px] lg:p-8 lg:mx-auto '
           />
         </div>
       </section>

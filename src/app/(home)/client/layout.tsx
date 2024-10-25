@@ -1,3 +1,6 @@
+import Image from 'next/image'
+import phone_img from '/public/image/client_phone.png'
+
 export default function ClientLayout({
   children,
 }: Readonly<{
@@ -9,8 +12,8 @@ export default function ClientLayout({
         {/* FORMS */}
         {children}
         {/* IMAGEM CELULAR */}
-        <div className='hidden lg:block'>
-          <img src='image/imagem_celular_login.png' alt='Imagem com celular' />
+        <div className='hidden flex-col items-center lg:flex pt-8'>
+          <Image src={phone_img} alt='Imagem com celular' className='w-4/5' />
         </div>
       </div>
     </section>
