@@ -58,11 +58,8 @@ export const vehicleFormSchema = z.object({
     ),
   licensePlate: z
     .string()
-    .min(8, 'A placa deve ter ao menos 8 caracteres.')
+    .min(7, 'A placa deve ter ao menos 7 caracteres.')
     .max(8, 'A placa deve ter no máximo 8 caracteres.')
-    .refine(plate => /^[A-Z]{3}-\d{4}$/.test(plate), {
-      message: 'A placa deve estar no formato ABC-1234.',
-    }),
 })
 
 export const signUpInitialValueSchema = z.object({
