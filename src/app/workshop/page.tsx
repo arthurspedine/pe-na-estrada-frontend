@@ -37,7 +37,9 @@ export default async function DashboardPage() {
     <section className='w-full flex flex-col flex-grow items-center'>
       <div className='flex flex-col flex-grow max-w-[1440px] w-full px-4 gap-2 relative'>
         <div className='relative flex justify-center'>
-          <h1 className='text-3xl font-semibold text-center'>{data.name}</h1>
+          <h1 className='text-xl font-semibold text-center pr-10 sm:text-2xl sm:pr-0'>
+            {data.name}
+          </h1>
           <LogoutButton />
         </div>
         <p>Endereço: {fullAddress}</p>
