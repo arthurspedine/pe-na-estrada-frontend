@@ -43,7 +43,6 @@ export default async function middleware(req: NextRequest) {
     const loginUrl = new URL('/client/login', req.nextUrl)
     return NextResponse.redirect(loginUrl)
   }
-  console.log('default')
 
   if (isAuthRoute) {
     const token = req.cookies.get('pe_access_token')?.value
