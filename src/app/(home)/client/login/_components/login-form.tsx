@@ -22,7 +22,11 @@ export function LoginForm() {
     toast.promise(loginRequest, {
       loading: 'Verificando credenciais...',
       success: () => {
-        router.refresh()
+        if (data.email.includes('oficina.')) {
+          router.replace('/workshop')
+        } else {
+          router.replace('/dashboard')
+        }
         return 'Logado com sucesso.'
       },
       error: 'Algo deu errado. Por favor, verifique suas credenciais.',
