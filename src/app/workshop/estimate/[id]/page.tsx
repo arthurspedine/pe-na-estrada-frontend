@@ -14,7 +14,7 @@ export default async function EstimateIdPage({
   const id = params.id
   const cookie = cookies().toString()
 
-  const res = await fetch(`${clientEnv.BACKEND_URL}/estimate/${id}`, {
+  const res = await fetch(`${clientEnv.BACKEND_URL}/estimate?id=${id}`, {
     method: 'GET',
     cache: 'no-cache',
     credentials: 'include',

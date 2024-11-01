@@ -20,9 +20,6 @@ export async function createNewVehicle(data: CreateVehicleSchema) {
       const errorResponse = await req.text()
       return Promise.reject(new Error(JSON.parse(errorResponse).error))
     }
-
-    const res = await req.json()
-    return res
   } catch (e) {
     return Promise.reject(new Error('Houve um erro ao criar o veículo'))
   }

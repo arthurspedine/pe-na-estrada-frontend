@@ -24,14 +24,17 @@ export interface User {
 export interface Workshop {
   id: number
   name: string
-  address: {
-    address: string
+  addresses: {
+    id: number
+    streetName: string
     number: string
+    referencePoint: string
     zipCode: string
     neighborhood: string
+    neighborhoodZone: string
     city: string
     state: string
-  }
+  }[]
   rating: number
   mapsUrl: string
   contacts: Contact[]

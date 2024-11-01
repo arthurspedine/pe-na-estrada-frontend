@@ -26,8 +26,8 @@ export default function MenuNavBar({
         setLogged(false)
       }
     }
-    if (open) fetchSession()
-  }, [open])
+    fetchSession()
+  }, [])
 
   async function handleLogoutClick() {
     await handleLogout()

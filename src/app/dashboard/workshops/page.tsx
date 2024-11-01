@@ -19,8 +19,6 @@ export default async function WorkshopsPage() {
       <h1 className='text-2xl font-semibold text-center'>Oficinas Parceiras</h1>
       <div className='max-w-[1440px] w-full'>
         {data.map(workshop => {
-          const address = workshop.address
-          const fullAddress = `${address.address}, ${address.number} - ${address.neighborhood}, ${address.city} - ${address.state}, ${address.zipCode}`
           return (
             <div
               key={workshop.id}
@@ -28,7 +26,17 @@ export default async function WorkshopsPage() {
             >
               <h3 className='font-semibold text-center'>{workshop.name}</h3>
               <div className='flex flex-col gap-6'>
-                <p className='text-sm'>Endereço: {fullAddress}</p>
+                <div>
+                  <p className='font-semibold'>Endereços</p>
+                  {workshop.addresses.map(a => {
+                    const fullAddress = `${a.streetName}, ${a.number} - ${a.neighborhood}, ${a.city} - ${a.state}, ${a.zipCode}`
+                    return (
+                      <p key={a.id} className='text-sm'>
+                        Endereço: {fullAddress}
+                      </p>
+                    )
+                  })}
+                </div>
 
                 <div>
                   <p className='flex gap-1 text-sm items-center'>

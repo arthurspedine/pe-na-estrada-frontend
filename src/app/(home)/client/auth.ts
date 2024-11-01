@@ -30,7 +30,7 @@ export async function login(formData: LoginDataInput) {
     : {}
 
   const authResponse = await api.post(
-    `${process.env.BACKEND_URL}/login`,
+    `${process.env.BACKEND_URL}/auth/login`,
     loginData
   )
 

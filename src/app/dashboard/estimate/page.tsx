@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 export default async function EstimatePage() {
-  const res = await fetch(`${process.env.BACKEND_URL}/estimate`, {
+  const res = await fetch(`${process.env.BACKEND_URL}/estimate/all`, {
     method: 'GET',
     cache: 'no-cache',
     credentials: 'include',

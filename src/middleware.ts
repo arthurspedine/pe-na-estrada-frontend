@@ -31,7 +31,7 @@ export default async function middleware(req: NextRequest) {
       const tokenData = await verifyJWT(token)
       if (tokenData) {
         if (
-          tokenData.sub?.includes('oficina.') &&
+          tokenData.role === 'OFICINA' &&
           path.startsWith('/dashboard')
         ) {
           const workshopUrl = new URL('/workshop', req.nextUrl)
@@ -50,7 +50,7 @@ export default async function middleware(req: NextRequest) {
     if (token) {
       const tokenData = await verifyJWT(token)
       if (tokenData) {
-        if (tokenData.sub?.includes('oficina.')) {
+        if (tokenData.role === 'OFICINA') {
           const workshopUrl = new URL('/workshop', req.nextUrl)
           return NextResponse.redirect(workshopUrl)
         }

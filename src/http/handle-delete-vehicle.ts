@@ -1,23 +1,26 @@
 'use server'
-import { clientEnv } from "@/env"
-import { cookies } from "next/headers"
+import { clientEnv } from '@/env'
+import { cookies } from 'next/headers'
 
 export async function handleDeleteVehicle(id: number) {
   try {
-    const response = await fetch(`${clientEnv.BACKEND_URL}/client/vehicle?vehicleId=${id}`, {
-      method: 'DELETE',
-      cache: 'no-cache',
-      credentials: 'include',
-      headers: {
-        Cookie: cookies().toString()
+    const req = await fetch(
+      `${clientEnv.BACKEND_URL}/client/vehicle?id=${id}`,
+      {
+        method: 'DELETE',
+        cache: 'no-cache',
+        credentials: 'include',
+        headers: {
+          Cookie: cookies().toString(),
+        },
       }
-    });
+    )
 
-    if (!response.ok) {
-      const errorMessage = await response.text();
-      throw new Error(`Erro ao deletar o veículo: ${errorMessage}`);
+    if (!req.ok) {
+      const errorResponse = await req.text()
+      return Promise.reject(new Error(JSON.parse(errorResponse).error))
     }
   } catch (e) {
-    throw new Error('Algo deu errado ao deletar o veículo.');
+    return Promise.reject(new Error('Houve um erro ao criar o veículo'))
   }
 }

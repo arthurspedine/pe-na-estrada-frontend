@@ -8,7 +8,7 @@ import { FinishEstimate } from './_components/finish-estimate'
 import { LogoutButton } from '@/components/logout-button'
 
 export default async function DashboardPage() {
-  const req = await fetch(`${process.env.BACKEND_URL}/workshop`, {
+  const req = await fetch(`${process.env.BACKEND_URL}/workshop/details`, {
     method: 'GET',
     cache: 'no-cache',
     credentials: 'include',
@@ -18,7 +18,7 @@ export default async function DashboardPage() {
     },
   })
 
-  const reqEstimates = await fetch(`${process.env.BACKEND_URL}/estimate`, {
+  const reqEstimates = await fetch(`${process.env.BACKEND_URL}/estimate/all`, {
     method: 'GET',
     cache: 'no-cache',
     credentials: 'include',
@@ -31,8 +31,6 @@ export default async function DashboardPage() {
   const data: Workshop = await req.json()
   const estimatesData: Estimate[] = await reqEstimates.json()
 
-  const address = data.address
-  const fullAddress = `${address.address}, ${address.number} - ${address.neighborhood}, ${address.city} - ${address.state}, ${address.zipCode}`
   return (
     <section className='w-full flex flex-col flex-grow items-center'>
       <div className='flex flex-col flex-grow max-w-[1440px] w-full px-4 gap-2 relative'>
@@ -42,7 +40,17 @@ export default async function DashboardPage() {
           </h1>
           <LogoutButton />
         </div>
-        <p>Endereço: {fullAddress}</p>
+        <div>
+          <p className='font-semibold'>Endereços</p>
+          {data.addresses.map(a => {
+            const fullAddress = `${a.streetName}, ${a.number} - ${a.neighborhood}, ${a.city} - ${a.state}, ${a.zipCode}`
+            return (
+              <p key={a.id} className='text-sm'>
+                Endereço: {fullAddress}
+              </p>
+            )
+          })}
+        </div>
         <div className='flex flex-col space-y-1'>
           {data.contacts.map(c => (
             <p className='text-sm' key={c.id}>

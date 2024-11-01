@@ -13,7 +13,7 @@ export default async function EstimateIdPage({
   const id = params.id
   const cookie = cookies().toString()
 
-  const res = await fetch(`${clientEnv.BACKEND_URL}/estimate/${id}`, {
+  const res = await fetch(`${clientEnv.BACKEND_URL}/estimate?id=${id}`, {
     method: 'GET',
     cache: 'no-cache',
     credentials: 'include',
@@ -28,8 +28,6 @@ export default async function EstimateIdPage({
   }
   const estimate: Estimate = await res.json()
   const vehicle = `${estimate.vehicle.brand} ${estimate.vehicle.model} ${estimate.vehicle.year}`
-  const address = estimate.workshop.address
-  const fullAddress = `${address.address}, ${address.number} - ${address.neighborhood}, ${address.city} - ${address.state}, ${address.zipCode}`
 
   return (
     <div className='flex-grow flex flex-col items-center '>
@@ -66,7 +64,17 @@ export default async function EstimateIdPage({
         <div>
           <h3 className='font-semibold'>Oficina responsável</h3>
           <p className='text-sm'>{estimate.workshop.name}</p>
-          <p className='text-sm'>Endereço: {fullAddress}</p>
+          <div>
+            <p className='font-semibold'>Endereços</p>
+            {estimate.workshop.addresses.map(a => {
+              const fullAddress = `${a.streetName}, ${a.number} - ${a.neighborhood}, ${a.city} - ${a.state}, ${a.zipCode}`
+              return (
+                <p key={a.id} className='text-sm'>
+                  Endereço: {fullAddress}
+                </p>
+              )
+            })}
+          </div>
           <div className='flex flex-col gap-2'>
             <div className='flex flex-col'>
               {estimate.workshop.contacts.map(c => (
