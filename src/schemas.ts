@@ -59,7 +59,7 @@ export const vehicleFormSchema = z.object({
   licensePlate: z
     .string()
     .min(7, 'A placa deve ter ao menos 7 caracteres.')
-    .max(8, 'A placa deve ter no máximo 8 caracteres.')
+    .max(8, 'A placa deve ter no máximo 8 caracteres.'),
 })
 
 export const signUpInitialValueSchema = z.object({
@@ -101,3 +101,32 @@ const signUpDataSchema = z.object({
 })
 
 export type SignUpDataInput = z.infer<typeof signUpDataSchema>
+
+export const contactFormSchema = z.object({
+  ddi: z
+    .string()
+    .min(1, { message: 'DDI deve ter pelo menos 1 dígito' })
+    .max(999, { message: 'DDI deve ter no máximo 3 dígitos' }),
+  ddd: z
+    .string()
+    .min(2, { message: 'DDD deve ter pelo menos 2 dígitos' })
+    .max(99, { message: 'DDD deve ter no máximo 2 dígitos' }),
+  number: z
+    .string()
+    .regex(/^\d{4,5}-?\d{4}$/, {
+      message: 'O número deve estar no formato válido, ex: 1234-5678',
+    })
+    .min(8, { message: 'O número deve ter no mínimo 8 dígitos' })
+    .max(10, { message: 'O número deve ter no máximo 10 dígitos' }),
+})
+
+export const createAddressSchema = z.object({
+  streetName: z.string().min(1, 'O nome da rua é obrigatório'),
+  number: z.string().min(1, 'O número é obrigatório'),
+  referencePoint: z.string().optional(),
+  zipCode: z.string().regex(/^\d{5}-?\d{3}$/, 'Formato de CEP inválido'),
+  neighborhood: z.string().min(1, 'O bairro é obrigatório'),
+  neighborhoodZone: z.string().min(1, 'A zona do bairro é obrigatória'),
+  city: z.string().min(1, 'A cidade é obrigatória'),
+  state: z.string().length(2, 'O estado deve ter 2 caracteres').toUpperCase(),
+})

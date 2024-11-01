@@ -4,14 +4,17 @@ import { cookies } from 'next/headers'
 
 export default async function handleFinishEstimate(id: number) {
   try {
-    const req = await fetch(`${clientEnv.BACKEND_URL}/estimate/${id}/finish`, {
-      method: 'POST',
-      cache: 'no-cache',
-      credentials: 'include',
-      headers: {
-        Cookie: cookies().toString(),
-      },
-    })
+    const req = await fetch(
+      `${clientEnv.BACKEND_URL}/estimate/finish?id=${id}`,
+      {
+        method: 'PUT',
+        cache: 'no-cache',
+        credentials: 'include',
+        headers: {
+          Cookie: cookies().toString(),
+        },
+      }
+    )
 
     if (!req.ok) {
       const errorResponse = await req.text()

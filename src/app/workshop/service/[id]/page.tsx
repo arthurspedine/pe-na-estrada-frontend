@@ -49,6 +49,7 @@ export default function AddServicePage() {
       success: () => {
         setTimeout(() => {
           router.replace(`/workshop/estimate/${id}`)
+          router.refresh() // dando refresh para atualizar a página do orçamento
         }, 500)
         return 'Serviço cadastrado com sucesso.'
       },

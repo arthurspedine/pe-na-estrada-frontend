@@ -5,24 +5,24 @@ import { Label } from '@radix-ui/react-label'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { vehicleFormSchema } from '@/schemas'
+import { contactFormSchema } from '@/schemas'
 import type { z } from 'zod'
-import { createNewVehicle } from './create-new-vehicle'
 import { toast } from 'sonner'
+import { handleCreateContact } from '@/http/handle-create-contact'
 
-export type CreateVehicleSchema = z.infer<typeof vehicleFormSchema>
-export default function VehiclePage() {
+export type CreateContactSchema = z.infer<typeof contactFormSchema>
+export default function ContactPage() {
   const router = useRouter()
 
-  const { register, handleSubmit, formState } = useForm<CreateVehicleSchema>({
-    resolver: zodResolver(vehicleFormSchema),
+  const { register, handleSubmit, formState } = useForm<CreateContactSchema>({
+    resolver: zodResolver(contactFormSchema),
   })
 
-  async function handleCreateVehicle(data: CreateVehicleSchema) {
-    const createVehicleRequest = createNewVehicle(data)
+  async function handleClickEvent(data: CreateContactSchema) {
+    const createContactRequest = handleCreateContact(data)
 
-    toast.promise(createVehicleRequest, {
-      loading: 'Cadastrando veículo...',
+    toast.promise(createContactRequest, {
+      loading: 'Cadastrando contato...',
       success: () => {
         setTimeout(() => {
           router.back()
@@ -31,7 +31,7 @@ export default function VehiclePage() {
         return 'Cadastrado realizado com sucesso.'
       },
       error: err => {
-        return err.message || 'Algo deu errado ao cadastrar o veículo.'
+        return err.message || 'Algo deu errado ao cadastrar o contato.'
       },
       position: 'top-center',
       style: { filter: 'none', zIndex: 10 },
@@ -41,80 +41,64 @@ export default function VehiclePage() {
   return (
     <section className='flex flex-col flex-grow px-8'>
       <h1 className='text-2xl font-semibold text-center'>
-        Adicionar um novo veículo
+        Adicionar um novo contato
       </h1>
       <form
-        onSubmit={handleSubmit(handleCreateVehicle)}
+        onSubmit={handleSubmit(handleClickEvent)}
         className='flex flex-col gap-3 text-left pb-4 mx-auto max-w-[431px] w-full'
       >
         <div>
-          <Label htmlFor='brand' className='font-bold'>
-            Marca
+          <Label htmlFor='ddi' className='font-bold'>
+            DDI
           </Label>
           <Input
             autoFocus
-            id='brand'
-            type='text'
-            placeholder='Marca'
-            {...register('brand')}
+            id='ddi'
+            type='number'
+            min={1}
+            placeholder='DDI (ex: 55)'
+            {...register('ddi')}
           />
-          {formState.errors.brand ? (
+          {formState.errors.ddi ? (
             <p className='text-destructive text-sm pt-0.5'>
-              {formState.errors.brand.message}
+              {formState.errors.ddi.message}
             </p>
           ) : (
             ''
           )}
         </div>
         <div>
-          <Label htmlFor='model' className='font-bold'>
-            Modelo
+          <Label htmlFor='ddd' className='font-bold'>
+            DDD
           </Label>
           <Input
-            id='model'
-            type='text'
-            placeholder='Modelo'
-            {...register('model')}
+            id='ddd'
+            type='number'
+            min={1}
+            placeholder='DDD (ex: 11)'
+            {...register('ddd')}
           />
-          {formState.errors.model ? (
+          {formState.errors.ddd ? (
             <p className='text-destructive text-sm pt-0.5'>
-              {formState.errors.model.message}
+              {formState.errors.ddd.message}
             </p>
           ) : (
             ''
           )}
         </div>
         <div>
-          <Label htmlFor='year' className='font-bold'>
-            Ano
+          <Label htmlFor='number' className='font-bold'>
+            Número
           </Label>
           <Input
-            id='year'
+            id='number'
             type='text'
-            placeholder='0000'
-            {...register('year')}
+            placeholder='1234-5678'
+            {...register('number')}
           />
-          {formState.errors.year ? (
+          {formState.errors.number ? (
             <p className='text-destructive text-sm pt-0.5'>
-              {formState.errors.year.message}
-            </p>
-          ) : (
-            ''
-          )}
-        </div>
-        <div>
-          <Label htmlFor='licensePlate' className='font-bold'>
-            Placa
-          </Label>
-          <Input
-            id='licensePlate'
-            type='text'
-            placeholder='ABC-1234'
-            {...register('licensePlate')}
-          />
-          {formState.errors.licensePlate ? (
-            <p className='text-destructive text-sm pt-0.5'>
-              {formState.errors.licensePlate.message}
+              {formState.errors.number.message}
             </p>
           ) : (
             ''

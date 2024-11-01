@@ -21,6 +21,6 @@ export async function handleDeleteVehicle(id: number) {
       return Promise.reject(new Error(JSON.parse(errorResponse).error))
     }
   } catch (e) {
-    return Promise.reject(new Error('Houve um erro ao criar o veículo'))
+    return Promise.reject(new Error('Houve um erro ao deletar o veículo.'))
   }
 }

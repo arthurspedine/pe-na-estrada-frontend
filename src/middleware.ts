@@ -30,10 +30,7 @@ export default async function middleware(req: NextRequest) {
     if (token) {
       const tokenData = await verifyJWT(token)
       if (tokenData) {
-        if (
-          tokenData.role === 'OFICINA' &&
-          path.startsWith('/dashboard')
-        ) {
+        if (tokenData.role === 'OFICINA' && path.startsWith('/dashboard')) {
           const workshopUrl = new URL('/workshop', req.nextUrl)
           return NextResponse.redirect(workshopUrl)
         }
