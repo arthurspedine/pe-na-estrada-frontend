@@ -99,7 +99,15 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
   }
 
   const handleScheduleEstimate = async (scheduledAt: string) => {
-    const data: CreateEstimate = { ...newEstimate, scheduledAt }
+    const date = new Date(scheduledAt)
+    date.setHours(date.getHours() - 3)
+    const formattedScheduledAt = date.toISOString().slice(0, 19)
+    console.log(formattedScheduledAt)
+
+    const data: CreateEstimate = {
+      ...newEstimate,
+      scheduledAt: formattedScheduledAt,
+    }
     const createEstimateRequest = handleCreateEstimate(data)
 
     toast.promise(createEstimateRequest, {
