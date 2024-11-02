@@ -1,18 +1,18 @@
 'use client'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { useSignUpContext } from '@/context/signup-context'
+import { useClientSignUpContext } from '@/context/client-signup-context'
 import { useRouter } from 'next/navigation'
 import { submitSignUpDataAction } from './actions'
-import type { ConfirmSignUpType, SignUpDataInput } from '@/schemas'
+import type { ClientSignUpConfirmType, ClientSignUpDataInput } from '@/schemas'
 import { toast } from 'sonner'
-import { SignUpRoutes } from '@/types'
-import { handleSignUp } from '../handle-signup'
+import { ClientSignUpRoutes } from '@/types'
+import { handleClientSignUp } from '../handle-signup'
 
 export default function ConfirmPage() {
   const router = useRouter()
 
-  const { signUpData, resetData } = useSignUpContext()
+  const { signUpData, resetData } = useClientSignUpContext()
   const {
     name,
     cpf,
@@ -28,11 +28,11 @@ export default function ConfirmPage() {
   async function handleFormSubmit(formData: FormData) {
     // submit to action
     const { success, errorMsg, redirect } = await submitSignUpDataAction(
-      signUpData as ConfirmSignUpType
+      signUpData as ClientSignUpConfirmType
     )
 
     if (success) {
-      const data: SignUpDataInput = {
+      const data: ClientSignUpDataInput = {
         name: name as string,
         cpf: cpf as string,
         birthDate: birthDate as string,
@@ -48,20 +48,21 @@ export default function ConfirmPage() {
         },
       }
 
-      const signUpRequest = handleSignUp(data)
+      const signUpRequest = handleClientSignUp(data)
 
       toast.promise(signUpRequest, {
-        loading: 'Cadastrando usuário...',
+        loading: 'Cadastrando cliente...',
         success: () => {
           resetData()
           router.replace(redirect)
           return 'Cadastrado realizado com sucesso.'
         },
-        error: 'Algo deu errado ao cadastrar o usuário.',
+        error: err => {
+          return err.message || 'Algo deu errado ao cadastrar o cliente.'
+        },
         position: 'top-center',
         style: { filter: 'none', zIndex: 10 },
       })
-
     }
     if (errorMsg) {
       toast.error(errorMsg, {
@@ -101,7 +102,7 @@ export default function ConfirmPage() {
           size={'sm'}
           type='button'
           className='bg-primary hover:bg-primary/95 flex-grow'
-          onClick={() => router.replace(SignUpRoutes.VEHICLE)}
+          onClick={() => router.replace(ClientSignUpRoutes.VEHICLE)}
         >
           Voltar
         </Button>

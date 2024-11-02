@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 const currentYear = new Date().getFullYear()
 
-export const informationFormSchema = z.object({
+export const clientInformationFormSchema = z.object({
   name: z
     .string()
     .min(2, 'O nome deve ter pelo menos 2 caracteres.')
@@ -62,7 +62,7 @@ export const vehicleFormSchema = z.object({
     .max(8, 'A placa deve ter no máximo 8 caracteres.'),
 })
 
-export const signUpInitialValueSchema = z.object({
+export const clientSignUpInitialValueSchema = z.object({
   name: z.string().optional(),
   cpf: z.string().optional(),
   birthDate: z.string().optional(),
@@ -74,13 +74,15 @@ export const signUpInitialValueSchema = z.object({
   licensePlate: z.string().optional(),
 })
 
-export const confirmSignUpSchema = z.object({
-  ...informationFormSchema.shape,
+export const clientSignUpConfirmSchema = z.object({
+  ...clientInformationFormSchema.shape,
   ...vehicleFormSchema.shape,
 })
 
-export type ConfirmSignUpType = z.infer<typeof confirmSignUpSchema>
-export type SignUpInitialValueType = z.infer<typeof signUpInitialValueSchema>
+export type ClientSignUpConfirmType = z.infer<typeof clientSignUpConfirmSchema>
+export type ClientSignUpInitialValueType = z.infer<
+  typeof clientSignUpInitialValueSchema
+>
 
 export const loginDataSchema = z.object({
   email: z
@@ -92,15 +94,15 @@ export const loginDataSchema = z.object({
 
 export type LoginDataInput = z.infer<typeof loginDataSchema>
 
-const signUpDataSchema = z.object({
-  name: informationFormSchema.shape.name,
-  cpf: informationFormSchema.shape.cpf,
-  birthDate: informationFormSchema.shape.birthDate,
+const clientSignUpDataSchema = z.object({
+  name: clientInformationFormSchema.shape.name,
+  cpf: clientInformationFormSchema.shape.cpf,
+  birthDate: clientInformationFormSchema.shape.birthDate,
   login: loginDataSchema, // Incorporando o esquema de login
   vehicle: vehicleFormSchema, // Incorporando o esquema de veículo
 })
 
-export type SignUpDataInput = z.infer<typeof signUpDataSchema>
+export type ClientSignUpDataInput = z.infer<typeof clientSignUpDataSchema>
 
 export const contactFormSchema = z.object({
   ddi: z
@@ -111,7 +113,7 @@ export const contactFormSchema = z.object({
     .string()
     .min(2, { message: 'DDD deve ter pelo menos 2 dígitos' })
     .max(99, { message: 'DDD deve ter no máximo 2 dígitos' }),
-  number: z
+  contactNumber: z
     .string()
     .regex(/^\d{4,5}-?\d{4}$/, {
       message: 'O número deve estar no formato válido, ex: 1234-5678',
@@ -130,3 +132,84 @@ export const createAddressSchema = z.object({
   city: z.string().min(1, 'A cidade é obrigatória'),
   state: z.string().length(2, 'O estado deve ter 2 caracteres').toUpperCase(),
 })
+
+export const workshopInformationFormSchema = z.object({
+  name: z
+    .string()
+    .min(2, 'O nome deve ter pelo menos 2 caracteres.')
+    .max(100, 'O nome deve ter no máximo 100 caracteres.'),
+  legalName: z
+    .string()
+    .min(2, 'O nome legal deve ter pelo menos 2 caracteres.')
+    .max(100, 'O nome legal deve ter no máximo 100 caracteres.'),
+  rating: z
+    .string()
+    .min(1, 'A avaliação mínima é 1.')
+    .max(5, 'A avaliação máxima é 5.'),
+  mapsUrl: z.string().url('A URL do mapa deve ser válida.'),
+  email: z
+    .string()
+    .email('Formato de email inválido.')
+    .max(100, 'O email deve ter no máximo 100 caracteres.'),
+  password: z
+    .string()
+    .min(8, 'A senha deve ter pelo menos 8 caracteres.')
+    .max(128, 'A senha deve ter no máximo 128 caracteres.')
+    .regex(/[a-z]/, 'A senha deve conter pelo menos uma letra minúscula.')
+    .regex(/[0-9]/, 'A senha deve conter pelo menos um número.')
+    .regex(
+      /[^A-Za-z0-9]/,
+      'A senha deve conter pelo menos um caractere especial.'
+    ),
+})
+
+export const workshopSignUpInitialValueSchema = z.object({
+  name: z.string().optional(),
+  legalName: z.string().optional(),
+  ddi: z.string().optional(),
+  ddd: z.string().optional(),
+  contactNumber: z.string().optional(),
+  streetName: z.string().optional(),
+  number: z.string().optional(),
+  referencePoint: z.string().optional(),
+  zipCode: z.string().optional(),
+  neighborhood: z.string().optional(),
+  neighborhoodZone: z.string().optional(),
+  city: z.string().optional(),
+  state: z.string().optional(),
+  rating: z.string().optional(),
+  mapsUrl: z.string().optional(),
+  email: z.string().optional(),
+  password: z.string().optional(),
+})
+
+export const workshopSignUpConfirmSchema = z.object({
+  ...workshopInformationFormSchema.shape,
+  ...contactFormSchema.shape,
+  ...createAddressSchema.shape,
+})
+
+export type WorkshopSignUpConfirmType = z.infer<
+  typeof workshopSignUpConfirmSchema
+>
+export type WorkshopSignUpInitialValueType = z.infer<
+  typeof workshopSignUpInitialValueSchema
+>
+
+const workshopSignUpDataSchema = z.object({
+  name: workshopInformationFormSchema.shape.name,
+  legalName: workshopInformationFormSchema.shape.legalName,
+  address: createAddressSchema,
+  rating: workshopInformationFormSchema.shape.rating.transform(val =>
+    Number(val)
+  ),
+  mapsUrl: workshopInformationFormSchema.shape.mapsUrl,
+  login: loginDataSchema,
+  contact: contactFormSchema
+    .extend({
+      number: contactFormSchema.shape.contactNumber,
+    })
+    .omit({ contactNumber: true }),
+})
+
+export type WorkshopSignUpDataInput = z.infer<typeof workshopSignUpDataSchema>

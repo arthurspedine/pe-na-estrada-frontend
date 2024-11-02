@@ -1,23 +1,23 @@
 import {
-  informationFormSchema,
+  clientInformationFormSchema,
   vehicleFormSchema,
-  type ConfirmSignUpType,
+  type ClientSignUpConfirmType,
 } from '@/schemas'
-import { SignUpRoutes } from '@/types'
+import { ClientSignUpRoutes } from '@/types'
 
 export type SubmitSignUpActionReturnType = {
-  redirect: SignUpRoutes | string
+  redirect: ClientSignUpRoutes | string
   errorMsg?: string
   success?: boolean
 }
 
 export const submitSignUpDataAction = async (
-  signup: ConfirmSignUpType
+  signup: ClientSignUpConfirmType
 ): Promise<SubmitSignUpActionReturnType> => {
-  const informationValidated = informationFormSchema.safeParse(signup)
+  const informationValidated = clientInformationFormSchema.safeParse(signup)
   if (!informationValidated.success) {
     return {
-      redirect: SignUpRoutes.INFORMATION,
+      redirect: ClientSignUpRoutes.INFORMATION,
       errorMsg: 'Por favor, informe seus dados.',
     }
   }
@@ -25,13 +25,13 @@ export const submitSignUpDataAction = async (
   const vehicleValidated = vehicleFormSchema.safeParse(signup)
   if (!vehicleValidated.success) {
     return {
-      redirect: SignUpRoutes.VEHICLE,
+      redirect: ClientSignUpRoutes.VEHICLE,
       errorMsg: 'Por favor, informe seu veículo.',
     }
   }
 
   return {
     success: true,
-    redirect: '/client/login',
+    redirect: '/auth/login',
   }
 }

@@ -34,8 +34,15 @@ export type FormErrors = {
   [key: string]: string | undefined
 }
 
-export enum SignUpRoutes {
-  INFORMATION = '/client/signup/information',
-  VEHICLE = '/client/signup/vehicle',
-  CONFIRM = '/client/signup/confirm',
+export enum ClientSignUpRoutes {
+  INFORMATION = '/auth/client/signup/information',
+  VEHICLE = '/auth/client/signup/vehicle',
+  CONFIRM = '/auth/client/signup/confirm',
+}
+
+export enum WorkshopSignUpRoutes {
+  INFORMATION = '/auth/workshop/signup/information',
+  CONTACT = '/auth/workshop/signup/contact',
+  ADDRESS = '/auth/workshop/signup/address',
+  CONFIRM = '/auth/workshop/signup/confirm',
 }

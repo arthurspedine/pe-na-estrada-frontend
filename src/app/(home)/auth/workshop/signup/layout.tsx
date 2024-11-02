@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { StepNavigation } from './_components/step-navigation'
-import { SignUpContextProvider } from '@/context/signup-context'
+import { WorkshopStepNavigation } from './_components/workshop-step-navigation'
+import { WorkshopSignUpContextProvider } from '@/context/workshop-signup-context'
+import { ClientSignUpRoutes } from '@/types'
 
 export default function SignUpLayout({
   children,
@@ -13,12 +14,18 @@ export default function SignUpLayout({
       <p className='text-sm md:text-base mx-auto text-muted-foreground mt-2'>
         Cadastre agora sua conta para continuar
       </p>
-      <StepNavigation />
-      <SignUpContextProvider>{children}</SignUpContextProvider>
+      <Link
+        href={ClientSignUpRoutes.INFORMATION}
+        className='text-sm md:text-base mx-auto text-foreground font-semibold mt-2'
+      >
+        Cadastrar como cliente
+      </Link>
+      <WorkshopStepNavigation />
+      <WorkshopSignUpContextProvider>{children}</WorkshopSignUpContextProvider>
       <p className='text-xs md:text-sm lg:text-base mx-auto flex justify-center text-left text-muted-foreground pb-4'>
         Já tem uma conta?{' '}
         <Link
-          href='/client/login'
+          href='/auth/login'
           className='ml-1 font-semibold bg-transparent border-none text-foreground'
         >
           Login na conta aqui

@@ -2,7 +2,8 @@
 import { api } from '@/lib/axios'
 import {
   loginDataSchema,
-  type SignUpDataInput,
+  type WorkshopSignUpDataInput,
+  type ClientSignUpDataInput,
   type LoginDataInput,
 } from '@/schemas'
 import type { jwtToken } from '@/types'
@@ -43,8 +44,12 @@ export async function login(formData: LoginDataInput) {
   })
 }
 
-export async function signup(formData: SignUpDataInput) {
+export async function clientSignUp(formData: ClientSignUpDataInput) {
   await api.post(`${process.env.BACKEND_URL}/client/signup`, formData)
+}
+
+export async function workshopSignUp(formData: WorkshopSignUpDataInput) {
+  await api.post(`${process.env.BACKEND_URL}/workshop/signup`, formData)
 }
 
 export async function logout() {

@@ -1,5 +1,5 @@
 'use client'
-import { logout } from '@/app/(home)/client/auth'
+import { logout } from '@/app/(home)/auth/auth'
 import { Button } from '@/components/ui/button'
 import { LogOut } from 'lucide-react'
 import { useRouter } from 'next/navigation'

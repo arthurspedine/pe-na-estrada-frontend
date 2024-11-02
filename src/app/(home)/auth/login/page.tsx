@@ -13,7 +13,7 @@ export default function LoginPage() {
       <p className='text-xs md:text-sm lg:text-base mx-auto flex justify-center text-left text-muted-foreground'>
         Não tem uma conta?{' '}
         <Link
-          href='/client/signup'
+          href='/auth/client/signup'
           className='ml-1 font-semibold bg-transparent border-none text-foreground'
         >
           Criar uma conta aqui

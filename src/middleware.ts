@@ -16,7 +16,7 @@ export default async function middleware(req: NextRequest) {
     dashboard: '/dashboard',
     workshop_dashboard: '/workshop',
   }
-  const authRoute = ['/client']
+  const authRoute = ['/auth']
 
   const path = req.nextUrl.pathname
   const isProtectedRoute = Object.values(protectedRoutes).some(route =>
@@ -37,7 +37,7 @@ export default async function middleware(req: NextRequest) {
         return NextResponse.next()
       }
     }
-    const loginUrl = new URL('/client/login', req.nextUrl)
+    const loginUrl = new URL('/auth/login', req.nextUrl)
     return NextResponse.redirect(loginUrl)
   }
 
@@ -61,5 +61,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/client/:path*', '/workshop/:path*'],
+  matcher: ['/dashboard/:path*', '/auth/:path*', '/workshop/:path*'],
 }

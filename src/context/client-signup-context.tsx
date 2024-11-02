@@ -1,13 +1,13 @@
 'use client'
 import {
-  type ConfirmSignUpType,
-  signUpInitialValueSchema,
-  type SignUpInitialValueType,
+  type ClientSignUpConfirmType,
+  clientSignUpInitialValueSchema,
+  type ClientSignUpInitialValueType,
 } from '@/schemas'
 import { createContext, useCallback, useEffect, useState } from 'react'
 import React from 'react'
 
-const defaultSignUp: SignUpInitialValueType = {
+const defaultSignUp: ClientSignUpInitialValueType = {
   name: '',
   cpf: '',
   birthDate: '',
@@ -20,20 +20,20 @@ const defaultSignUp: SignUpInitialValueType = {
 }
 
 type SignUpContextType = {
-  signUpData: SignUpInitialValueType
-  updateSignUpDetails: (signUpDetails: Partial<ConfirmSignUpType>) => void
+  signUpData: ClientSignUpInitialValueType
+  updateSignUpDetails: (signUpDetails: Partial<ClientSignUpConfirmType>) => void
   dataLoaded: boolean
   resetData: () => void
 }
 
-const LOCAL_STORAGE_KEY = 'multi-page-form-signUpData'
+const LOCAL_STORAGE_KEY = 'multi-page-form-clientSignUpData'
 export const SignUpContext = createContext<SignUpContextType | null>(null)
 
-export const SignUpContextProvider = ({
+export const ClientSignUpContextProvider = ({
   children,
 }: { children: React.ReactNode }) => {
   const [signUpData, setSignUpData] =
-    useState<SignUpInitialValueType>(defaultSignUp)
+    useState<ClientSignUpInitialValueType>(defaultSignUp)
 
   const [dataLoaded, setDataLoaded] = useState<boolean>(false)
 
@@ -59,7 +59,9 @@ export const SignUpContextProvider = ({
       return setSignUpData(defaultSignUp)
     }
 
-    const validated = signUpInitialValueSchema.safeParse(JSON.parse(dataString))
+    const validated = clientSignUpInitialValueSchema.safeParse(
+      JSON.parse(dataString)
+    )
 
     if (validated.success) {
       setSignUpData(validated.data)
@@ -68,7 +70,9 @@ export const SignUpContextProvider = ({
     }
   }
 
-  const updateSignUpDetails = (signUpDetails: Partial<ConfirmSignUpType>) => {
+  const updateSignUpDetails = (
+    signUpDetails: Partial<ClientSignUpConfirmType>
+  ) => {
     setSignUpData(prev => ({ ...prev, ...signUpDetails }))
   }
 
@@ -86,10 +90,12 @@ export const SignUpContextProvider = ({
   )
 }
 
-export function useSignUpContext() {
+export function useClientSignUpContext() {
   const context = React.useContext(SignUpContext)
   if (!context) {
-    throw new Error('useSignUpContext must be used within an SignUpContext')
+    throw new Error(
+      'useClientSignUpContext must be used within an SignUpContext'
+    )
   }
   return context
 }

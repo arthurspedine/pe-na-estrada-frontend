@@ -1,12 +1,10 @@
-import { clientEnv } from '@/env'
-import { api } from '@/lib/axios'
-import type { SignUpDataInput } from '@/schemas'
+import type { WorkshopSignUpDataInput } from '@/schemas'
 import axios from 'axios'
-import { signup } from '../auth'
+import { workshopSignUp } from '../../auth'
 
-export async function handleSignUp(data: SignUpDataInput) {
+export async function handleWorkshopSignUp(data: WorkshopSignUpDataInput) {
   try {
-    await signup(data)
+    await workshopSignUp(data)
   } catch (e) {
     if (axios.isAxiosError(e)) {
       console.error('Erro na requisição:', e.response?.data)

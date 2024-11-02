@@ -1,35 +1,35 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { Car, ChevronLeft, ChevronRight, UserPen, Vote } from 'lucide-react'
+import { Car, UserPen, Vote } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { SignUpRoutes } from '@/types'
+import { ClientSignUpRoutes } from '@/types'
 
 const steps = [
   {
     id: 1,
     width: '0',
     route: 'information',
-    path: SignUpRoutes.INFORMATION,
+    path: ClientSignUpRoutes.INFORMATION,
     icon: <UserPen />,
   },
   {
     id: 2,
     width: '50%',
     route: 'vehicle',
-    path: SignUpRoutes.VEHICLE,
+    path: ClientSignUpRoutes.VEHICLE,
     icon: <Car />,
   },
   {
     id: 3,
     width: '99%',
     route: 'confirm',
-    path: SignUpRoutes.CONFIRM,
+    path: ClientSignUpRoutes.CONFIRM,
     icon: <Vote />,
   },
 ]
 
-export function StepNavigation() {
+export function ClientStepNavigation() {
   const pathname = usePathname()
   const currentPath = pathname.split('/').pop()
 

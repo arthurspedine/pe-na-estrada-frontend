@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label'
 import type { FormErrors } from '@/types'
 import { useFormState } from 'react-dom'
 import { informationFormAction } from './actions'
-import { useSignUpContext } from '@/context/signup-context'
+import { useClientSignUpContext } from '@/context/client-signup-context'
 
 const initialState: FormErrors = {}
 export default function InformationFormPage() {
@@ -14,7 +14,7 @@ export default function InformationFormPage() {
     initialState
   )
 
-  const { updateSignUpDetails, signUpData } = useSignUpContext()
+  const { updateSignUpDetails, signUpData } = useClientSignUpContext()
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     updateSignUpDetails({ [e.target.name]: e.target.value })

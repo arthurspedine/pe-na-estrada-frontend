@@ -10,7 +10,12 @@ import type { z } from 'zod'
 import { toast } from 'sonner'
 import { handleCreateContact } from '@/http/handle-create-contact'
 
-export type CreateContactSchema = z.infer<typeof contactFormSchema>
+export type CreateContactSchema = Omit<
+  z.infer<typeof contactFormSchema>,
+  'contactNumber'
+> & {
+  number: string
+}
 export default function ContactPage() {
   const router = useRouter()
 

@@ -13,7 +13,7 @@ export function DesktopHeader() {
   const links: PathProps[] = [
     { id: 1, path: '/', label: 'Home' },
     { id: 2, path: '/about', label: 'Sobre Nós' },
-    { id: 3, path: '/dashboard', label: 'Area do Usuário' },
+    { id: 3, path: '/dashboard', label: 'Area do Cliente' },
   ]
 
   function handleMenuOpen() {

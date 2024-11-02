@@ -10,7 +10,12 @@ import type { z } from 'zod'
 import { toast } from 'sonner'
 import { handleEditContact } from '@/http/handle-edit-contact'
 
-export type CreateContactSchema = z.infer<typeof contactFormSchema>
+export type CreateContactSchema = Omit<
+  z.infer<typeof contactFormSchema>,
+  'contactNumber'
+> & {
+  number: string
+}
 export function EditContactForm({
   id,
   ddi,

@@ -1,12 +1,12 @@
 'use client'
 import { Button } from '@/components/ui/button'
-import type { FormErrors } from '@/types'
-import { redirect, useRouter } from 'next/navigation'
+import { ClientSignUpRoutes, type FormErrors } from '@/types'
+import { useRouter } from 'next/navigation'
 import { useFormState } from 'react-dom'
 import { vehicleFormAction } from './actions'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useSignUpContext } from '@/context/signup-context'
+import { useClientSignUpContext } from '@/context/client-signup-context'
 
 const initialState: FormErrors = {}
 export default function VehicleFormPage() {
@@ -17,7 +17,7 @@ export default function VehicleFormPage() {
     initialState
   )
 
-  const { updateSignUpDetails, signUpData } = useSignUpContext()
+  const { updateSignUpDetails, signUpData } = useClientSignUpContext()
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     updateSignUpDetails({ [e.target.name]: e.target.value })
@@ -109,7 +109,7 @@ export default function VehicleFormPage() {
           size={'sm'}
           type='button'
           className='bg-primary hover:bg-primary/95 flex-grow'
-          onClick={() => router.replace('/client/signup/information')}
+          onClick={() => router.replace(ClientSignUpRoutes.INFORMATION)}
         >
           Voltar
         </Button>
