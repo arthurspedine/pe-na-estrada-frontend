@@ -5,19 +5,16 @@ import { clientEnv } from '@/env'
 
 export async function handleCreateService(data: CreateServiceType, id: number) {
   try {
-    const req = await fetch(
-      `${clientEnv.BACKEND_URL}/estimate/service?id=${id}`,
-      {
-        method: 'POST',
-        cache: 'no-cache',
-        credentials: 'include',
-        headers: {
-          Cookie: cookies().toString(),
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    const req = await fetch(`${clientEnv.BACKEND_URL}/estimate/${id}/service`, {
+      method: 'POST',
+      cache: 'no-cache',
+      credentials: 'include',
+      headers: {
+        Cookie: cookies().toString(),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
 
     if (!req.ok) {
       const errorResponse = await req.text()

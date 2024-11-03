@@ -13,7 +13,9 @@ export function DeleteVehicle({ id }: { id: number }) {
     toast.promise(deleteVehicleRequest, {
       loading: 'Deletando veículo...',
       success: () => {
-        router.refresh()
+        setTimeout(() => {
+          router.refresh()
+        }, 1000)
         return 'Veículo deletado com sucesso!'
       },
       error: err => {

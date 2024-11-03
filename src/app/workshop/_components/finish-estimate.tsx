@@ -17,7 +17,7 @@ export function FinishEstimate({
       success: () => {
         setTimeout(() => {
           router.refresh()
-        }, 500)
+        }, 1000)
         return 'Orçamento finalizado com sucesso.'
       },
       error: err => {

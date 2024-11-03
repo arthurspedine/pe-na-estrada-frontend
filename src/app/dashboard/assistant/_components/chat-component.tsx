@@ -113,7 +113,9 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
     toast.promise(createEstimateRequest, {
       loading: 'Agendando orçamento...',
       success: () => {
-        router.replace('/dashboard/estimate')
+        setTimeout(() => {
+          router.replace('/dashboard/estimate')
+        }, 1000)
         return 'Orçamento agendado com sucesso!'
       },
       error: 'Algo deu ao agendar seu orçamento.',

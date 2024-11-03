@@ -1,7 +1,7 @@
 'use client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Label } from '@radix-ui/react-label'
+import { Label } from './ui/label'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -9,6 +9,7 @@ import { contactFormSchema } from '@/schemas'
 import type { z } from 'zod'
 import { toast } from 'sonner'
 import { handleEditContact } from '@/http/handle-edit-contact'
+import { useEffect } from 'react'
 
 export type CreateContactSchema = Omit<
   z.infer<typeof contactFormSchema>,
@@ -16,6 +17,9 @@ export type CreateContactSchema = Omit<
 > & {
   number: string
 }
+
+export type CreateContactFormSchema = z.infer<typeof contactFormSchema>
+
 export function EditContactForm({
   id,
   ddi,
@@ -29,12 +33,19 @@ export function EditContactForm({
 }) {
   const router = useRouter()
 
-  const { register, handleSubmit, formState } = useForm<CreateContactSchema>({
-    resolver: zodResolver(contactFormSchema),
-  })
+  const { register, handleSubmit, formState } =
+    useForm<CreateContactFormSchema>({
+      resolver: zodResolver(contactFormSchema),
+    })
 
-  async function handleClickEvent(data: CreateContactSchema) {
-    const editContactRequest = handleEditContact(data, id)
+  async function handleClickEvent(data: CreateContactFormSchema) {
+    const dataReq: CreateContactSchema = {
+      ddi: data.ddi,
+      ddd: data.ddd,
+      number: data.contactNumber,
+    }
+
+    const editContactRequest = handleEditContact(dataReq, id)
 
     toast.promise(editContactRequest, {
       loading: 'Editando contato...',
@@ -42,7 +53,7 @@ export function EditContactForm({
         setTimeout(() => {
           router.back()
           router.refresh()
-        }, 500)
+        }, 1000)
         return 'Edição realizada com sucesso.'
       },
       error: err => {
@@ -108,11 +119,11 @@ export function EditContactForm({
           type='text'
           defaultValue={number}
           placeholder='1234-5678'
-          {...register('number')}
+          {...register('contactNumber')}
         />
-        {formState.errors.number ? (
+        {formState.errors.contactNumber ? (
           <p className='text-destructive text-sm pt-0.5'>
-            {formState.errors.number.message}
+            {formState.errors.contactNumber.message}
           </p>
         ) : (
           ''

@@ -8,6 +8,7 @@ import { FinishEstimate } from './_components/finish-estimate'
 import { LogoutButton } from '@/components/logout-button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { DeleteVehicle } from '../dashboard/_components/delete-vehicle'
+import { redirect } from 'next/navigation'
 
 export default async function DashboardPage() {
   const req = await fetch(`${process.env.BACKEND_URL}/workshop/details`, {
@@ -32,6 +33,8 @@ export default async function DashboardPage() {
 
   const data: Workshop = await req.json()
   const estimatesData: Estimate[] = await reqEstimates.json()
+
+  if (!data) redirect('/workshop')
 
   return (
     <section className='w-full flex flex-col flex-grow items-center'>

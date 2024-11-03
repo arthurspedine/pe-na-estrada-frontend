@@ -13,7 +13,9 @@ export function DeleteContact({ id }: { id: number }) {
     toast.promise(deleteContactRequest, {
       loading: 'Deletando contato...',
       success: () => {
-        router.refresh()
+        setTimeout(() => {
+          router.refresh()
+        }, 1000)
         return 'Contato deletado com sucesso!'
       },
       error: err => {

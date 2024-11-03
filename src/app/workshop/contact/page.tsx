@@ -32,7 +32,7 @@ export default function ContactPage() {
         setTimeout(() => {
           router.back()
           router.refresh()
-        }, 500)
+        }, 1000)
         return 'Cadastrado realizado com sucesso.'
       },
       error: err => {
