@@ -102,8 +102,6 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
     const date = new Date(scheduledAt)
     date.setHours(date.getHours() - 3)
     const formattedScheduledAt = date.toISOString().slice(0, 19)
-    console.log(formattedScheduledAt)
-
     const data: CreateEstimate = {
       ...newEstimate,
       scheduledAt: formattedScheduledAt,
@@ -115,6 +113,7 @@ export function ChatComponent({ username, vehicles, workshops }: ChatProps) {
       success: () => {
         setTimeout(() => {
           router.replace('/dashboard/estimate')
+          router.refresh()
         }, 1000)
         return 'Orçamento agendado com sucesso!'
       },

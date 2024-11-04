@@ -25,7 +25,7 @@ export default function VehiclePage() {
       loading: 'Cadastrando veículo...',
       success: () => {
         setTimeout(() => {
-          router.back()
+          router.replace('/dashboard')
           router.refresh()
         }, 1000)
         return 'Cadastrado realizado com sucesso.'

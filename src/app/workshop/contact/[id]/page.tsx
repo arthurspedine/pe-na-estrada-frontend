@@ -22,7 +22,7 @@ export default async function EditContactPage({
 
   const contact: Contact | undefined = data.contacts.find(c => c.id === id)
 
-  if (contact === undefined) redirect('/dashboard')
+  if (contact === undefined) redirect('/workshop')
 
   const cleanedString = contact.number.replace(/\D/g, '')
   const ddi = Number(cleanedString.slice(0, 2))

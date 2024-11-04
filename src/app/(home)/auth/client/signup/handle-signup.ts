@@ -11,6 +11,6 @@ export async function handleClientSignUp(data: ClientSignUpDataInput) {
     } else {
       console.error(e)
     }
-    throw new Error('Houve um erro no cadastro')
+    throw new Error('Algo deu errado ao cadastrar o cliente.')
   }
 }

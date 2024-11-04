@@ -16,21 +16,31 @@ export type CreateContactSchema = Omit<
 > & {
   number: string
 }
+
+export type CreateContactFormSchema = z.infer<typeof contactFormSchema>
+
 export default function ContactPage() {
   const router = useRouter()
 
-  const { register, handleSubmit, formState } = useForm<CreateContactSchema>({
-    resolver: zodResolver(contactFormSchema),
-  })
+  const { register, handleSubmit, formState } =
+    useForm<CreateContactFormSchema>({
+      resolver: zodResolver(contactFormSchema),
+    })
 
-  async function handleClickEvent(data: CreateContactSchema) {
-    const createContactRequest = handleCreateContact(data)
+  async function handleClickEvent(data: CreateContactFormSchema) {
+    const dataReq: CreateContactSchema = {
+      ddi: data.ddi,
+      ddd: data.ddd,
+      number: data.contactNumber,
+    }
+
+    const createContactRequest = handleCreateContact(dataReq)
 
     toast.promise(createContactRequest, {
       loading: 'Cadastrando contato...',
       success: () => {
         setTimeout(() => {
-          router.back()
+          router.replace('/workshop')
           router.refresh()
         }, 1000)
         return 'Cadastrado realizado com sucesso.'
@@ -99,11 +109,11 @@ export default function ContactPage() {
             id='number'
             type='text'
             placeholder='1234-5678'
-            {...register('number')}
+            {...register('contactNumber')}
           />
-          {formState.errors.number ? (
+          {formState.errors.contactNumber ? (
             <p className='text-destructive text-sm pt-0.5'>
-              {formState.errors.number.message}
+              {formState.errors.contactNumber.message}
             </p>
           ) : (
             ''

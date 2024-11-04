@@ -9,7 +9,6 @@ import { contactFormSchema } from '@/schemas'
 import type { z } from 'zod'
 import { toast } from 'sonner'
 import { handleEditContact } from '@/http/handle-edit-contact'
-import { useEffect } from 'react'
 
 export type CreateContactSchema = Omit<
   z.infer<typeof contactFormSchema>,
@@ -51,7 +50,7 @@ export function EditContactForm({
       loading: 'Editando contato...',
       success: () => {
         setTimeout(() => {
-          router.back()
+          router.replace('/dashboard')
           router.refresh()
         }, 1000)
         return 'Edição realizada com sucesso.'

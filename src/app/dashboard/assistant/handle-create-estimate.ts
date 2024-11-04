@@ -21,6 +21,6 @@ export async function handleCreateEstimate(data: CreateEstimate) {
       return Promise.reject(new Error(JSON.parse(errorResponse).error))
     }
   } catch (e) {
-    throw new Error('Houve um erro ao cadastrar uo orçamento.')
+    return Promise.reject(new Error('Houve um erro ao cadastrar o orçamento'))
   }
 }

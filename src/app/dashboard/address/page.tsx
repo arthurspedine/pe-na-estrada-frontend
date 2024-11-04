@@ -25,7 +25,7 @@ export default function ContactPage() {
       loading: 'Cadastrando endereço...',
       success: () => {
         setTimeout(() => {
-          router.back()
+          router.replace('/dashboard')
           router.refresh()
         }, 1000)
         return 'Cadastrado realizado com sucesso.'

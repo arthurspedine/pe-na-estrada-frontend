@@ -72,7 +72,7 @@ export default function ConfirmPage() {
       const signUpRequest = handleWorkshopSignUp(data)
 
       toast.promise(signUpRequest, {
-        loading: 'Cadastrando cliente...',
+        loading: 'Cadastrando oficina...',
         success: () => {
           resetData()
           router.replace(redirect)
