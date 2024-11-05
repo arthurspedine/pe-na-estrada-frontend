@@ -2,6 +2,8 @@
 
 O site do Pé na Estrada serve para o usuário poder entender sobre o projeto, poder cadastrar/entrar na sua conta, interagir com a IA para marcar um orçamento e consultar orçamentos já criados.
 
+[Teste agora mesmo!](https://penaestrada.vercel.app) 
+
 ## Lembrar de iniciar o backend
 ### Como iniciar?
 Abrir o projeto com o IntelliJ Ultimate e baixar o [Apache Tomcat](https://tomcat.apache.org/download-90.cgi). Baixe o zip e extraia.
